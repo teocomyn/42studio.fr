@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #070708;
+  --bg-elevated: #0d0d10;
+  --ink: #f4f3ef;
+  --muted: #7a7a82;
+  --line: rgba(244, 243, 239, 0.1);
+  --line-strong: rgba(244, 243, 239, 0.22);
+  --chrome: #ffffff;
+  --chrome-dim: rgba(244, 243, 239, 0.14);
+  --font-display: "Bricolage Grotesque";
+  --font-mono: "JetBrains Mono";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  scroll-behavior: auto;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(255, 255, 255, 0.05), transparent 24rem),
+    linear-gradient(180deg, #070708 0%, #050506 100%);
+  color: var(--ink);
+  cursor: none;
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+a,
+button {
+  cursor: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 5px;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(to right, rgba(244, 243, 239, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 243, 239, 0.035) 1px, transparent 1px);
+  background-size: 8.333vw 8.333vw;
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 76%, transparent);
+}
+
+.section-pad {
+  padding: clamp(6rem, 10vw, 10rem) clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.mono-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hairline {
+  border-color: var(--line);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.chrome-text {
+  background: linear-gradient(110deg, #fff 0%, #6f6f75 28%, #fff 51%, #8b8b91 78%, #f4f3ef 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chromeShift 7s ease-in-out infinite;
+}
+
+@keyframes chromeShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.mask-line {
+  overflow: hidden;
+  display: block;
+}
+
+.magnetic {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition: transform 180ms ease-out, color 220ms ease-out, background 220ms ease-out;
+}
+
+.halftone {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.72) 0 1px, transparent 1.8px) 0 0 / 12px 12px,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
+  filter: contrast(1.2);
+}
+
+@media (max-width: 720px) {
+  body,
+  a,
+  button {
+    cursor: auto;
+  }
+
+  .grid-overlay {
+    background-size: 25vw 25vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
