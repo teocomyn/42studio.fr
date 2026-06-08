@@ -18,6 +18,7 @@ export function Hero() {
 
   return (
     <section className="relative z-10 flex min-h-[100svh] overflow-hidden px-5 pb-8 pt-28 md:px-10 md:pt-36">
+      <div className="liquid-fallback" aria-hidden />
       <HeroScene />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,7,8,.82)_0%,rgba(7,7,8,.48)_38%,rgba(7,7,8,.08)_78%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-48 bg-gradient-to-t from-[var(--bg)] to-transparent" />
