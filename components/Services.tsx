@@ -12,7 +12,7 @@ export function Services() {
       <div className="border-t border-white/10">
         {services.map((service, index) => (
           <motion.a
-            href={`/studio#${service.id}`}
+            href={service.href}
             key={service.id}
             className="group relative grid overflow-hidden border-b border-white/10 py-9 md:grid-cols-[5rem_1fr_22rem_3rem] md:items-center md:gap-8 md:py-12"
             initial={{ opacity: 0, y: 34 }}

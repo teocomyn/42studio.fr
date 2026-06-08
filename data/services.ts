@@ -6,6 +6,7 @@ export type Service = {
   tags: string[];
   promise: string;
   deliverables: string[];
+  href: string;
 };
 
 export const services: Service[] = [
@@ -22,7 +23,8 @@ export const services: Service[] = [
       "Logo et variantes",
       "Charte graphique",
       "Kit social et deck"
-    ]
+    ],
+    href: "/brand"
   },
   {
     id: "web",
@@ -37,7 +39,8 @@ export const services: Service[] = [
       "Front-end anime",
       "Intégration CMS ou Shopify",
       "SEO technique"
-    ]
+    ],
+    href: "/web"
   },
   {
     id: "produit",
@@ -52,6 +55,7 @@ export const services: Service[] = [
       "Prototype haute fidélité",
       "Design system produit",
       "Front-end React"
-    ]
+    ],
+    href: "/produit"
   }
 ];

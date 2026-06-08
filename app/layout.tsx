@@ -1,29 +1,51 @@
 import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
+import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap"
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap"
+});
+
 export const metadata: Metadata = {
+  ...createMetadata({
+    title: "Brand, Web, Produit",
+    description:
+      "42studio est un studio créatif basé à Arras qui pense et construit des marques, sites web, e-commerce Shopify et produits digitaux sans rupture entre direction artistique et exécution technique.",
+    path: "/",
+    keywords: [
+      "studio branding Arras",
+      "agence web Arras",
+      "studio design France",
+      "création site Shopify",
+      "design system marque",
+      "studio produit digital"
+    ]
+  }),
   metadataBase: new URL("https://42studio.fr"),
   title: {
     default: "42studio - Brand, Web, Produit",
     template: "%s - 42studio"
   },
-  description:
-    "42studio est un studio creatif base a Arras qui pense et construit des marques, sites web et produits digitaux sans rupture entre direction artistique et execution technique.",
-  openGraph: {
-    title: "42studio - Brand, Web, Produit",
-    description:
-      "Studio creatif haut de gamme a la croisee du branding, du web et du produit digital.",
-    url: "https://42studio.fr",
-    siteName: "42studio",
-    locale: "fr_FR",
-    type: "website"
+  applicationName: "42studio",
+  authors: [{ name: "42studio", url: "https://42studio.fr" }],
+  creator: "42studio",
+  publisher: "42studio",
+  category: "Design studio",
+  icons: {
+    icon: [{ url: "/icon", sizes: "32x32", type: "image/png" }],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }]
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "42studio - Brand, Web, Produit",
-    description:
-      "Du symbole au code : identites, sites et produits digitaux penses comme un seul systeme."
-  }
+  manifest: "/manifest.webmanifest"
 };
 
 export const viewport: Viewport = {
@@ -36,28 +58,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "42studio",
-    url: "https://42studio.fr",
-    email: "hello@42studio.fr",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Arras",
-      addressCountry: "FR"
-    },
-    areaServed: "Worldwide",
-    sameAs: ["https://www.instagram.com/42studio", "https://www.linkedin.com/company/42studio"]
-  };
-
   return (
     <html lang="fr">
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+      <body className={`${display.variable} ${mono.variable}`}>
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         {children}
       </body>
     </html>

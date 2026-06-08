@@ -29,7 +29,16 @@ export function ContactCta() {
           hello@42studio.fr
         </a>
         <span>© 2026 42studio — Arras, FR</span>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-6">
+          <a className="transition hover:text-white" href="/brand">
+            Brand
+          </a>
+          <a className="transition hover:text-white" href="/web">
+            Web
+          </a>
+          <a className="transition hover:text-white" href="/shopify">
+            Shopify
+          </a>
           <a className="transition hover:text-white" href="https://www.instagram.com/42studio">
             Instagram ↗
           </a>

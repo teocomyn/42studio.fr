@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { LenisProvider } from "@/components/LenisProvider";
 import { Reveal } from "@/components/Reveal";
 import { projects } from "@/data/projects";
+import { breadcrumbJsonLd, createMetadata, creativeWorkJsonLd } from "@/lib/seo";
 
 type WorkPageProps = {
   params: {
@@ -22,10 +24,13 @@ export function generateMetadata({ params }: WorkPageProps): Metadata {
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return {};
 
-  return {
+  return createMetadata({
     title: project.title,
-    description: project.summary
-  };
+    description: project.summary,
+    path: `/work/${project.slug}`,
+    keywords: [...project.services, project.category, "case study design", "42studio"],
+    type: "article"
+  });
 }
 
 export default function WorkPage({ params }: WorkPageProps) {
@@ -35,6 +40,20 @@ export default function WorkPage({ params }: WorkPageProps) {
   return (
     <LenisProvider>
       <Cursor />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Projets", path: "/#work" },
+          { name: project.title, path: `/work/${project.slug}` }
+        ])}
+      />
+      <JsonLd
+        data={creativeWorkJsonLd({
+          name: project.title,
+          description: project.summary,
+          path: `/work/${project.slug}`
+        })}
+      />
       <div className="site-shell">
         <div className="grid-overlay" />
         <Header />

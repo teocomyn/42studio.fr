@@ -1,18 +1,28 @@
 import type { Metadata } from "next";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { LenisProvider } from "@/components/LenisProvider";
 import { Reveal } from "@/components/Reveal";
+import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Contact",
-  description: "Contactez 42studio pour un projet de marque, site web, e-commerce ou produit digital."
-};
+  description: "Contactez 42studio pour un projet de marque, site web, e-commerce Shopify ou produit digital.",
+  path: "/contact",
+  keywords: ["contact studio branding", "brief site web", "projet Shopify", "studio créatif Arras"]
+});
 
 export default function ContactPage() {
   return (
     <LenisProvider>
       <Cursor />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Contact", path: "/contact" }
+        ])}
+      />
       <div className="site-shell">
         <div className="grid-overlay" />
         <Header />

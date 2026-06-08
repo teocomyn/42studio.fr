@@ -7,7 +7,7 @@ import { easeOut } from "@/lib/motion";
 const links = [
   ["Travail", "/#work"],
   ["Studio", "/studio"],
-  ["Approche", "/#approche"],
+  ["Services", "/web"],
   ["Contact", "/contact"]
 ] as const;
 

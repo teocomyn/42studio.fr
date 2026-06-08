@@ -3,21 +3,31 @@ import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { LenisProvider } from "@/components/LenisProvider";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { services } from "@/data/services";
+import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Studio",
+export const metadata: Metadata = createMetadata({
+  title: "Studio créatif à Arras",
   description:
-    "Découvrez la méthode 42studio : stratégie, identité, système, build et déploiement pour marques, sites et produits digitaux."
-};
+    "Découvrez la méthode 42studio : stratégie, identité, système, build et déploiement pour marques, sites web et produits digitaux.",
+  path: "/studio",
+  keywords: ["studio créatif Arras", "studio design France", "branding web produit", "direction artistique digitale"]
+});
 
 export default function StudioPage() {
   return (
     <LenisProvider>
       <Cursor />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Accueil", path: "/" },
+          { name: "Studio", path: "/studio" }
+        ])}
+      />
       <div className="site-shell">
         <div className="grid-overlay" />
         <Header />
