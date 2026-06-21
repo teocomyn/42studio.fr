@@ -15,11 +15,11 @@ export default function Home() {
       <Preloader />
       <SiteChrome mainClassName={undefined}>
         <Hero />
+        <WorkGallery limit={8} />
         <Marquee />
         <Manifesto />
         <Services />
         <Approach />
-        <WorkGallery limit={8} />
         <ProcessTimeline />
         <ContactCta />
       </SiteChrome>
