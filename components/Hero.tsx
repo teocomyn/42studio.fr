@@ -1,16 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { easeOut } from "@/lib/motion";
 import { useMagnetic } from "@/lib/useMagnetic";
 
-const HeroScene = dynamic(() => import("./HeroScene").then((mod) => mod.HeroScene), {
-  ssr: false,
-  loading: () => <div className="liquid-fallback" aria-hidden />
-});
-
+const heroVideoSrc =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_084718_72a17915-4964-4059-afcd-22d59399b72e.mp4";
 const titleLines = ["On dessine", "des marques", "pensées pour exister."];
 
 export function Hero() {
@@ -19,8 +15,21 @@ export function Hero() {
 
   return (
     <section className="relative z-10 flex min-h-[100svh] overflow-hidden px-5 pb-8 pt-28 md:px-10 md:pt-36">
-      {reduce ? <div className="liquid-fallback" aria-hidden /> : <HeroScene />}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,7,8,.82)_0%,rgba(7,7,8,.48)_38%,rgba(7,7,8,.08)_78%)]" />
+      {reduce ? (
+        <div className="liquid-fallback" aria-hidden />
+      ) : (
+        <video
+          aria-hidden
+          autoPlay
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-85"
+          loop
+          muted
+          playsInline
+          preload="auto"
+          src={heroVideoSrc}
+        />
+      )}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,7,8,.88)_0%,rgba(7,7,8,.58)_42%,rgba(7,7,8,.18)_82%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-48 bg-gradient-to-t from-[var(--bg)] to-transparent" />
       <div className="relative z-10 flex w-full flex-col justify-center">
         <motion.div
