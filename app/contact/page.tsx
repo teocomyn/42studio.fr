@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Cursor } from "@/components/Cursor";
-import { Header } from "@/components/Header";
+import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
-import { LenisProvider } from "@/components/LenisProvider";
 import { Reveal } from "@/components/Reveal";
+import { SiteChrome } from "@/components/SiteChrome";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
@@ -15,45 +15,43 @@ export const metadata: Metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <LenisProvider>
-      <Cursor />
+    <SiteChrome mainClassName="relative z-10 px-5 pb-20 pt-36 md:px-10">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Accueil", path: "/" },
           { name: "Contact", path: "/contact" }
         ])}
       />
-      <div className="site-shell">
-        <div className="grid-overlay" />
-        <Header />
-        <main className="relative z-10 min-h-screen px-5 pb-10 pt-36 md:px-10">
-          <Reveal className="grid min-h-[calc(100svh-12rem)] gap-10 md:grid-cols-[1fr_32rem] md:items-end">
-            <div>
-              <span className="mono-label">Contact / Brief</span>
-              <h1 className="mt-8 max-w-5xl text-[clamp(4rem,13vw,14rem)] font-black leading-[0.82] tracking-[-0.07em]">
-                Lancer le signal.
-              </h1>
-            </div>
-            <div className="border border-white/10 bg-white/[0.03] p-6 md:p-8">
-              <p className="text-lg leading-8 text-white/80">
-                Envoyez-nous le contexte, l'ambition, les contraintes, le timing. Si le projet appelle
-                une vraie direction artistique et une exécution solide, on vous répond vite.
-              </p>
-              <a
-                href="mailto:hello@42studio.fr?subject=Projet%20pour%2042studio"
-                className="mt-8 inline-flex h-14 items-center gap-4 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
-              >
-                hello@42studio.fr <span aria-hidden>↗</span>
-              </a>
-              <div className="mt-10 grid gap-4 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
-                <span>Arras, France</span>
-                <span>Brand · Web · Produit</span>
-                <span>Français / English</span>
-              </div>
-            </div>
-          </Reveal>
-        </main>
-      </div>
-    </LenisProvider>
+      <Reveal className="grid gap-12 md:grid-cols-[1fr_34rem] md:gap-16">
+        <div>
+          <span className="mono-label">Contact / Brief</span>
+          <h1 className="mt-8 max-w-3xl text-[clamp(3.4rem,11vw,11rem)] font-black leading-[0.82] tracking-[-0.07em]">
+            Lancer le signal.
+          </h1>
+          <p className="mt-8 max-w-md text-lg leading-8 text-white/80">
+            Envoyez le contexte, l&apos;ambition, les contraintes et le timing. Si le projet appelle une
+            vraie direction artistique et une exécution solide, on vous répond vite.
+          </p>
+          <div className="mt-10 grid gap-4 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
+            <span>Réponse sous 24&nbsp;h, sans engagement</span>
+            <span>Arras, France — à distance partout</span>
+            <span>Français / English</span>
+          </div>
+          {siteConfig.bookingUrl ? (
+            <a
+              href={siteConfig.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex h-14 items-center gap-4 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+            >
+              Réserver un appel découverte <span aria-hidden>↗</span>
+            </a>
+          ) : null}
+        </div>
+        <div className="border border-white/10 bg-white/[0.02] p-6 md:p-8">
+          <ContactForm />
+        </div>
+      </Reveal>
+    </SiteChrome>
   );
 }

@@ -16,7 +16,7 @@ export const services: Service[] = [
     title: "Brand",
     short: "Stratégie, identité et système visuel pour des marques qui tiennent debout partout.",
     tags: ["Stratégie", "Naming", "Logo", "Charte", "Design system"],
-    promise: "Un territoire clair, un signe fort, un langage visuel exploitable par toute l'equipe.",
+    promise: "Un territoire clair, un signe fort, un langage visuel exploitable par toute l'équipe.",
     deliverables: [
       "Plateforme de marque",
       "Direction artistique",
@@ -36,7 +36,7 @@ export const services: Service[] = [
     deliverables: [
       "Architecture UX",
       "UI responsive",
-      "Front-end anime",
+      "Front-end animé",
       "Intégration CMS ou Shopify",
       "SEO technique"
     ],

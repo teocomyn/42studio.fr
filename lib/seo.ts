@@ -64,7 +64,7 @@ export function createMetadata({
 
 export const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
   legalName: "42studio",
@@ -73,12 +73,32 @@ export const organizationJsonLd = {
   image: absoluteUrl(defaultOgImage),
   email: "hello@42studio.fr",
   slogan: "Brand, Web, Produit. Du symbole au code.",
+  knowsAbout: [
+    "branding",
+    "identité de marque",
+    "design system",
+    "développement web Next.js",
+    "e-commerce Shopify",
+    "design produit",
+    "UX/UI"
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Arras",
+    addressRegion: "Hauts-de-France",
+    postalCode: "62000",
     addressCountry: "FR"
   },
-  areaServed: ["France", "Europe", "Worldwide"],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 50.29,
+    longitude: 2.78
+  },
+  areaServed: [
+    { "@type": "City", name: "Arras" },
+    { "@type": "AdministrativeArea", name: "Hauts-de-France" },
+    { "@type": "Country", name: "France" }
+  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -87,6 +107,7 @@ export const organizationJsonLd = {
       availableLanguage: ["fr", "en"]
     }
   ],
+  // ⚠️ Vérifie que ces profils existent et appartiennent bien au studio (sinon retire-les).
   sameAs: ["https://www.instagram.com/42studio", "https://www.linkedin.com/company/42studio"]
 };
 
@@ -159,12 +180,16 @@ export function creativeWorkJsonLd({
   name,
   description,
   path,
-  datePublished = "2026-06-08"
+  datePublished,
+  keywords,
+  about
 }: {
   name: string;
   description: string;
   path: string;
   datePublished?: string;
+  keywords?: string[];
+  about?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -172,7 +197,9 @@ export function creativeWorkJsonLd({
     name,
     description,
     url: absoluteUrl(path),
-    datePublished,
+    ...(datePublished ? { datePublished } : {}),
+    ...(keywords && keywords.length ? { keywords: keywords.join(", ") } : {}),
+    ...(about ? { about } : {}),
     inLanguage: "fr-FR",
     creator: {
       "@id": `${siteUrl}/#organization`

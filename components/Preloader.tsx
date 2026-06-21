@@ -10,32 +10,44 @@ export function Preloader() {
 
   useEffect(() => {
     if (prefersReducedMotion()) {
-      setCount(42);
-      setDone(true);
-      return;
+      const frame = requestAnimationFrame(() => {
+        setCount(42);
+        setDone(true);
+      });
+      return () => cancelAnimationFrame(frame);
     }
 
     const startedAt = performance.now();
-    const duration = 1500;
+    const duration = 600;
+    let frame = 0;
+    let timeout = 0;
 
     const tick = () => {
       const progress = Math.min(1, (performance.now() - startedAt) / duration);
       setCount(Math.round(progress * 42));
 
       if (progress < 1) {
-        requestAnimationFrame(tick);
+        frame = requestAnimationFrame(tick);
       } else {
-        window.setTimeout(() => setDone(true), 360);
+        timeout = window.setTimeout(() => setDone(true), 200);
       }
     };
 
-    requestAnimationFrame(tick);
+    frame = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   return (
     <AnimatePresence>
       {!done && (
         <motion.div
+          role="status"
+          aria-live="polite"
+          aria-label="Chargement du site"
           className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[var(--bg)] p-6 text-[var(--ink)] md:p-10"
           exit={{
             y: "-100%",

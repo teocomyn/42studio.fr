@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { JsonLd } from "@/components/JsonLd";
 import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: "Brand, Web, Produit",
     description:
-      "42studio est un studio créatif basé à Arras qui pense et construit des marques, sites web, e-commerce Shopify et produits digitaux sans rupture entre direction artistique et exécution technique.",
+      "42studio est un studio créatif basé à Arras qui a accompagné plus de 60 marques en branding, sites web, e-commerce Shopify et produits digitaux.",
     path: "/",
     keywords: [
       "studio branding Arras",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   }),
   metadataBase: new URL("https://42studio.fr"),
   title: {
-    default: "42studio - Brand, Web, Produit",
+    default: "42studio — Studio créatif Brand, Web & Produit à Arras",
     template: "%s - 42studio"
   },
   applicationName: "42studio",
@@ -64,6 +65,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
+        <Analytics />
       </body>
     </html>
   );

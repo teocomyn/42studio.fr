@@ -15,6 +15,8 @@ export function ProcessTimeline() {
 
   useEffect(() => {
     if (prefersReducedMotion() || !section.current || !track.current) return;
+    // Pas de pin horizontal sur mobile/tactile : on laisse un scroll horizontal natif (cf. JSX).
+    if (window.matchMedia("(max-width: 767px)").matches) return;
 
     const ctx = gsap.context(() => {
       const distance = track.current!.scrollWidth - window.innerWidth + 80;
@@ -37,11 +39,12 @@ export function ProcessTimeline() {
   return (
     <section ref={section} className="section-pad relative z-10 overflow-hidden border-y border-white/10 bg-[var(--bg)]">
       <SectionHead
-        eyebrow="04 / Facon de travailler"
+        eyebrow="04 / Façon de travailler"
         title="Une trajectoire claire, du signal au lancement."
       />
-      <div ref={track} className="flex w-max gap-0 pr-10">
-        {processSteps.map((step) => (
+      <div className="-mx-5 overflow-x-auto px-5 md:mx-0 md:overflow-visible md:px-0">
+        <div ref={track} className="flex w-max gap-0 pr-10">
+          {processSteps.map((step) => (
           <article
             key={step.index}
             className="relative flex h-[24rem] w-[82vw] max-w-[34rem] flex-col justify-between border-l border-white/10 p-7 md:w-[34rem] md:p-9"
@@ -58,7 +61,8 @@ export function ProcessTimeline() {
               <p className="mt-5 max-w-sm text-sm leading-6 text-[var(--muted)]">{step.description}</p>
             </div>
           </article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

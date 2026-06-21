@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
-import { Cursor } from "@/components/Cursor";
-import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { LenisProvider } from "@/components/LenisProvider";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
+import { SiteChrome } from "@/components/SiteChrome";
 import { services } from "@/data/services";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
 
@@ -20,19 +18,14 @@ export const metadata: Metadata = createMetadata({
 
 export default function StudioPage() {
   return (
-    <LenisProvider>
-      <Cursor />
+    <SiteChrome>
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Accueil", path: "/" },
           { name: "Studio", path: "/studio" }
         ])}
       />
-      <div className="site-shell">
-        <div className="grid-overlay" />
-        <Header />
-        <main className="relative z-10">
-          <section className="section-pad flex min-h-[82svh] flex-col justify-end pt-36">
+      <section className="section-pad flex min-h-[82svh] flex-col justify-end pt-36">
             <span className="mono-label mb-8">Studio / Arras — Worldwide</span>
             <h1 className="max-w-6xl text-[clamp(3.4rem,11vw,12rem)] font-light leading-[0.85] tracking-[-0.06em]">
               Du symbole au code, <span className="chrome-text font-black">sans rupture.</span>
@@ -45,7 +38,7 @@ export default function StudioPage() {
 
           <section className="section-pad border-y border-white/10">
             <SectionHead
-              eyebrow="Capacites"
+              eyebrow="Capacités"
               title="Un studio volontairement compact, pensé pour aller vite et tenir un haut niveau."
             />
             <div className="space-y-8">
@@ -86,8 +79,6 @@ export default function StudioPage() {
             </Reveal>
           </section>
           <ContactCta />
-        </main>
-      </div>
-    </LenisProvider>
+    </SiteChrome>
   );
 }

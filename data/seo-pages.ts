@@ -25,14 +25,14 @@ export type SeoServicePage = {
 export const seoServicePages: SeoServicePage[] = [
   {
     slug: "brand",
-    title: "Studio branding à Arras",
+    title: "Création d'identité de marque & design system",
     eyebrow: "Brand / Identité",
     h1: "Une marque pensée comme un système.",
     description:
       "42studio conçoit des identités de marque complètes : stratégie, naming, logo, direction artistique, charte graphique et design system.",
     intro:
       "Le branding n'est pas une couche décorative. C'est l'architecture qui permet à une entreprise d'être reconnue, comprise et mémorisée sur tous ses points de contact.",
-    keywords: ["studio branding Arras", "identité visuelle", "création logo", "charte graphique", "design system marque"],
+    keywords: ["création identité de marque", "identité visuelle", "création logo", "charte graphique", "design system marque"],
     serviceName: "Branding et identité visuelle",
     proofPoints: ["Plateforme de marque", "Logo et système visuel", "Charte activable", "Kit digital"],
     sections: [
@@ -65,7 +65,7 @@ export const seoServicePages: SeoServicePage[] = [
       }
     ],
     related: [
-      { label: "Voir la méthode studio", href: "/studio" },
+      { label: "Branding à Arras (local)", href: "/branding-arras" },
       { label: "Créer un site web", href: "/web" },
       { label: "Parler d'un projet", href: "/contact" }
     ]
@@ -213,7 +213,7 @@ export const seoServicePages: SeoServicePage[] = [
   },
   {
     slug: "branding-arras",
-    title: "Studio branding à Arras",
+    title: "Agence de branding à Arras (Hauts-de-France)",
     eyebrow: "Local / Arras",
     h1: "Un studio créatif à Arras avec une ambition internationale.",
     description:

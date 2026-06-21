@@ -21,6 +21,8 @@ html {
   background: var(--bg);
   color: var(--ink);
   scroll-behavior: auto;
+  /* Décale les ancres sous le header fixe (#work, #contact, #approche...). */
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -30,9 +32,40 @@ body {
     radial-gradient(circle at 78% 16%, rgba(255, 255, 255, 0.05), transparent 24rem),
     linear-gradient(180deg, #070708 0%, #050506 100%);
   color: var(--ink);
-  cursor: none;
   font-family: var(--font-display), sans-serif;
   letter-spacing: 0;
+}
+
+/* Curseur custom uniquement sur les pointeurs fins (souris) et hors reduced-motion :
+   on ne masque jamais le pointeur système d'un utilisateur tactile ou à accessibilité réduite. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+/* Lien d'évitement : invisible jusqu'au focus clavier. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10001;
+  transform: translateY(-150%);
+  padding: 0.65rem 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 160ms ease-out;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
 }
 
 body::after {
@@ -51,17 +84,16 @@ body::after {
   color: var(--bg);
 }
 
-a,
-button {
-  cursor: none;
-}
-
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
-  outline: 1px solid var(--ink);
-  outline-offset: 5px;
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  /* Halo de renfort pour rester visible au-dessus des zones claires/animées. */
+  box-shadow: 0 0 0 4px var(--bg);
 }
 
 .site-shell {
@@ -181,12 +213,6 @@ textarea:focus-visible {
 }
 
 @media (max-width: 720px) {
-  body,
-  a,
-  button {
-    cursor: auto;
-  }
-
   .grid-overlay {
     background-size: 25vw 25vw;
   }

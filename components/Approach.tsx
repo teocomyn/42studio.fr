@@ -27,7 +27,7 @@ const pillars = [
 export function Approach() {
   return (
     <section id="approche" className="section-pad relative z-10 bg-[var(--bg)]">
-      <SectionHead eyebrow="02 / Pourquoi nous" title="La coherence, garantie." />
+      <SectionHead eyebrow="02 / Pourquoi nous" title="La cohérence, garantie." />
       <Reveal className="grid border border-white/10 md:grid-cols-4">
         {pillars.map((pillar) => (
           <article

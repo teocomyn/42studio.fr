@@ -19,7 +19,7 @@ export const processSteps: ProcessStep[] = [
   },
   {
     index: "03",
-    title: "Systeme",
+    title: "Système",
     description:
       "On transforme la direction artistique en composants, règles et patterns activables."
   },
