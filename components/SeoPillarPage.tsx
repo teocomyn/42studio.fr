@@ -92,10 +92,10 @@ function KeywordSection({ block, index }: { block: SeoKeywordBlock; index: numbe
             ))}
           </ul>
           <Link
-            href={block.href}
+            href={`/${block.id}`}
             className="mt-8 inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
           >
-            {block.hrefLabel} <span aria-hidden>↗</span>
+            Page dédiée : {block.keyword} <span aria-hidden>↗</span>
           </Link>
           <CaseStudyLinks slugs={block.caseSlugs} />
         </div>
@@ -186,7 +186,7 @@ export function SeoPillarPage() {
                   <KeywordPill
                     key={keyword}
                     label={keyword}
-                    href={block ? `#${block.id}` : "#shopify"}
+                    href={block ? `/${block.id}` : "/agence-shopify-branding-web"}
                   />
                 );
               })}

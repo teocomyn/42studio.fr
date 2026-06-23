@@ -1,4 +1,5 @@
 import { projects } from "@/data/projects";
+import { seoKeywordPages } from "@/data/seo-keywords";
 import { seoServicePages } from "@/data/seo-pages";
 import { siteUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -16,6 +17,12 @@ export function GET() {
     "## Services",
     ...services.map((page) => `- [${page.serviceName}](${siteUrl}/${page.slug}): ${page.description}`),
     `- [Tous les services](${siteUrl}/services)`,
+    "",
+    "## Pages SEO transactionnelles",
+    ...seoKeywordPages.map(
+      (page) => `- [${page.keyword}](${siteUrl}/${page.slug}): ${page.description}`
+    ),
+    `- [Hub expertises SEO](${siteUrl}/agence-shopify-branding-web)`,
     "",
     "## Studio",
     `- [Méthode et capacités](${siteUrl}/studio): stratégie, identité, système, build, déploiement.`,

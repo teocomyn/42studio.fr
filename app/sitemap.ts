@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
+import { getSeoKeywordSlugs } from "@/data/seo-keywords";
 import { seoServicePages } from "@/data/seo-pages";
 import { siteUrl } from "@/lib/seo";
 
@@ -17,9 +18,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/confidentialite", priority: 0.2, changeFrequency: "yearly" as const },
     ...seoServicePages.map((page) => ({
       path: `/${page.slug}`,
-      priority: page.slug === "branding-arras" ? 0.78 : 0.85,
+      priority: page.slug === "branding-arras" ? 0.88 : 0.85,
       changeFrequency: "monthly" as const
     })),
+    ...getSeoKeywordSlugs()
+      .filter((slug) => !seoServicePages.some((page) => page.slug === slug))
+      .map((slug) => ({
+        path: `/${slug}`,
+        priority: slug.includes("arras") ? 0.88 : 0.9,
+        changeFrequency: "monthly" as const
+      })),
     ...projects.map((project) => ({
       path: `/work/${project.slug}`,
       priority: project.featured ? 0.78 : 0.72,

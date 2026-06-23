@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { SeoServicePage } from "@/components/SeoServicePage";
-import { getSeoServicePage } from "@/data/seo-pages";
+import { SeoKeywordPage } from "@/components/SeoKeywordPage";
+import { getSeoKeywordPage } from "@/data/seo-keywords";
 import { createMetadata } from "@/lib/seo";
 
-const page = getSeoServicePage("branding-arras")!;
+const page = getSeoKeywordPage("branding-arras")!;
 
 export const metadata: Metadata = createMetadata({
   title: page.title,
   description: page.description,
   path: "/branding-arras",
-  keywords: page.keywords
+  keywords: [page.keyword, ...page.keywords]
 });
 
 export default function BrandingArrasPage() {
-  return <SeoServicePage page={page} />;
+  return <SeoKeywordPage page={page} />;
 }

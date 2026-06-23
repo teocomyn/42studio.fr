@@ -38,7 +38,7 @@ export default function AgenceShopifyBrandingWebPage() {
           seoPillarClusters.flatMap((cluster) =>
             cluster.keywords.map((block) => ({
               name: block.keyword,
-              path: `${path}#${block.id}`
+              path: `/${block.id}`
             }))
           )
         )}
