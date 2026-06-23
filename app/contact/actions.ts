@@ -1,5 +1,14 @@
 "use server";
 
+import {
+  buildBriefHtml,
+  buildBriefSubject,
+  buildBriefText,
+  buildConfirmationHtml,
+  buildConfirmationSubject,
+  buildConfirmationText
+} from "@/lib/email/contact-brief";
+import { getContactFrom, getContactTo, getResendClient } from "@/lib/resend";
 import { siteConfig } from "@/lib/site";
 
 export type ContactState = {
@@ -48,49 +57,50 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
     };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO ?? siteConfig.email;
-  const from = process.env.CONTACT_FROM ?? "42studio <hello@42studio.fr>";
-
-  if (!apiKey) {
+  const resend = getResendClient();
+  if (!resend) {
     return {
       status: "error",
       message: `Le formulaire n'est pas encore relié à l'envoi d'emails. Écris-nous directement à ${siteConfig.email}.`
     };
   }
 
+  const payload = { name, email, projectType, budget, message };
+  const from = getContactFrom();
+  const to = getContactTo();
+
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: email,
-        subject: `Nouveau brief · ${name}${projectType ? ` (${projectType})` : ""}`,
-        text: [
-          `Nom : ${name}`,
-          `Email : ${email}`,
-          `Type de projet : ${projectType || "Non renseigné"}`,
-          `Budget : ${budget || "Non renseigné"}`,
-          `Consentement RGPD : oui`,
-          "",
-          message
-        ].join("\n")
-      })
+    const teamEmail = await resend.emails.send({
+      from,
+      to: [to],
+      replyTo: email,
+      subject: buildBriefSubject(payload),
+      text: buildBriefText(payload),
+      html: buildBriefHtml(payload)
     });
 
-    if (!res.ok) {
+    if (teamEmail.error) {
+      console.error("[contact] Resend team email failed:", teamEmail.error);
       return { status: "error", message: `Envoi impossible pour le moment. Écris-nous à ${siteConfig.email}.` };
+    }
+
+    const confirmationEmail = await resend.emails.send({
+      from,
+      to: [email],
+      subject: buildConfirmationSubject(),
+      text: buildConfirmationText(payload),
+      html: buildConfirmationHtml(payload)
+    });
+
+    if (confirmationEmail.error) {
+      console.error("[contact] Resend confirmation email failed:", confirmationEmail.error);
     }
 
     recentSubmissions.set(rateKey, Date.now());
 
     return { status: "success", message: "Reçu, on revient vers toi sous 24 h." };
-  } catch {
+  } catch (error) {
+    console.error("[contact] Resend request failed:", error);
     return { status: "error", message: `Envoi impossible pour le moment. Écris-nous à ${siteConfig.email}.` };
   }
 }

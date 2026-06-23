@@ -15,9 +15,21 @@ Le site sera disponible sur `http://localhost:3000`.
 
 Copie `.env.example` en `.env.local` :
 
-- `RESEND_API_KEY` — envoi du formulaire de contact (obligatoire en prod)
-- `CONTACT_TO` / `CONTACT_FROM` — destinataire et expéditeur des briefs
+- `RESEND_API_KEY` — clé API Resend (`re_...`), obligatoire en prod
+- `CONTACT_TO` / `CONTACT_FROM` — destinataire et expéditeur des briefs (`42studio <hello@42studio.fr>`)
 - `NEXT_PUBLIC_BOOKING_URL` — lien Cal.com / Calendly (bouton sur `/contact`)
+
+### Resend (formulaire contact)
+
+1. Crée un compte sur [resend.com](https://resend.com)
+2. Ajoute le domaine `42studio.fr` et configure les enregistrements DNS (SPF, DKIM) chez Hostinger
+3. Génère une clé API avec permission **Sending access**
+4. Ajoute `RESEND_API_KEY` dans Vercel → Project → Settings → Environment Variables (Production + Preview)
+5. Redéploie le site
+
+Le formulaire `/contact` envoie :
+- un email interne vers `CONTACT_TO`
+- un email de confirmation au visiteur
 
 Informations légales et contact : `lib/site.ts`.
 
