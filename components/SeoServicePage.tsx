@@ -22,7 +22,7 @@ export function SeoServicePage({ page }: SeoServicePageProps) {
         ])}
       />
       <JsonLd data={serviceJsonLd({ name: page.serviceName, description: page.description, path })} />
-      {page.slug === "branding-arras" ? <JsonLd data={localBusinessJsonLd()} /> : null}
+      {page.slug === "branding-arras" ? <JsonLd data={localBusinessJsonLd("/branding-arras")} /> : null}
       <JsonLd data={faqJsonLd(page.faqs)} />
 
       <section className="section-pad border-b border-white/10 pt-36">

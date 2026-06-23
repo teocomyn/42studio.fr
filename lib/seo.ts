@@ -230,17 +230,17 @@ export function creativeWorkJsonLd({
   };
 }
 
-export function localBusinessJsonLd() {
+export function localBusinessJsonLd(path = "/") {
   const { legal, geo, email, socials } = siteConfig;
 
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${siteUrl}/branding-arras#localbusiness`,
+    "@id": `${siteUrl}${path === "/" ? "/#localbusiness" : `${path}#localbusiness`}`,
     name: siteName,
     description:
       "Studio créatif à Arras : branding, identité de marque, sites web et e-commerce Shopify pour marques ambitieuses.",
-    url: absoluteUrl("/branding-arras"),
+    url: absoluteUrl(path),
     email,
     image: absoluteUrl(defaultOgImage),
     priceRange: "€€€",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { easeOut } from "@/lib/motion";
+import { trackCtaClick } from "@/lib/gtag-analytics";
 import { useMagnetic } from "@/lib/useMagnetic";
 
 const heroVideoSrc =
@@ -99,6 +100,7 @@ export function Hero() {
               <Link
                 ref={ctaRef}
                 href="/contact"
+                onClick={() => trackCtaClick("lancer_projet", "hero")}
                 className="magnetic inline-flex h-12 w-fit items-center justify-center gap-3 bg-white px-5 font-mono text-[10px] uppercase tracking-[0.14em] text-black transition hover:bg-white/90 active:scale-[0.98]"
               >
                 Lancer un projet

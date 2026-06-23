@@ -63,7 +63,7 @@ export function SeoKeywordPage({ page }: SeoKeywordPageProps) {
         ])}
       />
       <JsonLd data={serviceJsonLd({ name: page.serviceName, description: page.description, path })} />
-      {page.showLocalBusiness ? <JsonLd data={localBusinessJsonLd()} /> : null}
+      {page.showLocalBusiness ? <JsonLd data={localBusinessJsonLd(`/${page.slug}`)} /> : null}
       <JsonLd data={faqJsonLd(page.faqs)} />
 
       <section className="section-pad border-b border-white/10 pt-36">

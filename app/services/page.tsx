@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
+import { SeoIntentsSection } from "@/components/SeoIntentsSection";
 import { SiteChrome } from "@/components/SiteChrome";
 import { seoServicePages } from "@/data/seo-pages";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
@@ -83,6 +84,8 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <SeoIntentsSection />
 
       <section className="section-pad">
         <Reveal className="flex flex-col items-start justify-between gap-6 border border-white/10 bg-white/[0.03] p-7 md:flex-row md:items-center md:p-10">

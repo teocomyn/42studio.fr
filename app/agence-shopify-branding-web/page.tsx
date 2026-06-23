@@ -31,7 +31,7 @@ export default function AgenceShopifyBrandingWebPage() {
           path
         })}
       />
-      <JsonLd data={localBusinessJsonLd()} />
+      <JsonLd data={localBusinessJsonLd("/agence-shopify-branding-web")} />
       <JsonLd data={faqJsonLd(seoPillarFaqs)} />
       <JsonLd
         data={itemListJsonLd(

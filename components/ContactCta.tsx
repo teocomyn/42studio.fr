@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { openCookiePreferences } from "@/components/CookieConsent";
+import { getFeaturedSeoPages } from "@/data/seo-keywords-nav";
 import { easeOut } from "@/lib/motion";
 import { trackCtaClick } from "@/lib/gtag-analytics";
 import { useMagnetic } from "@/lib/useMagnetic";
@@ -28,6 +29,7 @@ const legalLinks = [
 export function ContactCta() {
   const ref = useMagnetic<HTMLAnchorElement>();
   const reduce = useReducedMotion();
+  const featuredSeo = getFeaturedSeoPages().slice(0, 6);
 
   return (
     <section
@@ -132,9 +134,24 @@ export function ContactCta() {
             {label}
           </Link>
         ))}
+        <Link href="/agence-shopify-branding-web" className="transition hover:text-white/80">
+          Expertises SEO
+        </Link>
         <button type="button" onClick={openCookiePreferences} className="transition hover:text-white/80">
           Cookies
         </button>
+      </div>
+
+      <div className="relative z-10 mt-5 flex flex-wrap gap-2">
+        {featuredSeo.map((page) => (
+          <Link
+            key={page.slug}
+            href={`/${page.slug}`}
+            className="border border-white/10 bg-black/20 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.08em] text-white/45 transition hover:border-white/25 hover:text-white/75"
+          >
+            {page.keyword}
+          </Link>
+        ))}
       </div>
     </section>
   );

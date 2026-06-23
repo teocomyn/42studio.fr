@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { ClientStrip } from "@/components/ClientStrip";
 import { Hero } from "@/components/Hero";
+import { SeoIntentsSection } from "@/components/SeoIntentsSection";
 import { SiteChrome } from "@/components/SiteChrome";
 
 const Preloader = dynamic(() =>
@@ -44,6 +45,7 @@ export default function Home() {
         <Services />
         <Testimonials />
         <ProcessTimeline />
+        <SeoIntentsSection compact />
         <ContactCta />
       </SiteChrome>
     </>

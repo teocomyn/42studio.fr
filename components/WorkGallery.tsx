@@ -157,6 +157,28 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
           </Link>
         </div>
       ) : null}
+
+      {showFilters ? (
+        <div className="mt-14 flex flex-col items-start justify-between gap-6 border border-white/10 bg-white/[0.02] p-7 md:flex-row md:items-center md:p-10">
+          <p className="max-w-xl text-lg font-light tracking-[-0.03em] text-white/85">
+            Un projet Shopify, branding ou site sur mesure en tête&nbsp;? Parlons-en.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex h-12 items-center gap-3 bg-white px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-black transition hover:bg-white/90"
+            >
+              Lancer un projet <span aria-hidden>↗</span>
+            </Link>
+            <Link
+              href="/agence-shopify-france"
+              className="inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+            >
+              Agence Shopify <span aria-hidden>↗</span>
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
