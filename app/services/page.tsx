@@ -39,6 +39,12 @@ export default function ServicesPage() {
           Brand, web, Shopify et produit : pensés et exécutés par un seul studio, sans rupture entre direction
           artistique et code.
         </p>
+        <Link
+          href="/agence-shopify-branding-web"
+          className="mt-8 inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+        >
+          Guide expertises SEO · 15 intentions transactionnelles <span aria-hidden>↗</span>
+        </Link>
       </section>
 
       <section className="section-pad border-b border-white/10">

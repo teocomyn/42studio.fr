@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/studio", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/services", priority: 0.85, changeFrequency: "monthly" as const },
+    { path: "/agence-shopify-branding-web", priority: 0.92, changeFrequency: "monthly" as const },
     { path: "/work", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/mentions-legales", priority: 0.2, changeFrequency: "yearly" as const },
