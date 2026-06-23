@@ -19,13 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: page.slug === "branding-arras" ? 0.78 : 0.85,
       changeFrequency: "monthly" as const
     })),
-    ...projects
-      .filter((project) => project.featured)
-      .map((project) => ({
-        path: `/work/${project.slug}`,
-        priority: 0.78,
-        changeFrequency: "monthly" as const
-      }))
+    ...projects.map((project) => ({
+      path: `/work/${project.slug}`,
+      priority: project.featured ? 0.78 : 0.72,
+      changeFrequency: "monthly" as const
+    }))
   ];
 
   return paths.map(({ path, priority, changeFrequency }) => ({
