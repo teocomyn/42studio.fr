@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { BookingLink } from "@/components/BookingLink";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { SiteChrome } from "@/components/SiteChrome";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
@@ -37,16 +37,10 @@ export default function ContactPage() {
             <span>Arras, France · à distance partout</span>
             <span>Français / English</span>
           </div>
-          {siteConfig.bookingUrl ? (
-            <a
-              href={siteConfig.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex h-14 items-center gap-4 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
-            >
-              Réserver un appel découverte <span aria-hidden>↗</span>
-            </a>
-          ) : null}
+          <BookingLink
+            location="contact_page"
+            className="mt-8 inline-flex h-14 items-center gap-4 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+          />
         </div>
         <div className="border border-white/10 bg-white/[0.02] p-6 md:p-8">
           <ContactForm />

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { track } from "@vercel/analytics";
+import { trackGenerateLead } from "@/lib/gtag-analytics";
 
 type ContactSuccessProps = {
   message?: string;
@@ -10,6 +11,7 @@ type ContactSuccessProps = {
 export function ContactSuccess({ message }: ContactSuccessProps) {
   useEffect(() => {
     track("contact_form_submit");
+    trackGenerateLead("contact_form", "contact_page");
   }, []);
 
   return (
