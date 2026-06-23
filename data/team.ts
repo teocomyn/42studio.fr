@@ -3,6 +3,8 @@ export type TeamMember = {
   role: string;
   bio: string;
   focus: string[];
+  image?: string;
+  badges?: string[];
 };
 
 export const team: TeamMember[] = [
@@ -10,6 +12,7 @@ export const team: TeamMember[] = [
     name: "Teo Comyn",
     role: "Fondateur · Direction créative & technique",
     bio: "Designer et développeur front-end. 60+ marques accompagnées depuis 2018 sur Shopify, branding et produits digitaux. Basé à Arras, disponible partout en France et en Europe.",
-    focus: ["Brand systems", "Shopify", "Front-end", "CRO & SEO technique"]
+    focus: ["Brand systems", "Shopify", "Front-end", "CRO & SEO technique"],
+    badges: ["Shopify Partner", "Next.js", "Framer"]
   }
 ];

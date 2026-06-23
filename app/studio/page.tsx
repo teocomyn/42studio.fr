@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
@@ -69,12 +70,30 @@ export default function StudioPage() {
                 <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
                   {member.role}
                 </p>
-                <div
-                  aria-hidden
-                  className="mt-10 hidden h-28 w-28 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-4xl font-black tracking-[-0.06em] text-white/20 md:flex"
-                >
-                  42
-                </div>
+                {member.image ? (
+                  <div className="relative mt-10 hidden h-28 w-28 overflow-hidden rounded-full border border-white/15 md:block">
+                    <Image src={member.image} alt={member.name} fill sizes="112px" className="object-cover" />
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden
+                    className="mt-10 hidden h-28 w-28 items-center justify-center rounded-full border border-white/15 bg-white/[0.03] text-4xl font-black tracking-[-0.06em] text-white/20 md:flex"
+                  >
+                    42
+                  </div>
+                )}
+                {member.badges?.length ? (
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {member.badges.map((badge) => (
+                      <li
+                        key={badge}
+                        className="border border-white/10 bg-white/[0.04] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/55"
+                      >
+                        {badge}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
               <div>
                 <p className="max-w-2xl text-lg leading-8 text-white/72">{member.bio}</p>

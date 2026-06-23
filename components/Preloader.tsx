@@ -14,18 +14,13 @@ export function Preloader() {
     if (typeof window === "undefined") return;
 
     const skip = prefersReducedMotion() || sessionStorage.getItem(VISITED_KEY) === "1";
-    if (skip) {
-      sessionStorage.setItem(VISITED_KEY, "1");
-      return;
-    }
-
-    setDone(false);
     sessionStorage.setItem(VISITED_KEY, "1");
+    if (skip) return;
 
-    const startedAt = performance.now();
     const duration = 480;
     let frame = 0;
     let timeout = 0;
+    let startedAt = 0;
 
     const tick = () => {
       const progress = Math.min(1, (performance.now() - startedAt) / duration);
@@ -38,7 +33,11 @@ export function Preloader() {
       }
     };
 
-    frame = requestAnimationFrame(tick);
+    frame = requestAnimationFrame(() => {
+      setDone(false);
+      startedAt = performance.now();
+      frame = requestAnimationFrame(tick);
+    });
 
     return () => {
       cancelAnimationFrame(frame);

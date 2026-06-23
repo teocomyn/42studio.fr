@@ -6,12 +6,16 @@ type ProjectPatch = {
   result?: string;
   href?: string;
   featured?: boolean;
+  highlights?: string[];
+  disciplines?: Array<"brand" | "shopify" | "web">;
 };
 
 export const projectPatches: Record<string, ProjectPatch> = {
   "nussa-cosmetics": {
     year: "2024",
     featured: true,
+    disciplines: ["brand", "shopify"],
+    highlights: ["Lancement D2C", "Identité + Shopify", "Parcours mobile-first"],
     summary:
       "Création Shopify pour une marque de cosmétiques premium : parcours produit, identité digitale et conversion dès le lancement.",
     challenge:
@@ -24,6 +28,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   nutripure: {
     year: "2023",
     featured: true,
+    disciplines: ["shopify"],
+    highlights: ["Shopify Markets FR + COM", "CRO catalogue dense", "SEO technique"],
     summary:
       "Refonte et optimisation Shopify pour une marque de compléments : UX, CRO et déploiement multi-marchés (.fr / .com).",
     challenge:
@@ -36,6 +42,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   "second-step": {
     year: "2024",
     featured: true,
+    disciplines: ["brand", "shopify"],
+    highlights: ["Merchandising drops", "Sections custom", "Image mode premium"],
     summary:
       "Site Shopify mode : merchandising, drops et image de marque pensés pour une audience exigeante.",
     challenge: "Traduire une identité forte en expérience e-commerce sans sacrifier la vitesse ni la clarté.",
@@ -45,6 +53,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   apoticari: {
     year: "2024",
     featured: true,
+    disciplines: ["brand", "shopify"],
+    highlights: ["UX sensorielle", "Storytelling produit", "Conversion premium"],
     summary:
       "E-commerce beauté premium : UX sensorielle, storytelling produit et conversion sur Shopify.",
     challenge: "Créer une expérience haut de gamme sans alourdir le parcours d'achat.",
@@ -74,6 +84,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   "studio-boucle-paris": {
     year: "2023",
     featured: true,
+    disciplines: ["brand", "shopify"],
+    highlights: ["Refonte UX complète", "Sections Liquid custom", "Base SEO + CRO"],
     summary:
       "Refonte UX Shopify, sections sur-mesure et base CRO/SEO pour une marque mode parisienne.",
     challenge:
@@ -191,6 +203,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   "sublife-store": {
     year: "2024",
     featured: true,
+    disciplines: ["brand", "shopify"],
+    highlights: ["Boutique merch haute visibilité", "Drop-ready", "Mobile-first"],
     summary:
       "Création Shopify pour Sublife Store, la marque merch de Booba — culture, drops et expérience fan.",
     challenge: "Lancer une boutique merch à fort volume d'attention avec une exigence visuelle maximale.",
@@ -204,6 +218,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   profitys: {
     year: "2024",
     featured: true,
+    disciplines: ["brand", "web"],
+    highlights: ["Migration Wix → Framer", "Positionnement B2B", "Lead generation"],
     summary:
       "Site vitrine B2B : positionnement, génération de leads et clarté de l'offre.",
     challenge: "Rendre une offre complexe lisible pour des décideurs pressés.",
@@ -225,6 +241,8 @@ export const projectPatches: Record<string, ProjectPatch> = {
   kyrent: {
     year: "2025",
     featured: true,
+    disciplines: ["web"],
+    highlights: ["Site produit SaaS", "Parcours vers démo", "UX B2B claire"],
     summary:
       "Site vitrine SaaS immobilier : positionnement produit, UX claire et conversion essai.",
     challenge: "Expliquer un produit technique à des professionnels immobiliers en quelques secondes.",
@@ -244,8 +262,7 @@ export const projectPatches: Record<string, ProjectPatch> = {
 export function applyProjectPatch<T extends { slug: string }>(project: T): T {
   const patch = projectPatches[project.slug];
   if (!patch) return project;
-  const { featured: _featured, ...rest } = patch;
-  return { ...project, ...rest };
+  return { ...project, ...patch };
 }
 
 export const featuredSlugs = Object.entries(projectPatches)

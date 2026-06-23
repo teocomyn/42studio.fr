@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const siteUrl = "https://42studio.fr";
@@ -11,6 +12,7 @@ export type PageSeo = {
   keywords?: string[];
   type?: "website" | "article";
   ogImage?: string;
+  noIndex?: boolean;
 };
 
 export function absoluteUrl(path = "/") {
@@ -24,7 +26,8 @@ export function createMetadata({
   path = "/",
   keywords = [],
   type = "website",
-  ogImage = defaultOgImage
+  ogImage = defaultOgImage,
+  noIndex = false
 }: PageSeo): Metadata {
   const url = absoluteUrl(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
@@ -33,6 +36,7 @@ export function createMetadata({
     title,
     description,
     keywords,
+    ...(noIndex ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: url,
       languages: {
@@ -221,6 +225,45 @@ export function creativeWorkJsonLd({
       "@id": `${siteUrl}/#organization`
     },
     publisher: {
+      "@id": `${siteUrl}/#organization`
+    }
+  };
+}
+
+export function localBusinessJsonLd() {
+  const { legal, geo, email, socials } = siteConfig;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${siteUrl}/branding-arras#localbusiness`,
+    name: siteName,
+    description:
+      "Studio créatif à Arras : branding, identité de marque, sites web et e-commerce Shopify pour marques ambitieuses.",
+    url: absoluteUrl("/branding-arras"),
+    email,
+    image: absoluteUrl(defaultOgImage),
+    priceRange: "€€€",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: legal.address,
+      addressLocality: "Arras",
+      postalCode: legal.postalCode.split(" ")[0] ?? "62000",
+      addressRegion: "Hauts-de-France",
+      addressCountry: "FR"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: geo.latitude,
+      longitude: geo.longitude
+    },
+    areaServed: [
+      { "@type": "City", name: "Arras" },
+      { "@type": "AdministrativeArea", name: "Hauts-de-France" },
+      { "@type": "Country", name: "France" }
+    ],
+    sameAs: [socials.instagram, socials.linkedin],
+    parentOrganization: {
       "@id": `${siteUrl}/#organization`
     }
   };

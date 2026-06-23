@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <SiteChrome mainClassName="relative z-10 flex min-h-screen flex-col justify-center px-5 pt-36 md:px-10">
       <span className="mono-label">Erreur 404</span>
-      <h1 className="mt-6 text-[clamp(4rem,16vw,16rem)] font-black leading-[0.8] tracking-[-0.08em]">
+      <h1 className="mt-6 text-[clamp(2.4rem,7vw,4.35rem)] font-black leading-[0.92] tracking-[-0.05em]">
         Hors champ.
       </h1>
       <p className="mt-8 max-w-md text-lg leading-8 text-white/70">

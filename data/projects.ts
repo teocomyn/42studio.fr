@@ -20,6 +20,9 @@ export type Project = {
   approach?: string;
   result?: string;
   featured?: boolean;
+  highlights?: string[];
+  disciplines?: Array<"brand" | "shopify" | "web">;
+  hidden?: boolean;
 };
 
 const shopifySummary = "Creation, optimisation et direction front-end Shopify pour une marque e-commerce.";
@@ -359,7 +362,8 @@ const rawProjects: Project[] = [
     metrics: ["Shopify", "E-commerce", "Optimisation"],
     services: ["Shopify", "E-commerce", "UX"],
     href: "https://www.mindytoy.com/",
-    span: 5
+    span: 5,
+    hidden: true
   },
   {
     slug: "saphir-solaire",
@@ -371,7 +375,8 @@ const rawProjects: Project[] = [
     metrics: ["Shopify", "E-commerce", "Optimisation"],
     services: ["Shopify", "E-commerce", "UX"],
     href: "https://saphirsolaire.eu/",
-    span: 7
+    span: 7,
+    hidden: true
   },
   {
     slug: "neije",
@@ -655,7 +660,8 @@ const rawProjects: Project[] = [
   }
 ];
 
-export const projects: Project[] = rawProjects.map((project) => ({
-  ...applyProjectPatch(project),
-  featured: projectPatches[project.slug]?.featured ?? false
-}));
+export const projects: Project[] = rawProjects
+  .map((project) => applyProjectPatch(project))
+  .filter((project) => !project.hidden);
+
+export const featuredProjects = projects.filter((project) => project.featured);

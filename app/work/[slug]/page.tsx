@@ -6,8 +6,10 @@ import { ContactCta } from "@/components/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { SiteChrome } from "@/components/SiteChrome";
+import { projectTestimonialMap } from "@/data/project-testimonials";
 import { projects } from "@/data/projects";
-import { breadcrumbJsonLd, createMetadata, creativeWorkJsonLd, defaultOgImage } from "@/lib/seo";
+import { testimonials } from "@/data/testimonials";
+import { breadcrumbJsonLd, createMetadata, creativeWorkJsonLd } from "@/lib/seo";
 
 type WorkPageProps = {
   params: Promise<{ slug: string }>;
@@ -28,14 +30,24 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
     path: `/work/${project.slug}`,
     keywords: [...project.services, project.category, "case study design", "42studio"],
     type: "article",
-    ogImage: project.image ?? defaultOgImage
+    ogImage: project.image ?? `/work/${project.slug}/opengraph-image`,
+    noIndex: !project.featured
   });
+}
+
+function getProjectTestimonial(projectSlug: string) {
+  const author = projectTestimonialMap[projectSlug];
+  if (!author) return null;
+  return testimonials.find((item) => item.author === author) ?? null;
 }
 
 export default async function WorkPage({ params }: WorkPageProps) {
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
+
+  const testimonial = getProjectTestimonial(project.slug);
+  const displayMetrics = project.highlights?.length ? project.highlights : project.metrics;
 
   return (
     <SiteChrome>
@@ -56,17 +68,23 @@ export default async function WorkPage({ params }: WorkPageProps) {
           about: project.category
         })}
       />
-      <section className="section-pad flex min-h-[92svh] flex-col justify-end pt-36">
+      <section className="section-pad flex min-h-[88svh] flex-col justify-end border-b border-white/10 pt-36">
         <div className="mb-8 flex flex-wrap items-center gap-5 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
           <span>({project.index})</span>
           <span>{project.category}</span>
           <span>{project.year}</span>
-          <span className="border border-white/20 px-2 py-1 text-white/70">Réalisation client</span>
+          {project.featured ? (
+            <span className="border border-white/20 px-2 py-1 text-white/70">Case study</span>
+          ) : (
+            <span className="border border-white/20 px-2 py-1 text-white/70">Réalisation client</span>
+          )}
         </div>
-        <h1 className="text-[clamp(2.8rem,8vw,6.5rem)] font-black leading-[0.88] tracking-[-0.06em]">
+        <h1 className="max-w-4xl text-[clamp(2.4rem,7vw,4.35rem)] font-black leading-[0.92] tracking-[-0.05em]">
           {project.title}
         </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)]">{project.summary}</p>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg md:leading-8">
+          {project.summary}
+        </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <a
             href={project.href}
@@ -90,7 +108,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
         </div>
       </section>
 
-      <section className="section-pad border-y border-white/10">
+      <section className="section-pad border-b border-white/10">
         <Reveal className="grid gap-10 md:grid-cols-[1fr_28rem]">
           <div className="min-h-[32rem] overflow-hidden border border-white/10 bg-[var(--bg-elevated)]">
             {project.image ? (
@@ -113,17 +131,20 @@ export default async function WorkPage({ params }: WorkPageProps) {
             )}
           </div>
           <div>
-            <span className="mono-label">Périmètre</span>
+            <span className="mono-label">{project.highlights?.length ? "Résultats clés" : "Périmètre"}</span>
             <div className="mt-8 space-y-4">
-              {project.metrics.map((metric) => (
-                <div key={metric} className="border-b border-white/10 pb-4 text-3xl font-light tracking-[-0.04em]">
+              {displayMetrics.map((metric) => (
+                <div key={metric} className="border-b border-white/10 pb-4 text-2xl font-light tracking-[-0.04em] md:text-3xl">
                   {metric}
                 </div>
               ))}
             </div>
             <div className="mt-10 flex flex-wrap gap-2">
               {project.services.map((service) => (
-                <span key={service} className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70">
+                <span
+                  key={service}
+                  className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70"
+                >
                   {service}
                 </span>
               ))}
@@ -157,9 +178,22 @@ export default async function WorkPage({ params }: WorkPageProps) {
         </section>
       )}
 
+      {testimonial ? (
+        <section className="section-pad border-b border-white/10">
+          <Reveal>
+            <blockquote className="border border-white/10 bg-white/[0.03] p-8 md:p-10">
+              <p className="text-xl leading-8 text-white/80 md:text-2xl md:leading-9">&ldquo;{testimonial.quote}&rdquo;</p>
+              <footer className="mt-8 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
+                {testimonial.author} · {testimonial.role} · {testimonial.company}
+              </footer>
+            </blockquote>
+          </Reveal>
+        </section>
+      ) : null}
+
       <section className="section-pad">
         <Reveal className="grid gap-8 md:grid-cols-[1fr_26rem] md:items-end">
-          <h2 className="text-[clamp(2.5rem,6vw,6rem)] font-light leading-[0.95] tracking-[-0.055em]">
+          <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-light leading-[0.95] tracking-[-0.055em]">
             Un projet similaire en tête&nbsp;? Construisons-le ensemble.
           </h2>
           <div className="flex flex-col gap-4">

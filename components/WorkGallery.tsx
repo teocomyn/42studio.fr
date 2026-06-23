@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { projects, type ProjectKind } from "@/data/projects";
+import { featuredProjects, projects, type ProjectKind } from "@/data/projects";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";
 
@@ -12,16 +12,25 @@ const stats = [
   ["+60", "marques accompagnees"],
   [String(projects.length), "realisations selectionnees"],
   [String(projects.filter((project) => project.category === "E-commerce Shopify").length), "projets Shopify"],
-  [String(projects.filter((project) => project.category === "Site vitrine").length), "sites vitrines"]
+  [String(featuredProjects.length), "case studies detaillees"]
 ] as const;
 
-type Filter = "all" | ProjectKind;
+type Filter = "all" | ProjectKind | "featured" | "brand";
 
 const filters: Array<{ id: Filter; label: string }> = [
   { id: "all", label: "Tous" },
+  { id: "featured", label: "Case studies" },
   { id: "E-commerce Shopify", label: "Shopify" },
-  { id: "Site vitrine", label: "Sites vitrines" }
+  { id: "Site vitrine", label: "Sites vitrines" },
+  { id: "brand", label: "Identité" }
 ];
+
+function matchesFilter(project: (typeof projects)[number], filter: Filter) {
+  if (filter === "all") return true;
+  if (filter === "featured") return Boolean(project.featured);
+  if (filter === "brand") return project.disciplines?.includes("brand") ?? false;
+  return project.category === filter;
+}
 
 type WorkGalleryProps = {
   headingAs?: "h1" | "h2";
@@ -34,7 +43,7 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
   const [filter, setFilter] = useState<Filter>("all");
 
   const filteredProjects = useMemo(() => {
-    const base = filter === "all" ? projects : projects.filter((project) => project.category === filter);
+    const base = projects.filter((project) => matchesFilter(project, filter));
     return typeof limit === "number" ? base.slice(0, limit) : base;
   }, [filter, limit]);
 

@@ -42,16 +42,19 @@ export function Hero() {
       {reduce ? (
         <div className="liquid-fallback" aria-hidden />
       ) : (
-        <video
-          aria-hidden
-          autoPlay
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-70"
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          src={heroVideoSrc}
-        />
+        <>
+          <div className="liquid-fallback absolute inset-0 z-0 md:hidden" aria-hidden />
+          <video
+            aria-hidden
+            autoPlay
+            className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover opacity-70 md:block"
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            src={heroVideoSrc}
+          />
+        </>
       )}
 
       <div

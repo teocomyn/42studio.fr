@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitBrief, type ContactState } from "@/app/contact/actions";
+import { ContactSuccess } from "@/components/ContactSuccess";
 import { siteConfig } from "@/lib/site";
 
 const initialState: ContactState = { status: "idle" };
@@ -31,15 +32,7 @@ export function ContactForm() {
   const errors = state.fieldErrors ?? {};
 
   if (state.status === "success") {
-    return (
-      <div
-        role="status"
-        aria-live="polite"
-        className="border border-white/15 bg-white/[0.03] p-8 text-lg leading-8 text-white/80"
-      >
-        {state.message ?? "Reçu — on revient vers toi sous 24 h."}
-      </div>
-    );
+    return <ContactSuccess message={state.message} />;
   }
 
   return (
