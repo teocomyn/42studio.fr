@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -69,6 +70,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
+        <GoogleAnalytics />
         <DeferredAnalytics />
       </body>
     </html>
