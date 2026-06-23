@@ -27,11 +27,11 @@ const blocks: Array<{ title: string; text: string }> = [
   },
   {
     title: "Sous-traitants",
-    text: "Les emails de contact transitent via Resend (envoi transactionnel). Le site est hébergé par Vercel. La mesure d'audience est assurée par Vercel Analytics, sans cookie publicitaire de suivi inter-sites."
+    text: "Les emails de contact transitent via Resend (envoi transactionnel). Le site est hébergé par Vercel. La mesure d'audience est assurée par Google Analytics 4 et Vercel Analytics, de manière agrégée."
   },
   {
     title: "Mesure d'audience",
-    text: "Vercel Analytics permet de comprendre l'usage du site de manière agrégée et respectueuse de la vie privée."
+    text: "Google Analytics 4 (G-ZTMCPNWGL5) et Vercel Analytics permettent de comprendre l'usage du site : pages visitées, provenance du trafic et performance. Ces outils ne servent pas à revendre vos données."
   },
   {
     title: "Vos droits",
