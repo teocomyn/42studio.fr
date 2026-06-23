@@ -23,7 +23,7 @@ export const projectPatches: Record<string, ProjectPatch> = {
     approach:
       "Architecture Shopify sur-mesure, direction front-end, fiches produit éditorialisées et parcours d'achat simplifié.",
     result:
-      "Une boutique cohérente, rapide et prête à scaler — identité, UX et technique dans le même flux de production."
+      "Une boutique cohérente, rapide et prête à scaler : identité, UX et technique dans le même flux de production."
   },
   nutripure: {
     year: "2023",
@@ -48,7 +48,7 @@ export const projectPatches: Record<string, ProjectPatch> = {
       "Site Shopify mode : merchandising, drops et image de marque pensés pour une audience exigeante.",
     challenge: "Traduire une identité forte en expérience e-commerce sans sacrifier la vitesse ni la clarté.",
     approach: "Sections custom, grilles produit dynamiques et direction artistique cohérente sur tout le parcours.",
-    result: "Une boutique qui porte la marque autant que le produit — prête pour les lancements réguliers."
+    result: "Une boutique qui porte la marque autant que le produit, prête pour les lancements réguliers."
   },
   apoticari: {
     year: "2024",
@@ -206,7 +206,7 @@ export const projectPatches: Record<string, ProjectPatch> = {
     disciplines: ["brand", "shopify"],
     highlights: ["Boutique merch haute visibilité", "Drop-ready", "Mobile-first"],
     summary:
-      "Création Shopify pour Sublife Store, la marque merch de Booba — culture, drops et expérience fan.",
+      "Création Shopify pour Sublife Store, la marque merch de Booba : culture, drops et expérience fan.",
     challenge: "Lancer une boutique merch à fort volume d'attention avec une exigence visuelle maximale.",
     approach: "Front Shopify performant, merchandising drop-ready et parcours mobile optimisé.",
     result: "Une boutique prête pour les pics de trafic et les lancements produits."

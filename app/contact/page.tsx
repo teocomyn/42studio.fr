@@ -34,7 +34,7 @@ export default function ContactPage() {
           </p>
           <div className="mt-10 grid gap-4 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
             <span>Réponse sous 24&nbsp;h, sans engagement</span>
-            <span>Arras, France — à distance partout</span>
+            <span>Arras, France · à distance partout</span>
             <span>Français / English</span>
           </div>
           {siteConfig.bookingUrl ? (

@@ -120,7 +120,7 @@ export function Hero() {
             transition={{ duration: 0.75, delay: 0.28, ease: easeOut }}
           >
             <p className="max-w-md text-[15px] leading-7 text-white/68 md:text-base">
-              Stratégie, identité, site et produit — un seul studio pour construire des marques
+              Stratégie, identité, site et produit, un seul studio pour construire des marques
               cohérentes, du concept au déploiement.
             </p>
 

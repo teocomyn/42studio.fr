@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { projects } from "@/data/projects";
 
-export const alt = "42studio — Case study";
+export const alt = "42studio · Case study";
 export const size = {
   width: 1200,
   height: 630

@@ -78,7 +78,7 @@ export function ContactCta() {
         <a className="transition hover:text-white" href={`mailto:${siteConfig.email}`}>
           {siteConfig.email}
         </a>
-        <span>© {currentYear()} 42studio — Arras, FR</span>
+        <span>© {currentYear()} 42studio, Arras, FR</span>
         <div className="flex flex-wrap gap-x-6 gap-y-3">
           {internalLinks.map(([label, href]) => (
             <Link key={href} href={href} className="transition hover:text-white">

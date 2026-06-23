@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   }),
   metadataBase: new URL("https://42studio.fr"),
   title: {
-    default: "42studio — Studio créatif Brand, Web & Produit à Arras",
+    default: "42studio · Studio créatif Brand, Web & Produit à Arras",
     template: "%s - 42studio"
   },
   applicationName: "42studio",

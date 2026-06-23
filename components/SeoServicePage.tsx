@@ -73,7 +73,7 @@ export function SeoServicePage({ page }: SeoServicePageProps) {
       <section className="section-pad border-b border-white/10">
         <Reveal className="flex flex-col items-start justify-between gap-6 border border-white/10 bg-white/[0.03] p-7 md:flex-row md:items-center md:p-10">
           <p className="max-w-xl text-xl font-light tracking-[-0.03em] md:text-2xl">
-            Un projet de ce type en tête&nbsp;? Parlons-en — réponse sous 24&nbsp;h, sans engagement.
+            Un projet de ce type en tête&nbsp;? Parlons-en, réponse sous 24&nbsp;h, sans engagement.
           </p>
           <Link
             href="/contact"

@@ -44,7 +44,7 @@ export function StudioHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.06, ease: easeOut }}
             >
-              <span className="mono-label">Studio / Arras — Worldwide</span>
+              <span className="mono-label">Studio / Arras · Worldwide</span>
               <span className="hidden h-px w-10 bg-white/15 md:block" aria-hidden />
               <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
                 Brand · Web · Produit · Shopify
@@ -81,7 +81,7 @@ export function StudioHero() {
               transition={{ duration: 0.7, delay: 0.28, ease: easeOut }}
             >
               42studio rassemble direction artistique, stratégie digitale et exécution front-end pour
-              livrer des marques cohérentes — du concept au déploiement.
+              livrer des marques cohérentes, du concept au déploiement.
             </motion.p>
 
             <motion.div

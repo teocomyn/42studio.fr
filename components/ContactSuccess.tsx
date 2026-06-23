@@ -18,7 +18,7 @@ export function ContactSuccess({ message }: ContactSuccessProps) {
       aria-live="polite"
       className="border border-white/15 bg-white/[0.03] p-8 text-lg leading-8 text-white/80"
     >
-      {message ?? "Reçu — on revient vers toi sous 24 h."}
+      {message ?? "Reçu, on revient vers toi sous 24 h."}
     </div>
   );
 }

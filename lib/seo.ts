@@ -74,7 +74,7 @@ export const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
-  legalName: "42studio — Teo Comyn",
+  legalName: "42studio · Teo Comyn",
   url: siteUrl,
   logo: absoluteUrl("/icon"),
   image: absoluteUrl(defaultOgImage),

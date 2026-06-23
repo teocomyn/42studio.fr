@@ -70,12 +70,12 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
         from,
         to: [to],
         reply_to: email,
-        subject: `Nouveau brief — ${name}${projectType ? ` (${projectType})` : ""}`,
+        subject: `Nouveau brief · ${name}${projectType ? ` (${projectType})` : ""}`,
         text: [
           `Nom : ${name}`,
           `Email : ${email}`,
-          `Type de projet : ${projectType || "—"}`,
-          `Budget : ${budget || "—"}`,
+          `Type de projet : ${projectType || "Non renseigné"}`,
+          `Budget : ${budget || "Non renseigné"}`,
           `Consentement RGPD : oui`,
           "",
           message
@@ -89,7 +89,7 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
 
     recentSubmissions.set(rateKey, Date.now());
 
-    return { status: "success", message: "Reçu — on revient vers toi sous 24 h." };
+    return { status: "success", message: "Reçu, on revient vers toi sous 24 h." };
   } catch {
     return { status: "error", message: `Envoi impossible pour le moment. Écris-nous à ${siteConfig.email}.` };
   }

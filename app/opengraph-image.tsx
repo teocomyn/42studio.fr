@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
       >
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24 }}>
           <div style={{ fontWeight: 800 }}>42studio</div>
-          <div style={{ opacity: 0.58, letterSpacing: 4 }}>ARRAS — WORLDWIDE</div>
+          <div style={{ opacity: 0.58, letterSpacing: 4 }}>ARRAS · WORLDWIDE</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div

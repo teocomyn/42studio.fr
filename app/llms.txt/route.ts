@@ -11,7 +11,7 @@ export function GET() {
   const lines = [
     "# 42studio",
     "",
-    "> Studio créatif basé à Arras (France). Brand, Web et Produit — du symbole au code, sans rupture entre direction artistique et exécution technique. Un seul studio pour la stratégie, l'identité, le site et le produit.",
+    "> Studio créatif basé à Arras (France). Brand, Web et Produit, du symbole au code, sans rupture entre direction artistique et exécution technique. Un seul studio pour la stratégie, l'identité, le site et le produit.",
     "",
     "## Services",
     ...services.map((page) => `- [${page.serviceName}](${siteUrl}/${page.slug}): ${page.description}`),
