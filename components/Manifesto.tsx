@@ -4,25 +4,23 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { easeOut } from "@/lib/motion";
 
-const lines = [
-  { text: "Le logo n'est pas une image.", accent: null },
-  { text: "C'est le premier composant", accent: "composant" },
-  { text: "d'un système vivant.", accent: "système vivant" }
+const principles = [
+  {
+    index: "01",
+    title: "Identité",
+    text: "Logo, typographie, couleur, ton : chaque détail a une fonction."
+  },
+  {
+    index: "02",
+    title: "Système",
+    text: "On transforme l'intuition créative en règles claires et réutilisables."
+  },
+  {
+    index: "03",
+    title: "Déploiement",
+    text: "La marque vit dans le site, les composants, les contenus et les parcours."
+  }
 ] as const;
-
-function renderAccent(text: string, accent: string | null) {
-  if (!accent || !text.includes(accent)) return text;
-
-  const [before, after] = text.split(accent);
-
-  return (
-    <>
-      {before}
-      <span className="chrome-text font-black">{accent}</span>
-      {after}
-    </>
-  );
-}
 
 export function Manifesto() {
   const reduce = useReducedMotion();
@@ -30,25 +28,31 @@ export function Manifesto() {
   return (
     <section
       aria-labelledby="manifesto-title"
-      className="section-pad relative z-10 overflow-hidden border-y border-white/10 bg-[var(--bg)]"
+      className="relative z-10 overflow-hidden border-y border-white/10 bg-[var(--bg)] px-5 py-20 md:px-10 md:py-28"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-80"
         style={{
           background:
-            "radial-gradient(circle at 18% 50%, rgba(255,255,255,.07), transparent 28rem), radial-gradient(circle at 82% 42%, rgba(255,255,255,.05), transparent 24rem)"
+            "radial-gradient(circle at 18% 22%, rgba(255,255,255,.12), transparent 22rem), radial-gradient(circle at 78% 62%, rgba(255,255,255,.08), transparent 26rem)"
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent md:block"
+        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.08) 1px, transparent 1px)",
+          backgroundSize: "12.5vw 12.5vw",
+          maskImage: "radial-gradient(circle at 50% 50%, #000, transparent 72%)"
+        }}
       />
 
-      <div className="relative mx-auto grid max-w-[88rem] gap-12 md:grid-cols-[minmax(12rem,18rem)_1fr] md:items-end md:gap-16 lg:gap-24">
+      <div className="relative mx-auto max-w-[88rem]">
         <motion.div
-          className="flex flex-col gap-6"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
+          className="mb-12 flex flex-col gap-5 md:mb-16 md:grid md:grid-cols-[minmax(12rem,20rem)_1fr] md:items-end"
+          initial={reduce ? false : { opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10% 0px" }}
           transition={{ duration: 0.8, ease: easeOut }}
@@ -65,55 +69,80 @@ export function Manifesto() {
               style={{ transformOrigin: "left center" }}
             />
           </div>
-          <p className="max-w-xs text-sm leading-7 text-[var(--muted)]">
-            Une marque n&apos;est pas une collection d&apos;assets. C&apos;est une grammaire visuelle
-            — cohérente, extensible, pensée pour durer.
-          </p>
-          <Link
-            href="/studio"
-            className="group inline-flex w-fit items-center gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/55 transition hover:text-white"
-          >
-            <span className="h-px w-8 bg-white/25 transition group-hover:w-12 group-hover:bg-white" />
-            Notre méthode
-          </Link>
-        </motion.div>
-
-        <div className="relative">
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -left-3 top-2 hidden h-16 w-16 border-l border-t border-white/15 md:block lg:-left-6 lg:h-24 lg:w-24"
-            initial={reduce ? false : { opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.2, ease: easeOut }}
-          />
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-2 -right-1 hidden h-16 w-16 border-b border-r border-white/15 md:block lg:-right-4 lg:h-24 lg:w-24"
-            initial={reduce ? false : { opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.35, ease: easeOut }}
-          />
-
           <h2
             id="manifesto-title"
-            className="text-[clamp(2.35rem,5.8vw,5.75rem)] font-light leading-[1.02] tracking-[-0.04em] text-balance md:leading-[0.98]"
+            className="max-w-5xl text-[clamp(2.4rem,6vw,6.25rem)] font-light leading-[0.95] tracking-[-0.055em] text-balance"
           >
-            {lines.map((line, index) => (
-              <span className="mask-line block" key={line.text}>
-                <motion.span
-                  className="inline-block"
-                  initial={reduce ? false : { y: "110%" }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, margin: "-8% 0px" }}
-                  transition={{ duration: 0.82, delay: 0.08 + index * 0.11, ease: easeOut }}
-                >
-                  {renderAccent(line.text, line.accent)}
-                </motion.span>
-              </span>
-            ))}
+            Une marque n&apos;est pas un logo. C&apos;est un{" "}
+            <span className="chrome-text font-black">système vivant</span>.
           </h2>
+        </motion.div>
+
+        <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+          <motion.div
+            className="relative min-h-[30rem] overflow-hidden border border-white/10 bg-white/[0.025] p-7 md:p-10"
+            initial={reduce ? false : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-8% 0px" }}
+            transition={{ duration: 0.8, delay: 0.08, ease: easeOut }}
+          >
+            <div
+              aria-hidden
+              className="absolute right-8 top-8 h-28 w-28 rounded-full border border-white/15 bg-white/[0.03] shadow-[0_0_80px_rgba(255,255,255,.12)] md:h-40 md:w-40"
+            />
+            <div
+              aria-hidden
+              className="absolute bottom-0 right-0 h-48 w-48 translate-x-1/3 translate-y-1/3 rounded-full bg-white/10 blur-3xl"
+            />
+            <div className="relative flex h-full min-h-[26rem] flex-col justify-between">
+              <div className="flex flex-wrap gap-2">
+                {["Brand", "Web", "Produit", "Shopify", "CRO"].map((item) => (
+                  <span
+                    key={item}
+                    className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <p className="max-w-3xl text-[clamp(1.55rem,3.1vw,3.2rem)] font-light leading-[1.08] tracking-[-0.04em] text-white/88">
+                On ne livre pas des fichiers isolés. On construit une grammaire de marque capable de
+                rester cohérente quand elle passe du pitch au site, du produit à la campagne.
+              </p>
+
+              <Link
+                href="/studio"
+                className="group inline-flex w-fit items-center gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/60 transition hover:text-white"
+              >
+                <span className="h-px w-8 bg-white/25 transition group-hover:w-12 group-hover:bg-white" />
+                Voir la méthode
+              </Link>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-5">
+            {principles.map((principle, index) => (
+              <motion.article
+                key={principle.index}
+                className="group grid gap-6 border border-white/10 bg-black/20 p-6 transition hover:border-white/25 hover:bg-white/[0.04] md:grid-cols-[4rem_1fr]"
+                initial={reduce ? false : { opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-8% 0px" }}
+                transition={{ duration: 0.75, delay: 0.12 + index * 0.08, ease: easeOut }}
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/35">
+                  {principle.index}
+                </span>
+                <div>
+                  <h3 className="text-2xl font-light tracking-[-0.035em] text-white">
+                    {principle.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-sm leading-7 text-[var(--muted)]">{principle.text}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
