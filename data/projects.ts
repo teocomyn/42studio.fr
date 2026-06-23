@@ -1,3 +1,5 @@
+import { applyProjectPatch, projectPatches } from "./project-enrichment";
+
 export type ProjectKind = "E-commerce Shopify" | "Site vitrine";
 
 export type Project = {
@@ -17,12 +19,13 @@ export type Project = {
   challenge?: string;
   approach?: string;
   result?: string;
+  featured?: boolean;
 };
 
 const shopifySummary = "Creation, optimisation et direction front-end Shopify pour une marque e-commerce.";
 const websiteSummary = "Creation et optimisation d'un site vitrine pense pour la conversion et la clarte.";
 
-export const projects: Project[] = [
+const rawProjects: Project[] = [
   {
     slug: "nussa-cosmetics",
     index: "01",
@@ -651,3 +654,8 @@ export const projects: Project[] = [
     span: 7
   }
 ];
+
+export const projects: Project[] = rawProjects.map((project) => ({
+  ...applyProjectPatch(project),
+  featured: projectPatches[project.slug]?.featured ?? false
+}));

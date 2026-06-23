@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { SiteChrome } from "@/components/SiteChrome";
 
 export default function Error({
   error,
@@ -11,14 +12,13 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // À brancher sur ton outil de suivi d'erreurs si besoin (Sentry, etc.).
     console.error(error);
   }, [error]);
 
   return (
-    <div className="relative z-10 flex min-h-screen flex-col justify-center px-5 md:px-10">
+    <SiteChrome mainClassName="relative z-10 flex min-h-[80svh] flex-col justify-center px-5 md:px-10">
       <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--muted)]">Erreur</span>
-      <h1 className="mt-6 text-[clamp(3rem,11vw,9rem)] font-black leading-[0.82] tracking-[-0.07em]">
+      <h1 className="mt-6 max-w-2xl text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[0.95] tracking-[-0.05em]">
         Un grain dans le système.
       </h1>
       <p className="mt-8 max-w-md text-lg leading-8 text-white/70">
@@ -39,6 +39,6 @@ export default function Error({
           Retour à l&apos;accueil
         </Link>
       </div>
-    </div>
+    </SiteChrome>
   );
 }

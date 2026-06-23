@@ -3,7 +3,8 @@ import { ContactCta } from "@/components/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteChrome } from "@/components/SiteChrome";
 import { WorkGallery } from "@/components/WorkGallery";
-import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
+import { projects } from "@/data/projects";
+import { breadcrumbJsonLd, createMetadata, itemListJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Projets",
@@ -22,7 +23,15 @@ export default function WorkPage() {
           { name: "Projets", path: "/work" }
         ])}
       />
-      <WorkGallery headingAs="h1" />
+      <JsonLd
+        data={itemListJsonLd(
+          projects.map((project) => ({
+            name: project.title,
+            path: `/work/${project.slug}`
+          }))
+        )}
+      />
+      <WorkGallery headingAs="h1" showFilters />
       <ContactCta />
     </SiteChrome>
   );

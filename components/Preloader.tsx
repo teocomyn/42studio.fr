@@ -4,21 +4,26 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { easeOut, prefersReducedMotion } from "@/lib/motion";
 
+const VISITED_KEY = "42studio:visited";
+
 export function Preloader() {
   const [count, setCount] = useState(0);
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(true);
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      const frame = requestAnimationFrame(() => {
-        setCount(42);
-        setDone(true);
-      });
-      return () => cancelAnimationFrame(frame);
+    if (typeof window === "undefined") return;
+
+    const skip = prefersReducedMotion() || sessionStorage.getItem(VISITED_KEY) === "1";
+    if (skip) {
+      sessionStorage.setItem(VISITED_KEY, "1");
+      return;
     }
 
+    setDone(false);
+    sessionStorage.setItem(VISITED_KEY, "1");
+
     const startedAt = performance.now();
-    const duration = 600;
+    const duration = 480;
     let frame = 0;
     let timeout = 0;
 
@@ -29,7 +34,7 @@ export function Preloader() {
       if (progress < 1) {
         frame = requestAnimationFrame(tick);
       } else {
-        timeout = window.setTimeout(() => setDone(true), 200);
+        timeout = window.setTimeout(() => setDone(true), 120);
       }
     };
 
@@ -51,37 +56,18 @@ export function Preloader() {
           className="fixed inset-0 z-[10000] flex flex-col justify-between bg-[var(--bg)] p-6 text-[var(--ink)] md:p-10"
           exit={{
             y: "-100%",
-            transition: { duration: 0.72, ease: easeOut }
+            transition: { duration: 0.55, ease: easeOut }
           }}
         >
           <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--muted)]">
-            <span>42studio loading field</span>
+            <span>42studio</span>
             <span>{String(count).padStart(2, "0")} / 42</span>
           </div>
           <div className="grid place-items-center">
-            <motion.div
-              className="relative h-44 w-44 md:h-64 md:w-64"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
-            >
-              <motion.div
-                className="absolute inset-0 rounded-[42%] border border-white/30 bg-white/5"
-                animate={{
-                  borderRadius: ["42%", "54% 46% 38% 62%", "40% 60% 55% 45%", "42%"],
-                  scale: [0.92, 1.02, 0.96, 1]
-                }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: easeOut }}
-              />
-              <div className="absolute inset-0 grid place-items-center text-center">
-                <span className="chrome-text text-6xl font-black tracking-[-0.08em] md:text-8xl">42</span>
-              </div>
-            </motion.div>
+            <span className="chrome-text text-5xl font-black tracking-[-0.08em] md:text-7xl">42</span>
           </div>
           <div className="h-px w-full overflow-hidden bg-white/10">
-            <motion.div
-              className="h-full bg-[var(--ink)]"
-              style={{ width: `${(count / 42) * 100}%` }}
-            />
+            <motion.div className="h-full bg-[var(--ink)]" style={{ width: `${(count / 42) * 100}%` }} />
           </div>
         </motion.div>
       )}

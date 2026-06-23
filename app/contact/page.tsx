@@ -25,7 +25,7 @@ export default function ContactPage() {
       <Reveal className="grid gap-12 md:grid-cols-[1fr_34rem] md:gap-16">
         <div>
           <span className="mono-label">Contact / Brief</span>
-          <h1 className="mt-8 max-w-3xl text-[clamp(3.4rem,11vw,11rem)] font-black leading-[0.82] tracking-[-0.07em]">
+          <h1 className="mt-8 max-w-3xl text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[0.95] tracking-[-0.05em]">
             Lancer le signal.
           </h1>
           <p className="mt-8 max-w-md text-lg leading-8 text-white/80">

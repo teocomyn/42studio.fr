@@ -20,13 +20,7 @@ const nextConfig = {
     root: process.cwd()
   },
   experimental: {
-    optimizePackageImports: [
-      "three",
-      "@react-three/fiber",
-      "@react-three/drei",
-      "framer-motion",
-      "gsap"
-    ]
+    optimizePackageImports: ["framer-motion", "gsap"]
   },
   images: {
     formats: ["image/avif", "image/webp"]

@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Reveal";
 import { SiteChrome } from "@/components/SiteChrome";
 import { projects } from "@/data/projects";
-import { breadcrumbJsonLd, createMetadata, creativeWorkJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, creativeWorkJsonLd, defaultOgImage } from "@/lib/seo";
 
 type WorkPageProps = {
   params: Promise<{ slug: string }>;
@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
     description: project.summary,
     path: `/work/${project.slug}`,
     keywords: [...project.services, project.category, "case study design", "42studio"],
-    type: "article"
+    type: "article",
+    ogImage: project.image ?? defaultOgImage
   });
 }
 
@@ -62,7 +63,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
           <span>{project.year}</span>
           <span className="border border-white/20 px-2 py-1 text-white/70">Réalisation client</span>
         </div>
-        <h1 className="text-[clamp(4rem,15vw,16rem)] font-black leading-[0.8] tracking-[-0.08em]">
+        <h1 className="text-[clamp(2.8rem,8vw,6.5rem)] font-black leading-[0.88] tracking-[-0.06em]">
           {project.title}
         </h1>
         <p className="mt-8 max-w-2xl text-lg leading-8 text-[var(--muted)]">{project.summary}</p>

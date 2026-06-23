@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { easeOut } from "@/lib/motion";
 
 const links = [
@@ -15,14 +15,37 @@ const links = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Verrouille le scroll + ferme au clavier (Escape) quand le menu mobile est ouvert.
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !menuRef.current) return;
+
+      const focusable = menuRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+
     document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
     document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
@@ -70,6 +93,7 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={menuRef}
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -85,6 +109,7 @@ export function Header() {
                 42<span className="font-light">studio</span>
               </span>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le menu"

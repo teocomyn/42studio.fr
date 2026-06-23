@@ -10,6 +10,7 @@ export type PageSeo = {
   path?: string;
   keywords?: string[];
   type?: "website" | "article";
+  ogImage?: string;
 };
 
 export function absoluteUrl(path = "/") {
@@ -22,9 +23,11 @@ export function createMetadata({
   description,
   path = "/",
   keywords = [],
-  type = "website"
+  type = "website",
+  ogImage = defaultOgImage
 }: PageSeo): Metadata {
   const url = absoluteUrl(path);
+  const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
 
   return {
     title,
@@ -46,7 +49,7 @@ export function createMetadata({
       type,
       images: [
         {
-          url: absoluteUrl(defaultOgImage),
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: `${siteName} - ${title}`
@@ -57,7 +60,7 @@ export function createMetadata({
       card: "summary_large_image",
       title: `${title} - ${siteName}`,
       description,
-      images: [absoluteUrl(defaultOgImage)]
+      images: [imageUrl]
     }
   };
 }
@@ -67,7 +70,7 @@ export const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
-  legalName: "42studio",
+  legalName: "42studio — Teo Comyn",
   url: siteUrl,
   logo: absoluteUrl("/icon"),
   image: absoluteUrl(defaultOgImage),
@@ -132,6 +135,19 @@ export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
       position: index + 1,
       name: item.name,
       item: absoluteUrl(item.path)
+    }))
+  };
+}
+
+export function itemListJsonLd(items: Array<{ name: string; path: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(item.path)
     }))
   };
 }

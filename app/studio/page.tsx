@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { SiteChrome } from "@/components/SiteChrome";
 import { services } from "@/data/services";
+import { team } from "@/data/team";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
@@ -37,6 +38,34 @@ export default function StudioPage() {
           </section>
 
           <section className="section-pad border-y border-white/10">
+            <SectionHead eyebrow="L'équipe" title="Un studio compact, un interlocuteur senior." />
+            <div className="grid gap-5 md:grid-cols-2">
+              {team.map((member) => (
+                <Reveal key={member.name}>
+                  <article className="border border-white/10 p-8 md:p-10">
+                    <span className="mono-label">Fondateur</span>
+                    <h2 className="mt-6 text-4xl font-light tracking-[-0.04em]">{member.name}</h2>
+                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]">
+                      {member.role}
+                    </p>
+                    <p className="mt-6 max-w-xl leading-7 text-[var(--muted)]">{member.bio}</p>
+                    <ul className="mt-8 flex flex-wrap gap-2">
+                      {member.focus.map((item) => (
+                        <li
+                          key={item}
+                          className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-pad border-b border-white/10">
             <SectionHead
               eyebrow="Capacités"
               title="Un studio volontairement compact, pensé pour aller vite et tenir un haut niveau."

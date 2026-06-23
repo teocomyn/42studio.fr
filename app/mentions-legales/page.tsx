@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 const rows: Array<[string, string]> = [
   ["Éditeur", siteConfig.legal.companyName],
   ["Forme juridique", siteConfig.legal.legalForm],
-  ["SIREN / SIRET", siteConfig.legal.siren],
+  ["SIREN", siteConfig.legal.siren],
+  ["SIRET", siteConfig.legal.siret],
+  ["TVA intracommunautaire", siteConfig.legal.vat],
   ["Adresse", `${siteConfig.legal.address}, ${siteConfig.legal.postalCode} ${siteConfig.legal.city}`],
   ["Directeur de la publication", siteConfig.legal.director],
   ["Contact", siteConfig.email],

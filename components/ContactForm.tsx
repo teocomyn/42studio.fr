@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitBrief, type ContactState } from "@/app/contact/actions";
@@ -42,8 +43,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} className="grid gap-6">
-      {/* Honeypot anti-spam : caché aux humains. */}
+    <form action={formAction} className="relative grid gap-6">
       <div className="absolute h-0 w-0 overflow-hidden" aria-hidden>
         <label>
           Société
@@ -142,6 +142,32 @@ export function ContactForm() {
         {errors.message ? (
           <p id="message-error" className="mt-2 font-mono text-[11px] text-red-300">
             {errors.message}
+          </p>
+        ) : null}
+      </div>
+
+      <div>
+        <label className="flex items-start gap-3 text-sm leading-6 text-white/65">
+          <input
+            type="checkbox"
+            name="consent"
+            required
+            aria-required="true"
+            aria-invalid={Boolean(errors.consent)}
+            aria-describedby={errors.consent ? "consent-error" : "consent-help"}
+            className="mt-1 h-4 w-4 shrink-0 accent-white"
+          />
+          <span id="consent-help">
+            J&apos;accepte que mes données soient utilisées pour répondre à ma demande, conformément à la{" "}
+            <Link href="/confidentialite" className="underline underline-offset-4 hover:text-white">
+              politique de confidentialité
+            </Link>
+            .
+          </span>
+        </label>
+        {errors.consent ? (
+          <p id="consent-error" className="mt-2 font-mono text-[11px] text-red-300">
+            {errors.consent}
           </p>
         ) : null}
       </div>

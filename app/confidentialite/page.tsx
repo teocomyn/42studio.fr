@@ -26,12 +26,16 @@ const blocks: Array<{ title: string; text: string }> = [
     text: "Les demandes sont conservées le temps nécessaire à l'échange commercial, puis supprimées si aucune suite n'est donnée."
   },
   {
+    title: "Sous-traitants",
+    text: "Les emails de contact transitent via Resend (envoi transactionnel). Le site est hébergé par Vercel. La mesure d'audience est assurée par Vercel Analytics, sans cookie publicitaire de suivi inter-sites."
+  },
+  {
     title: "Mesure d'audience",
-    text: "Le site peut utiliser une solution de mesure d'audience respectueuse de la vie privée, sans cookie publicitaire de suivi inter-sites."
+    text: "Vercel Analytics permet de comprendre l'usage du site de manière agrégée et respectueuse de la vie privée."
   },
   {
     title: "Vos droits",
-    text: "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, écrivez à " + siteConfig.email + "."
+    text: `Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, écrivez à ${siteConfig.email}.`
   }
 ];
 

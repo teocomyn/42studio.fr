@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { projects } from "@/data/projects";
+import { projects, type ProjectKind } from "@/data/projects";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";
 
@@ -14,14 +15,28 @@ const stats = [
   [String(projects.filter((project) => project.category === "Site vitrine").length), "sites vitrines"]
 ] as const;
 
+type Filter = "all" | ProjectKind;
+
+const filters: Array<{ id: Filter; label: string }> = [
+  { id: "all", label: "Tous" },
+  { id: "E-commerce Shopify", label: "Shopify" },
+  { id: "Site vitrine", label: "Sites vitrines" }
+];
+
 type WorkGalleryProps = {
   headingAs?: "h1" | "h2";
   limit?: number;
+  showFilters?: boolean;
 };
 
-export function WorkGallery({ headingAs = "h2", limit }: WorkGalleryProps) {
+export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: WorkGalleryProps) {
   const reduce = useReducedMotion();
-  const visibleProjects = typeof limit === "number" ? projects.slice(0, limit) : projects;
+  const [filter, setFilter] = useState<Filter>("all");
+
+  const filteredProjects = useMemo(() => {
+    const base = filter === "all" ? projects : projects.filter((project) => project.category === filter);
+    return typeof limit === "number" ? base.slice(0, limit) : base;
+  }, [filter, limit]);
 
   return (
     <section id="work" className="section-pad relative z-10 overflow-hidden bg-[var(--bg)]">
@@ -41,15 +56,36 @@ export function WorkGallery({ headingAs = "h2", limit }: WorkGalleryProps) {
         ))}
       </div>
 
+      {showFilters ? (
+        <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filtrer les projets">
+          {filters.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={filter === item.id}
+              onClick={() => setFilter(item.id)}
+              className={
+                filter === item.id
+                  ? "border border-white bg-white px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-black"
+                  : "border border-white/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60 transition hover:border-white/35 hover:text-white"
+              }
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
       <div className="grid gap-5 md:grid-cols-12">
-        {visibleProjects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <motion.div
             key={project.slug}
             className={(project.span ?? (index % 2 === 0 ? 7 : 5)) === 7 ? "md:col-span-7" : "md:col-span-5"}
             initial={reduce ? false : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ duration: 0.82, delay: index * 0.05, ease: easeOut }}
+            transition={{ duration: 0.82, delay: (index % 6) * 0.05, ease: easeOut }}
           >
             <Link
               href={`/work/${project.slug}`}
@@ -73,16 +109,21 @@ export function WorkGallery({ headingAs = "h2", limit }: WorkGalleryProps) {
                 <span>({project.index})</span>
                 <span>{project.category}</span>
               </div>
+              {project.featured ? (
+                <span className="absolute right-5 top-14 z-10 border border-white/20 bg-black/30 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-white/80 backdrop-blur-sm">
+                  Case study
+                </span>
+              ) : null}
               <div className="relative z-10 flex h-full min-h-[25rem] flex-col justify-end md:min-h-[31rem]">
                 <p className="mb-5 max-w-sm font-mono text-[11px] uppercase leading-5 tracking-[0.08em] text-white/60">
-                  {project.category}
+                  {project.year} · {project.category}
                 </p>
-                <h3 className="text-[clamp(3rem,7vw,7.8rem)] font-black leading-[0.82] tracking-[-0.07em]">
+                <h3 className="text-[clamp(2rem,5vw,4.5rem)] font-black leading-[0.88] tracking-[-0.05em]">
                   {project.title}
                 </h3>
                 <p className="mt-6 max-w-lg text-base leading-7 text-white/62">{project.summary}</p>
                 <div className="mt-8 flex flex-wrap gap-2">
-                  {project.services.map((service) => (
+                  {project.services.slice(0, 3).map((service) => (
                     <span
                       key={service}
                       className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70"

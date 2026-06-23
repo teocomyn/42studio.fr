@@ -49,7 +49,7 @@ export function Hero() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           src={heroVideoSrc}
         />
       )}
