@@ -31,7 +31,11 @@ const blocks: Array<{ title: string; text: string }> = [
   },
   {
     title: "Mesure d'audience",
-    text: "Google Analytics 4 (G-ZTMCPNWGL5) et Vercel Analytics permettent de comprendre l'usage du site : pages visitées, provenance du trafic et performance. Ces outils ne servent pas à revendre vos données."
+    text: "Google Analytics 4 (G-ZTMCPNWGL5) et Vercel Analytics permettent de comprendre l'usage du site : pages visitées, provenance du trafic et performance. GA4 n'est activé qu'après votre consentement via la bannière cookies."
+  },
+  {
+    title: "Cookies et consentement",
+    text: "Le site utilise le Consent Mode v2 de Google : analytics_storage, ad_storage, ad_user_data et ad_personalisation sont refusés par défaut dans l'EEE, puis mis à jour selon votre choix (Tout accepter / Refuser). Votre choix est enregistré localement dans votre navigateur. Vous pouvez le modifier à tout moment via le lien « Cookies » en pied de page."
   },
   {
     title: "Vos droits",

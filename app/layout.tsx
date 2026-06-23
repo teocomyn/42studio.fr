@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { CookieConsent } from "@/components/CookieConsent";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { getGtagConsentInitScript } from "@/lib/gtag-consent-script";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -66,11 +68,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: getGtagConsentInitScript() }} />
+      </head>
       <body className={`${display.variable} ${mono.variable}`}>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
-        {children}
         <GoogleAnalytics />
+        {children}
+        <CookieConsent />
         <DeferredAnalytics />
       </body>
     </html>

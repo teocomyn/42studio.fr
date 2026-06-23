@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { openCookiePreferences } from "@/components/CookieConsent";
 import { easeOut } from "@/lib/motion";
 import { useMagnetic } from "@/lib/useMagnetic";
 import { siteConfig } from "@/lib/site";
@@ -112,6 +113,9 @@ export function ContactCta() {
             {label}
           </Link>
         ))}
+        <button type="button" onClick={openCookiePreferences} className="transition hover:text-white/80">
+          Cookies
+        </button>
       </div>
     </section>
   );
