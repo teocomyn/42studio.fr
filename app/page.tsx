@@ -1,4 +1,3 @@
-import { Approach } from "@/components/Approach";
 import { ContactCta } from "@/components/ContactCta";
 import { Hero } from "@/components/Hero";
 import { Manifesto } from "@/components/Manifesto";
@@ -19,7 +18,6 @@ export default function Home() {
         <Marquee />
         <Manifesto />
         <Services />
-        <Approach />
         <ProcessTimeline />
         <ContactCta />
       </SiteChrome>
