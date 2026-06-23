@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -8,13 +8,17 @@ import "./globals.css";
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "swap"
+  display: "swap",
+  weight: ["300", "400", "800"],
+  adjustFontFallback: true
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap"
+  display: "swap",
+  weight: ["400", "500"],
+  adjustFontFallback: true
 });
 
 export const metadata: Metadata = {
@@ -65,7 +69,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
-        <Analytics />
+        <DeferredAnalytics />
       </body>
     </html>
   );

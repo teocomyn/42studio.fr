@@ -3,10 +3,11 @@
 import Lenis from "lenis";
 import { PropsWithChildren, useEffect } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
+import { isDesktopFinePointer } from "@/lib/media";
 
 export function LenisProvider({ children }: PropsWithChildren) {
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || !isDesktopFinePointer()) return;
 
     const lenis = new Lenis({
       duration: 1.08,

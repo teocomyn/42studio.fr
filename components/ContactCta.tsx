@@ -20,9 +20,6 @@ const legalLinks = [
   ["Confidentialité", "/confidentialite"]
 ] as const;
 
-const footerVideoSrc =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4";
-
 export function ContactCta() {
   const ref = useMagnetic<HTMLAnchorElement>();
   const reduce = useReducedMotion();
@@ -32,20 +29,10 @@ export function ContactCta() {
       id="contact"
       className="relative z-10 overflow-hidden border-t border-white/10 bg-[var(--bg)] px-5 py-24 md:px-10 md:py-32"
     >
-      {reduce ? null : (
-        <video
-          aria-hidden
-          autoPlay
-          className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover opacity-45 md:block"
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          src={footerVideoSrc}
-        />
-      )}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_74%_28%,rgba(255,255,255,.10),transparent_22rem),linear-gradient(90deg,rgba(7,7,8,.94)_0%,rgba(7,7,8,.72)_48%,rgba(7,7,8,.88)_100%)] md:bg-[radial-gradient(circle_at_74%_28%,rgba(255,255,255,.10),transparent_22rem),linear-gradient(90deg,rgba(7,7,8,.94)_0%,rgba(7,7,8,.72)_48%,rgba(7,7,8,.88)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[var(--bg)] md:hidden" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_74%_28%,rgba(255,255,255,.10),transparent_22rem),linear-gradient(90deg,rgba(7,7,8,.94)_0%,rgba(7,7,8,.72)_48%,rgba(7,7,8,.88)_100%)]"
+      />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-32 bg-gradient-to-b from-[var(--bg)] to-transparent" />
       <motion.div
         className="relative z-10 grid gap-10 md:grid-cols-[1fr_22rem] md:items-end"
@@ -91,9 +78,7 @@ export function ContactCta() {
         <a className="transition hover:text-white" href={`mailto:${siteConfig.email}`}>
           {siteConfig.email}
         </a>
-        <span>
-          © {currentYear()} 42studio — Arras, FR
-        </span>
+        <span>© {currentYear()} 42studio — Arras, FR</span>
         <div className="flex flex-wrap gap-x-6 gap-y-3">
           {internalLinks.map(([label, href]) => (
             <Link key={href} href={href} className="transition hover:text-white">

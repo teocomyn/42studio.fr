@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { easeOut } from "@/lib/motion";
 import { useMagnetic } from "@/lib/useMagnetic";
 
@@ -39,23 +40,13 @@ export function Hero() {
 
   return (
     <section className="relative z-10 flex min-h-[92svh] items-end overflow-hidden px-5 pb-10 pt-28 md:px-10 md:pb-14 md:pt-36 lg:min-h-[88svh]">
-      {reduce ? (
-        <div className="liquid-fallback" aria-hidden />
-      ) : (
-        <>
-          <div className="liquid-fallback absolute inset-0 z-0 md:hidden" aria-hidden />
-          <video
-            aria-hidden
-            autoPlay
-            className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover opacity-70 md:block"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            src={heroVideoSrc}
-          />
-        </>
-      )}
+      <div className="liquid-fallback absolute inset-0 z-0" aria-hidden />
+      {!reduce ? (
+        <BackgroundVideo
+          src={heroVideoSrc}
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-70"
+        />
+      ) : null}
 
       <div
         aria-hidden
@@ -79,7 +70,7 @@ export function Hero() {
                 <span className="h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_14px_rgba(255,255,255,.85)]" />
                 Studio créatif
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
+              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
                 Brand · Web · Produit
               </span>
             </motion.div>
@@ -136,7 +127,7 @@ export function Hero() {
             <dl className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {stats.map((stat) => (
                 <div className="border-t border-white/10 pt-4" key={stat.label}>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
                     {stat.label}
                   </dt>
                   <dd className="mt-2 text-2xl font-light tracking-[-0.03em] text-white md:text-[1.65rem]">
@@ -149,7 +140,7 @@ export function Hero() {
         </div>
 
         <motion.div
-          className="mt-12 flex items-center justify-between border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.12em] text-white/40 md:mt-16"
+          className="mt-12 flex items-center justify-between border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.12em] text-white/55 md:mt-16"
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.55 }}

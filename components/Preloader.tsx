@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { easeOut, prefersReducedMotion } from "@/lib/motion";
+import { isMobileViewport } from "@/lib/media";
 
 const VISITED_KEY = "42studio:visited";
 
@@ -13,7 +14,11 @@ export function Preloader() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const skip = prefersReducedMotion() || sessionStorage.getItem(VISITED_KEY) === "1";
+    const skip =
+      prefersReducedMotion() ||
+      isMobileViewport() ||
+      sessionStorage.getItem(VISITED_KEY) === "1";
+
     sessionStorage.setItem(VISITED_KEY, "1");
     if (skip) return;
 
@@ -63,7 +68,7 @@ export function Preloader() {
             <span>{String(count).padStart(2, "0")} / 42</span>
           </div>
           <div className="grid place-items-center">
-            <span className="chrome-text text-5xl font-black tracking-[-0.08em] md:text-7xl">42</span>
+            <span className="text-5xl font-black tracking-[-0.08em] text-white md:text-7xl">42</span>
           </div>
           <div className="h-px w-full overflow-hidden bg-white/10">
             <motion.div className="h-full bg-[var(--ink)]" style={{ width: `${(count / 42) * 100}%` }} />

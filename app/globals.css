@@ -136,22 +136,10 @@ select:focus-visible,
 }
 
 .chrome-text {
-  background: linear-gradient(110deg, #fff 0%, #6f6f75 28%, #fff 51%, #8b8b91 78%, #f4f3ef 100%);
-  background-size: 220% 100%;
+  background: linear-gradient(110deg, #fff 0%, #8b8b91 32%, #fff 52%, #a8a8ae 78%, #f4f3ef 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: chromeShift 7s ease-in-out infinite;
-}
-
-@keyframes chromeShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 .liquid-fallback {
@@ -166,8 +154,13 @@ select:focus-visible,
     radial-gradient(ellipse at 68% 70%, rgba(255, 255, 255, 0.42), transparent 23%),
     linear-gradient(116deg, transparent 6%, rgba(255, 255, 255, 0.1) 21%, rgba(255, 255, 255, 0.66) 34%, rgba(255, 255, 255, 0.13) 48%, transparent 70%),
     linear-gradient(24deg, transparent 15%, rgba(255, 255, 255, 0.52) 35%, rgba(255, 255, 255, 0.08) 52%, transparent 74%);
-  animation: liquidFallback 9s ease-in-out infinite alternate;
   transform-origin: 72% 44%;
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .liquid-fallback {
+    animation: liquidFallback 9s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes liquidFallback {

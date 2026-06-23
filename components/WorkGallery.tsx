@@ -92,9 +92,9 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
             key={project.slug}
             className={(project.span ?? (index % 2 === 0 ? 7 : 5)) === 7 ? "md:col-span-7" : "md:col-span-5"}
             initial={reduce ? false : { opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ duration: 0.82, delay: (index % 6) * 0.05, ease: easeOut }}
+            transition={reduce ? undefined : { duration: 0.82, delay: (index % 6) * 0.05, ease: easeOut }}
           >
             <Link
               href={`/work/${project.slug}`}
