@@ -20,9 +20,9 @@ export function SeoIntentsSection({ compact = false }: SeoIntentsSectionProps) {
         <Reveal>
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="mono-label">Acquisition SEO</span>
+              <span className="mono-label">Votre projet</span>
               <h2 className="mt-4 max-w-xl text-[clamp(1.6rem,3vw,2.4rem)] font-light tracking-[-0.04em]">
-                Expertises recherchées sur Google
+                Un accompagnement adapté à votre projet
               </h2>
             </div>
             <Link
@@ -51,19 +51,19 @@ export function SeoIntentsSection({ compact = false }: SeoIntentsSectionProps) {
   return (
     <section className="section-pad relative z-10 border-t border-white/10 bg-[var(--bg)]">
       <Reveal>
-        <span className="mono-label">Pages SEO transactionnelles</span>
+        <span className="mono-label">Nos accompagnements</span>
         <h2 className="mt-4 max-w-3xl text-[clamp(1.8rem,4vw,3rem)] font-light tracking-[-0.04em]">
-          15 intentions d&apos;achat couvertes sur le site
+          Créer, refondre ou faire évoluer votre présence digitale
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--muted)]">
-          Chaque page répond à une recherche précise : agence Shopify, refonte, branding, site sur mesure ou
-          studio à Arras. Maillage interne optimisé pour Google et les visiteurs qualifiés.
+          Lancer une boutique Shopify, repenser votre identité ou moderniser votre site :
+          découvrez le déroulement, les livrables et les réalisations liés à votre projet.
         </p>
         <Link
           href="/agence-shopify-branding-web"
           className="mt-8 inline-flex h-12 items-center gap-3 bg-white px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-black transition hover:bg-white/90"
         >
-          Hub expertises SEO <span aria-hidden>↗</span>
+          Découvrir les accompagnements <span aria-hidden>↗</span>
         </Link>
       </Reveal>
 

@@ -32,8 +32,13 @@ export function createMetadata({
   const url = absoluteUrl(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
 
+  // Si le title contient déjà la marque, on neutralise le template du layout
+  // (sinon rendu "… | 42studio - 42studio", tronqué en SERP).
+  const hasBrand = title.toLowerCase().includes(siteName.toLowerCase());
+  const socialTitle = hasBrand ? title : `${title} - ${siteName}`;
+
   return {
-    title,
+    title: hasBrand ? { absolute: title } : title,
     description,
     keywords,
     ...(noIndex ? { robots: { index: false, follow: true } } : {}),
@@ -45,7 +50,7 @@ export function createMetadata({
       }
     },
     openGraph: {
-      title: `${title} - ${siteName}`,
+      title: socialTitle,
       description,
       url,
       siteName,
@@ -56,30 +61,42 @@ export function createMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${siteName} - ${title}`
+          alt: socialTitle
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} - ${siteName}`,
+      title: socialTitle,
       description,
       images: [imageUrl]
     }
   };
 }
 
+// Adresse unique de l'entité, partagée par tous les nœuds JSON-LD (NAP cohérent).
+const entityAddress = {
+  "@type": "PostalAddress",
+  streetAddress: siteConfig.legal.address,
+  addressLocality: siteConfig.legal.city,
+  postalCode: siteConfig.legal.postalCode,
+  addressRegion: "Hauts-de-France",
+  addressCountry: "FR"
+} as const;
+
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
-  legalName: "42studio · Teo Comyn",
+  legalName: siteConfig.legal.companyName,
   url: siteUrl,
-  logo: absoluteUrl("/icon"),
+  // ≥112×112 exigé par Google pour le logo (l'icône 32px ne suffit pas).
+  logo: absoluteUrl("/apple-icon"),
   image: absoluteUrl(defaultOgImage),
-  email: "hello@42studio.fr",
+  email: siteConfig.email,
   slogan: "Brand, Web, Produit. Du symbole au code.",
+  priceRange: "€€€",
   knowsAbout: [
     "branding",
     "identité de marque",
@@ -89,18 +106,7 @@ export const organizationJsonLd = {
     "design produit",
     "UX/UI"
   ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Arras",
-    addressRegion: "Hauts-de-France",
-    postalCode: "62000",
-    addressCountry: "FR"
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 50.29,
-    longitude: 2.78
-  },
+  address: entityAddress,
   areaServed: [
     { "@type": "City", name: "Arras" },
     { "@type": "AdministrativeArea", name: "Hauts-de-France" },
@@ -110,12 +116,12 @@ export const organizationJsonLd = {
     {
       "@type": "ContactPoint",
       contactType: "new business",
-      email: "hello@42studio.fr",
+      email: siteConfig.email,
       availableLanguage: ["fr", "en"]
     }
   ],
   // ⚠️ Vérifie que ces profils existent et appartiennent bien au studio (sinon retire-les).
-  sameAs: ["https://www.instagram.com/42studio", "https://www.linkedin.com/company/42studio"]
+  sameAs: [siteConfig.socials.instagram, siteConfig.socials.linkedin],
 };
 
 export const websiteJsonLd = {
@@ -230,41 +236,28 @@ export function creativeWorkJsonLd({
   };
 }
 
-export function localBusinessJsonLd(path = "/") {
-  const { legal, geo, email, socials } = siteConfig;
+export function localBusinessJsonLd() {
+  const { email, socials } = siteConfig;
 
+  // @id STABLE identique à l'Organization : toutes les injections page par page
+  // fusionnent dans une seule entité au lieu de fragmenter le graphe local.
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${siteUrl}${path === "/" ? "/#localbusiness" : `${path}#localbusiness`}`,
+    "@type": ["Organization", "ProfessionalService"],
+    "@id": `${siteUrl}/#organization`,
     name: siteName,
     description:
       "Studio créatif à Arras : branding, identité de marque, sites web et e-commerce Shopify pour marques ambitieuses.",
-    url: absoluteUrl(path),
+    url: siteUrl,
     email,
     image: absoluteUrl(defaultOgImage),
     priceRange: "€€€",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: legal.address,
-      addressLocality: "Arras",
-      postalCode: legal.postalCode.split(" ")[0] ?? "62000",
-      addressRegion: "Hauts-de-France",
-      addressCountry: "FR"
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: geo.latitude,
-      longitude: geo.longitude
-    },
+    address: entityAddress,
     areaServed: [
       { "@type": "City", name: "Arras" },
       { "@type": "AdministrativeArea", name: "Hauts-de-France" },
       { "@type": "Country", name: "France" }
     ],
-    sameAs: [socials.instagram, socials.linkedin],
-    parentOrganization: {
-      "@id": `${siteUrl}/#organization`
-    }
+    sameAs: [socials.instagram, socials.linkedin]
   };
 }

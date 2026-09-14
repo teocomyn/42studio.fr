@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { featuredProjects, projects, type ProjectKind } from "@/data/projects";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";

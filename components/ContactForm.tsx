@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useFormStatus } from "react-dom";
 import { submitBrief, type ContactState } from "@/app/contact/actions";
 import { ContactSuccess } from "@/components/ContactSuccess";
+import { trackCtaClick, trackGaEvent } from "@/lib/gtag-analytics";
 import { siteConfig } from "@/lib/site";
 
 const initialState: ContactState = { status: "idle" };
@@ -12,6 +13,29 @@ const initialState: ContactState = { status: "idle" };
 const fieldClass =
   "mt-2 w-full border border-white/15 bg-transparent px-4 py-3 text-base text-white placeholder:text-white/30 focus:border-white/40";
 const labelClass = "font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)]";
+
+// Préremplissage via ?type=… (lu côté client : la page reste 100% statique).
+const projectTypeFromQuery: Record<string, string> = {
+  audit: "Audit express",
+  shopify: "Shopify",
+  brand: "Brand",
+  web: "Web",
+  produit: "Produit"
+};
+
+function subscribeToLocation(onChange: () => void) {
+  window.addEventListener("popstate", onChange);
+  return () => window.removeEventListener("popstate", onChange);
+}
+
+function getProjectTypeFromLocation() {
+  const type = new URLSearchParams(window.location.search).get("type");
+  return type ? projectTypeFromQuery[type.toLowerCase()] ?? "" : "";
+}
+
+function getServerProjectType() {
+  return "";
+}
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -29,17 +53,49 @@ function SubmitButton() {
 
 export function ContactForm() {
   const [state, formAction] = useActionState(submitBrief, initialState);
+  const suggestedType = useSyncExternalStore(
+    subscribeToLocation,
+    getProjectTypeFromLocation,
+    getServerProjectType
+  );
+  const [selectedType, setProjectType] = useState<string | null>(null);
+  const projectType = selectedType ?? suggestedType;
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const startedRef = useRef(false);
   const errors = state.fieldErrors ?? {};
+
+  // Événement form_start au premier focus : mesure l'abandon du formulaire.
+  const handleFirstFocus = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackGaEvent("form_start", { form_location: "contact_page" });
+  };
+
+  // Au retour d'erreurs serveur, focus + scroll sur le premier champ fautif.
+  useEffect(() => {
+    if (state.status !== "error" || !formRef.current) return;
+    if (state.fieldErrors && Object.keys(state.fieldErrors).length > 0) {
+      trackGaEvent("form_error", {
+        form_location: "contact_page",
+        fields: Object.keys(state.fieldErrors).join(",")
+      });
+    }
+    const firstInvalid = formRef.current.querySelector<HTMLElement>('[aria-invalid="true"]');
+    if (firstInvalid) {
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }, [state]);
 
   if (state.status === "success") {
     return <ContactSuccess message={state.message} />;
   }
 
   return (
-    <form action={formAction} className="relative grid gap-6">
+    <form ref={formRef} action={formAction} onFocus={handleFirstFocus} className="relative grid gap-6">
       <div className="absolute h-0 w-0 overflow-hidden" aria-hidden>
         <label>
-          Société
+          Ne pas remplir
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
@@ -54,6 +110,7 @@ export function ContactForm() {
             name="name"
             type="text"
             required
+            maxLength={100}
             autoComplete="name"
             aria-required="true"
             aria-invalid={Boolean(errors.name)}
@@ -75,6 +132,7 @@ export function ContactForm() {
             name="email"
             type="email"
             required
+            maxLength={200}
             autoComplete="email"
             aria-required="true"
             aria-invalid={Boolean(errors.email)}
@@ -94,11 +152,18 @@ export function ContactForm() {
           <label htmlFor="projectType" className={labelClass}>
             Type de projet
           </label>
-          <select id="projectType" name="projectType" defaultValue="" className={fieldClass}>
+          <select
+            id="projectType"
+            name="projectType"
+            value={projectType}
+            onChange={(event) => setProjectType(event.target.value)}
+            className={fieldClass}
+          >
             <option value="">Sélectionner…</option>
+            <option value="Shopify">Shopify / E-commerce</option>
+            <option value="Audit express">Audit express Shopify / CRO</option>
             <option value="Brand">Brand / Identité</option>
             <option value="Web">Site web</option>
-            <option value="Shopify">Shopify / E-commerce</option>
             <option value="Produit">Produit / UX UI</option>
             <option value="Autre">Autre</option>
           </select>
@@ -126,6 +191,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          maxLength={5000}
           aria-required="true"
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "message-error" : undefined}
@@ -175,7 +241,8 @@ export function ContactForm() {
         <SubmitButton />
         <a
           href={`mailto:${siteConfig.email}?subject=Projet%20pour%2042studio`}
-          className="font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)] underline-offset-4 transition hover:text-white hover:underline"
+          onClick={() => trackCtaClick("mailto", "contact_form")}
+          className="py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)] underline-offset-4 transition hover:text-white hover:underline"
         >
           ou écris-nous à {siteConfig.email}
         </a>

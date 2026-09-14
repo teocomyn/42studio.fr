@@ -25,14 +25,14 @@ export type SeoServicePage = {
 export const seoServicePages: SeoServicePage[] = [
   {
     slug: "brand",
-    title: "Création d'identité de marque & design system",
+    title: "Expertise branding · Identité de marque & design system",
     eyebrow: "Brand / Identité",
     h1: "Une marque pensée comme un système.",
     description:
       "42studio conçoit des identités de marque complètes : stratégie, naming, logo, direction artistique, charte graphique et design system.",
     intro:
       "Le branding n'est pas une couche décorative. C'est l'architecture qui permet à une entreprise d'être reconnue, comprise et mémorisée sur tous ses points de contact.",
-    keywords: ["création identité de marque", "identité visuelle", "création logo", "charte graphique", "design system marque"],
+    keywords: ["expertise branding", "identité visuelle", "charte graphique", "design system marque", "direction artistique"],
     serviceName: "Branding et identité visuelle",
     proofPoints: ["Plateforme de marque", "Logo et système visuel", "Charte activable", "Kit digital"],
     sections: [
@@ -65,21 +65,23 @@ export const seoServicePages: SeoServicePage[] = [
       }
     ],
     related: [
-      { label: "Branding à Arras (local)", href: "/branding-arras" },
-      { label: "Créer un site web", href: "/web" },
+      { label: "Création d'identité de marque", href: "/creation-identite-de-marque" },
+      { label: "Agence branding France", href: "/agence-branding-france" },
+      { label: "Branding e-commerce", href: "/branding-e-commerce" },
+      { label: "Refonte d'identité visuelle", href: "/refonte-identite-visuelle" },
       { label: "Parler d'un projet", href: "/contact" }
     ]
   },
   {
     slug: "web",
-    title: "Agence web créative à Arras",
+    title: "Expertise web · Sites sur mesure Next.js & vitrines",
     eyebrow: "Web / Sites sur mesure",
     h1: "Des sites rapides, désirables et administrables.",
     description:
       "42studio crée des sites web sur mesure avec Next.js, animation, SEO technique, design system et intégration CMS ou Shopify.",
     intro:
       "Un site vitrine premium doit faire plus que présenter une offre. Il doit installer la confiance, clarifier la valeur et transformer l'identité en expérience.",
-    keywords: ["agence web Arras", "création site internet Arras", "site Next.js", "site vitrine premium", "SEO technique"],
+    keywords: ["expertise web", "site Next.js", "site vitrine premium", "SEO technique", "design system web"],
     serviceName: "Création de site web sur mesure",
     proofPoints: ["Architecture UX", "Interface responsive", "SEO technique", "Front-end animé"],
     sections: [
@@ -112,8 +114,10 @@ export const seoServicePages: SeoServicePage[] = [
       }
     ],
     related: [
-      { label: "Identité de marque", href: "/brand" },
-      { label: "Shopify premium", href: "/shopify" },
+      { label: "Agence web à Arras", href: "/agence-web-arras" },
+      { label: "Création de site sur mesure", href: "/creation-site-internet-sur-mesure" },
+      { label: "Refonte de site vitrine", href: "/refonte-site-vitrine" },
+      { label: "Site vitrine SaaS", href: "/site-vitrine-saas" },
       { label: "Nous contacter", href: "/contact" }
     ]
   },
@@ -166,14 +170,14 @@ export const seoServicePages: SeoServicePage[] = [
   },
   {
     slug: "shopify",
-    title: "Agence Shopify créative",
+    title: "Expertise Shopify · Thèmes sur mesure, headless & CRO",
     eyebrow: "Shopify / E-commerce",
     h1: "Un e-commerce premium sans perdre la conversion.",
     description:
       "42studio crée des expériences Shopify et e-commerce premium : direction artistique, UX, thème sur mesure, headless, performance et SEO.",
     intro:
       "Un Shopify performant ne doit pas ressembler à un thème standard. L'enjeu est de rendre la marque mémorable tout en gardant un parcours d'achat clair.",
-    keywords: ["agence Shopify France", "création Shopify", "Shopify headless", "e-commerce premium", "UX e-commerce"],
+    keywords: ["expertise Shopify", "thème Shopify sur mesure", "Shopify headless", "CRO e-commerce", "UX e-commerce"],
     serviceName: "Création Shopify et e-commerce premium",
     proofPoints: ["UX e-commerce", "Thème sur mesure", "Shopify headless", "SEO marchand"],
     sections: [
@@ -206,8 +210,10 @@ export const seoServicePages: SeoServicePage[] = [
       }
     ],
     related: [
-      { label: "Créer une marque", href: "/brand" },
-      { label: "Créer un site web", href: "/web" },
+      { label: "Agence Shopify France", href: "/agence-shopify-france" },
+      { label: "Création de boutique Shopify", href: "/creation-boutique-shopify" },
+      { label: "Refonte Shopify", href: "/refonte-shopify" },
+      { label: "Optimisation conversion Shopify", href: "/optimisation-shopify-conversion" },
       { label: "Contact", href: "/contact" }
     ]
   },

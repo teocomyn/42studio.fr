@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { easeOut } from "@/lib/motion";
 import { trackCtaClick } from "@/lib/gtag-analytics";

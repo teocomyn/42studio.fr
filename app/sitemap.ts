@@ -5,8 +5,8 @@ import { seoServicePages } from "@/data/seo-pages";
 import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
+  // Omit optional lastModified until each page has a verified editorial date.
+  // /mentions-legales et /confidentialite sont noindex : ne pas les lister ici.
   const paths = [
     { path: "", priority: 1, changeFrequency: "weekly" as const },
     { path: "/studio", priority: 0.8, changeFrequency: "monthly" as const },
@@ -14,8 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/agence-shopify-branding-web", priority: 0.92, changeFrequency: "monthly" as const },
     { path: "/work", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/mentions-legales", priority: 0.2, changeFrequency: "yearly" as const },
-    { path: "/confidentialite", priority: 0.2, changeFrequency: "yearly" as const },
     ...seoServicePages.map((page) => ({
       path: `/${page.slug}`,
       priority: page.slug === "branding-arras" ? 0.88 : 0.85,
@@ -37,7 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return paths.map(({ path, priority, changeFrequency }) => ({
     url: `${siteUrl}${path}`,
-    lastModified,
     changeFrequency,
     priority
   }));

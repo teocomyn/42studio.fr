@@ -63,7 +63,7 @@ export function SeoKeywordPage({ page }: SeoKeywordPageProps) {
         ])}
       />
       <JsonLd data={serviceJsonLd({ name: page.serviceName, description: page.description, path })} />
-      {page.showLocalBusiness ? <JsonLd data={localBusinessJsonLd(`/${page.slug}`)} /> : null}
+      {page.showLocalBusiness ? <JsonLd data={localBusinessJsonLd()} /> : null}
       <JsonLd data={faqJsonLd(page.faqs)} />
 
       <section className="section-pad border-b border-white/10 pt-36">
@@ -73,9 +73,6 @@ export function SeoKeywordPage({ page }: SeoKeywordPageProps) {
             <h1 className="mt-6 max-w-4xl text-[clamp(2.4rem,7vw,4.35rem)] font-black leading-[0.92] tracking-[-0.05em]">
               {page.h1}
             </h1>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-white/55">
-              Mot-clé cible : {page.keyword}
-            </p>
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/72 md:text-lg">{page.intro}</p>
             <div className="mt-8 flex flex-wrap gap-2">
               {page.proofPoints.map((point) => (
@@ -103,7 +100,7 @@ export function SeoKeywordPage({ page }: SeoKeywordPageProps) {
             </div>
           </div>
           <aside className="border border-white/10 bg-white/[0.03] p-6 lg:sticky lg:top-28">
-            <span className="mono-label">Focus SEO</span>
+            <span className="mono-label">Votre accompagnement</span>
             <p className="mt-4 text-3xl font-light tracking-[-0.05em] text-white md:text-4xl">{page.keyword}</p>
             <div className="mt-6 h-px w-full bg-white/10" />
             <p className="mt-6 text-sm leading-7 text-[var(--muted)]">{page.description}</p>

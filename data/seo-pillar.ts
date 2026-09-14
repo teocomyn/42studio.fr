@@ -149,7 +149,7 @@ export const seoPillarClusters: SeoPillarCluster[] = [
         caseSlugs: ["studio-boucle-paris", "nutripure", "apoticari"]
       },
       {
-        id: "branding-ecommerce",
+        id: "branding-e-commerce",
         keyword: "branding e-commerce",
         kicker: "Marque · Boutique",
         title: "Branding e-commerce : identité et Shopify dans le même studio",

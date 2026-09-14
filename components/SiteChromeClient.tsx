@@ -3,15 +3,11 @@
 import dynamic from "next/dynamic";
 import { PropsWithChildren } from "react";
 import { MotionProvider } from "@/components/MotionProvider";
+import { LenisProvider } from "@/components/LenisProvider";
 
 const Cursor = dynamic(() => import("@/components/Cursor").then((mod) => ({ default: mod.Cursor })), {
   ssr: false
 });
-
-const LenisProvider = dynamic(
-  () => import("@/components/LenisProvider").then((mod) => ({ default: mod.LenisProvider })),
-  { ssr: false }
-);
 
 type SiteChromeClientProps = PropsWithChildren;
 

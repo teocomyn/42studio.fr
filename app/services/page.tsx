@@ -44,7 +44,7 @@ export default function ServicesPage() {
           href="/agence-shopify-branding-web"
           className="mt-8 inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
         >
-          Guide expertises SEO · 15 intentions transactionnelles <span aria-hidden>↗</span>
+          Trouver l’accompagnement adapté à votre projet <span aria-hidden>↗</span>
         </Link>
       </section>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { testimonials } from "@/data/testimonials";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";

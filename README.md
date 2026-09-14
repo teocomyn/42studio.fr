@@ -39,6 +39,23 @@ Informations légales et contact : `lib/site.ts`.
 - `npm run build` — build de production
 - `npm run lint` — ESLint
 
+### Contrôle SEO du HTML livré
+
+Après `npm run build`, démarrer `npm run start`, puis lancer dans un autre terminal :
+
+```bash
+python3 scripts/check_seo.py http://localhost:3000
+```
+
+Le contrôle parcourt le sitemap et vérifie les réponses HTTP, le contenu rendu côté
+serveur, les titres, descriptions, canoniques, liens internes et données de l'entité.
+Il vérifie aussi l'exclusion des pages légales du sitemap et une vraie réponse 404.
+Un second argument permet d'enregistrer un rapport JSON. Ne pas reconstruire `.next`
+pendant qu'un serveur de production local l'utilise ; arrêter le serveur avant le build.
+
+Le défilement Lenis et le curseur sont des améliorations navigateur : ne jamais placer
+le contenu des pages sous un composant enveloppant chargé avec `ssr: false`.
+
 ## Structure
 
 - `app/` — pages, SEO (sitemap, robots, `llms.txt`), légal, 404/erreur

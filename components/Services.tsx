@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { services } from "@/data/services";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";

@@ -31,7 +31,7 @@ export default function ContactPage() {
           { name: "Contact", path: "/contact" }
         ])}
       />
-      <JsonLd data={localBusinessJsonLd("/contact")} />
+      <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={faqJsonLd([...contactFaqs])} />
 
       <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">

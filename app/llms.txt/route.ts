@@ -18,15 +18,14 @@ export function GET() {
     ...services.map((page) => `- [${page.serviceName}](${siteUrl}/${page.slug}): ${page.description}`),
     `- [Tous les services](${siteUrl}/services)`,
     "",
-    "## Pages SEO transactionnelles",
+    "## Accompagnements",
     ...seoKeywordPages.map(
       (page) => `- [${page.keyword}](${siteUrl}/${page.slug}): ${page.description}`
     ),
-    `- [Hub expertises SEO](${siteUrl}/agence-shopify-branding-web)`,
+    `- [Branding, web et Shopify](${siteUrl}/agence-shopify-branding-web)`,
     "",
     "## Studio",
     `- [Méthode et capacités](${siteUrl}/studio): stratégie, identité, système, build, déploiement.`,
-    `- [Branding à Arras](${siteUrl}/branding-arras): positionnement local, Hauts-de-France.`,
     "",
     "## Projets",
     ...projects.map((project) => `- [${project.title}](${siteUrl}/work/${project.slug}): ${project.summary}`),

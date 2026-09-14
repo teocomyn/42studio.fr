@@ -73,9 +73,6 @@ function KeywordSection({ block, index }: { block: SeoKeywordBlock; index: numbe
           <h3 className="mt-4 text-[clamp(1.5rem,3.5vw,2.4rem)] font-light leading-[1.05] tracking-[-0.04em]">
             {block.title}
           </h3>
-          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-white/55">
-            Mot-clé : {block.keyword}
-          </p>
           <div className="mt-6 space-y-4">
             {block.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 48)} className="max-w-2xl text-base leading-8 text-[var(--muted)]">
@@ -95,7 +92,7 @@ function KeywordSection({ block, index }: { block: SeoKeywordBlock; index: numbe
             href={`/${block.id}`}
             className="mt-8 inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
           >
-            Page dédiée : {block.keyword} <span aria-hidden>↗</span>
+            Découvrir : {block.keyword} <span aria-hidden>↗</span>
           </Link>
           <CaseStudyLinks slugs={block.caseSlugs} />
         </div>
@@ -104,13 +101,12 @@ function KeywordSection({ block, index }: { block: SeoKeywordBlock; index: numbe
           className={`lg:col-span-5 ${reversed ? "lg:[direction:ltr]" : ""} lg:sticky lg:top-28 lg:self-start`}
         >
           <div className="border border-white/10 bg-white/[0.02] p-6 md:p-8">
-            <span className="mono-label">Focus SEO</span>
+            <span className="mono-label">Votre projet</span>
             <p className="mt-4 text-4xl font-light tracking-[-0.05em] text-white md:text-5xl">{block.keyword}</p>
             <div className="mt-6 h-px w-full bg-white/10" />
             <p className="mt-6 text-sm leading-7 text-white/55">
-              Page optimisée pour les recherches transactionnelles autour de{" "}
-              <strong className="font-normal text-white/80">{block.keyword}</strong>. 42studio intervient en direct,
-              sans intermédiaire.
+              Découvrez notre accompagnement et des réalisations liées à votre besoin.
+              Vous échangez directement avec le studio, du cadrage à la livraison.
             </p>
           </div>
         </aside>
@@ -145,7 +141,7 @@ export function SeoPillarPage() {
         />
 
         <div className="relative mx-auto max-w-[88rem]">
-          <p className="mono-label">Expertises · SEO transactionnel</p>
+          <p className="mono-label">Branding · Web · Shopify</p>
           <h1 className="mt-6 max-w-5xl text-[clamp(2.4rem,7vw,4.35rem)] font-black leading-[0.92] tracking-[-0.05em]">
             {seoPillarMeta.h1}
           </h1>
@@ -177,8 +173,8 @@ export function SeoPillarPage() {
             </Link>
           </div>
 
-          <nav aria-label="Index des mots-clés SEO" className="mt-14 border-t border-white/10 pt-8">
-            <span className="mono-label">15 mots-clés transactionnels</span>
+          <nav aria-label="Choisir un accompagnement" className="mt-14 border-t border-white/10 pt-8">
+            <span className="mono-label">Quel est votre projet ?</span>
             <div className="mt-5 flex flex-wrap gap-2">
               {seoPillarKeywords.map((keyword) => {
                 const block = allKeywords.find((item) => item.keyword === keyword);
@@ -201,7 +197,7 @@ export function SeoPillarPage() {
             {[
               ["+60", "Marques accompagnées"],
               ["4", "Expertises intégrées"],
-              ["15", "Intentions SEO couvertes"],
+              ["Arras", "En Hauts-de-France"],
               ["24 h", "Réponse au brief"]
             ].map(([value, label]) => (
               <div key={label} className="bg-[var(--bg)] p-6 md:p-8">

@@ -1,41 +1,7 @@
-const eeaRegions = [
-  "AT",
-  "BE",
-  "BG",
-  "HR",
-  "CY",
-  "CZ",
-  "DK",
-  "EE",
-  "FI",
-  "FR",
-  "DE",
-  "GR",
-  "HU",
-  "IS",
-  "IE",
-  "IT",
-  "LV",
-  "LI",
-  "LT",
-  "LU",
-  "MT",
-  "NL",
-  "NO",
-  "PL",
-  "PT",
-  "RO",
-  "SK",
-  "SI",
-  "ES",
-  "SE",
-  "GB",
-  "CH"
-];
-
 export function getGtagConsentInitScript() {
-  const regionsJson = JSON.stringify(eeaRegions);
-
+  // Un seul default global "denied" : le default régionalisé EEE était rendu
+  // inopérant par un second default global identique (doublon supprimé).
+  // gtag.js n'est de toute façon chargé qu'après consentement (mode basic).
   return `
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -46,15 +12,7 @@ export function getGtagConsentInitScript() {
       ad_user_data: 'denied',
       ad_personalization: 'denied',
       analytics_storage: 'denied',
-      wait_for_update: 500,
-      region: ${regionsJson}
-    });
-
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied'
+      wait_for_update: 500
     });
 
     gtag('set', 'url_passthrough', true);

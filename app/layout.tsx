@@ -4,7 +4,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
-import { createMetadata, localBusinessJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { getGtagConsentInitScript } from "@/lib/gtag-consent-script";
 import "./globals.css";
 
@@ -70,11 +70,22 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <script dangerouslySetInnerHTML={{ __html: getGtagConsentInitScript() }} />
+        <noscript>
+          <style>{`
+            .site-shell [style*="opacity:0;"],
+            .site-shell [style$="opacity:0"],
+            .site-shell [style*="opacity: 0;"],
+            .site-shell [style$="opacity: 0"] { opacity: 1 !important; }
+            .site-shell [style*="transform:"] { transform: none !important; }
+            .site-shell header { flex-wrap: wrap; gap: 1rem; }
+            .site-shell header nav { display: flex !important; flex-wrap: wrap; gap: 1rem; }
+            .site-shell header button { display: none; }
+          `}</style>
+        </noscript>
       </head>
       <body className={`${display.variable} ${mono.variable}`}>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
-        <JsonLd data={localBusinessJsonLd("/")} />
         <GoogleAnalytics />
         {children}
         <CookieConsent />

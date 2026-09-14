@@ -19,9 +19,9 @@ export const siteConfig = {
     siren: "850 274 101",
     siret: "850 274 101 00011",
     vat: "FR26850274101",
-    address: "30 Grand Rue, Neuville-Vitasse",
+    address: "30 Grand Rue",
     postalCode: "62217",
-    city: "Arras · Hauts-de-France",
+    city: "Neuville-Vitasse",
     director: "Teo Comyn",
     host: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA · vercel.com"
   }
