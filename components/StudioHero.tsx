@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { easeOut } from "@/lib/motion";
 
 const stats = [
@@ -38,7 +38,7 @@ export function StudioHero() {
       <div className="relative mx-auto max-w-[88rem]">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-10">
           <div className="lg:col-span-7">
-            <motion.div
+            <m.div
               className="mb-6 flex flex-wrap items-center gap-3"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,32 +49,32 @@ export function StudioHero() {
               <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
                 Brand · Web · Produit · Shopify
               </span>
-            </motion.div>
+            </m.div>
 
             <h1 className="max-w-[14ch] text-[clamp(2.5rem,5.5vw,4.75rem)] font-light leading-[0.98] tracking-[-0.045em]">
               <span className="mask-line block">
-                <motion.span
+                <m.span
                   className="inline-block"
                   initial={reduce ? false : { y: "108%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.78, delay: 0.1, ease: easeOut }}
                 >
                   Du symbole au code,
-                </motion.span>
+                </m.span>
               </span>
               <span className="mask-line block">
-                <motion.span
+                <m.span
                   className="chrome-text inline-block font-black"
                   initial={reduce ? false : { y: "108%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.78, delay: 0.18, ease: easeOut }}
                 >
                   sans rupture.
-                </motion.span>
+                </m.span>
               </span>
             </h1>
 
-            <motion.p
+            <m.p
               className="mt-8 max-w-xl text-base leading-7 text-white/68 md:text-lg"
               initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -82,9 +82,9 @@ export function StudioHero() {
             >
               42studio rassemble direction artistique, stratégie digitale et exécution front-end pour
               livrer des marques cohérentes, du concept au déploiement.
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               className="mt-8 flex flex-wrap gap-3"
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -102,10 +102,10 @@ export function StudioHero() {
               >
                 Voir le travail
               </Link>
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.aside
+          <m.aside
             className="grid grid-cols-2 gap-px border border-white/10 bg-white/10 lg:col-span-5"
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export function StudioHero() {
                 </p>
               </div>
             ))}
-          </motion.aside>
+          </m.aside>
         </div>
       </div>
     </section>

@@ -78,10 +78,14 @@ export function buildConfirmationSubject() {
 }
 
 export function buildConfirmationText({ name }: BriefPayload) {
+  const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL;
   return [
     `Bonjour ${name},`,
     "",
     "Merci pour ton message. On a bien reçu ton brief et on revient vers toi sous 24 h.",
+    ...(bookingUrl
+      ? ["", `Pour aller plus vite, tu peux directement réserver un créneau d'appel : ${bookingUrl}`]
+      : []),
     "",
     "42studio",
     "hello@42studio.fr",
@@ -110,7 +114,11 @@ export function buildConfirmationHtml({ name }: BriefPayload) {
             <tr>
               <td style="padding:0 28px 28px;font-size:15px;line-height:1.8;color:#ddd;">
                 Bonjour ${escapeHtml(name)},<br /><br />
-                Merci pour ton message. On a bien reçu ton brief et on revient vers toi sous 24 h.
+                Merci pour ton message. On a bien reçu ton brief et on revient vers toi sous 24 h.${
+                  process.env.NEXT_PUBLIC_BOOKING_URL
+                    ? `<br /><br />Pour aller plus vite, tu peux directement <a href="${process.env.NEXT_PUBLIC_BOOKING_URL}" style="color:#fff;">réserver un créneau d'appel</a>.`
+                    : ""
+                }
               </td>
             </tr>
           </table>

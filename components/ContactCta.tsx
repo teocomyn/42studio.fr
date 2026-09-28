@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
+import { BackgroundVideo } from "@/components/BackgroundVideo";
 import { openCookiePreferences } from "@/components/CookieConsent";
 import { getFeaturedSeoPages } from "@/data/seo-keywords-nav";
 import { easeOut } from "@/lib/motion";
@@ -10,6 +11,7 @@ import { useMagnetic } from "@/lib/useMagnetic";
 import { siteConfig } from "@/lib/site";
 import { currentYear } from "@/lib/year";
 
+// ⚠️ Fichier actuel ≈ 18 Mo sur CloudFront : à réencoder ≤ 3 Mo (720p, CRF élevé).
 const footerVideoSrc =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4";
 
@@ -32,20 +34,14 @@ export function ContactCta() {
   const featuredSeo = getFeaturedSeoPages().slice(0, 6);
 
   return (
-    <section
+    <footer
       id="contact"
       className="relative z-10 overflow-hidden border-t border-white/10 bg-[var(--bg)] px-5 py-24 md:px-10 md:py-32"
     >
       {reduce ? null : (
-        <video
-          aria-hidden
-          autoPlay
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-45"
-          loop
-          muted
-          playsInline
-          preload="metadata"
+        <BackgroundVideo
           src={footerVideoSrc}
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-45"
         />
       )}
       <div
@@ -53,7 +49,7 @@ export function ContactCta() {
         className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_74%_28%,rgba(255,255,255,.10),transparent_22rem),linear-gradient(90deg,rgba(7,7,8,.94)_0%,rgba(7,7,8,.72)_48%,rgba(7,7,8,.88)_100%)]"
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-32 bg-gradient-to-b from-[var(--bg)] to-transparent" />
-      <motion.div
+      <m.div
         className="relative z-10 grid gap-10 md:grid-cols-[1fr_22rem] md:items-end"
         initial={reduce ? false : { y: 48, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -94,7 +90,7 @@ export function ContactCta() {
             </a>
           ) : null}
         </div>
-      </motion.div>
+      </m.div>
 
       <div className="relative z-10 mt-16 flex flex-col gap-6 border-t border-white/10 pt-7 font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--muted)] md:mt-24 md:flex-row md:items-start md:justify-between">
         <a className="transition hover:text-white" href={`mailto:${siteConfig.email}`}>
@@ -128,16 +124,16 @@ export function ContactCta() {
         </div>
       </div>
 
-      <div className="relative z-10 mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/40">
+      <div className="relative z-10 mt-6 flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[11px] uppercase tracking-[0.1em] text-white/55">
         {legalLinks.map(([label, href]) => (
-          <Link key={href} href={href} className="transition hover:text-white/80">
+          <Link key={href} href={href} className="py-2 transition hover:text-white">
             {label}
           </Link>
         ))}
-        <Link href="/agence-shopify-branding-web" className="transition hover:text-white/80">
-          Expertises SEO
+        <Link href="/agence-shopify-branding-web" className="py-2 transition hover:text-white">
+          Expertises
         </Link>
-        <button type="button" onClick={openCookiePreferences} className="transition hover:text-white/80">
+        <button type="button" onClick={openCookiePreferences} className="py-2 transition hover:text-white">
           Cookies
         </button>
       </div>
@@ -147,12 +143,12 @@ export function ContactCta() {
           <Link
             key={page.slug}
             href={`/${page.slug}`}
-            className="border border-white/10 bg-black/20 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.08em] text-white/45 transition hover:border-white/25 hover:text-white/75"
+            className="inline-flex min-h-10 items-center border border-white/10 bg-black/20 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.08em] text-white/55 transition hover:border-white/25 hover:text-white"
           >
             {page.keyword}
           </Link>
         ))}
       </div>
-    </section>
+    </footer>
   );
 }

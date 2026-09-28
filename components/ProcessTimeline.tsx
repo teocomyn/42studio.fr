@@ -1,13 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { processSteps } from "@/data/process";
 import { SectionHead } from "@/components/SectionHead";
 import { prefersReducedMotion } from "@/lib/motion";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function ProcessTimeline() {
   const section = useRef<HTMLElement | null>(null);
@@ -18,22 +14,51 @@ export function ProcessTimeline() {
     // Pas de pin horizontal sur mobile/tactile : on laisse un scroll horizontal natif (cf. JSX).
     if (window.matchMedia("(max-width: 767px)").matches) return;
 
-    const ctx = gsap.context(() => {
-      const distance = track.current!.scrollWidth - window.innerWidth + 80;
-      gsap.to(track.current, {
-        x: () => -Math.max(0, distance),
-        ease: "none",
-        scrollTrigger: {
-          trigger: section.current,
-          pin: true,
-          scrub: 0.8,
-          start: "top top",
-          end: () => `+=${Math.max(900, distance)}`
-        }
-      });
-    }, section);
+    // GSAP chargé à la demande quand la section approche : sort ~44 KB gz du First Load.
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
 
-    return () => ctx.revert();
+    const load = async () => {
+      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger")
+      ]);
+      if (cancelled || !section.current || !track.current) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const ctx = gsap.context(() => {
+        const distance = track.current!.scrollWidth - window.innerWidth + 80;
+        gsap.to(track.current, {
+          x: () => -Math.max(0, distance),
+          ease: "none",
+          scrollTrigger: {
+            trigger: section.current,
+            pin: true,
+            scrub: 0.8,
+            start: "top top",
+            end: () => `+=${Math.max(900, distance)}`
+          }
+        });
+      }, section);
+      cleanup = () => ctx.revert();
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          void load();
+        }
+      },
+      { rootMargin: "100% 0px" }
+    );
+    observer.observe(section.current);
+
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      cleanup?.();
+    };
   }, []);
 
   return (
@@ -42,12 +67,12 @@ export function ProcessTimeline() {
         eyebrow="04 / Façon de travailler"
         title="Une trajectoire claire, du signal au lancement."
       />
-      <div className="-mx-5 overflow-x-auto px-5 md:mx-0 md:overflow-visible md:px-0">
+      <div className="-mx-5 snap-x snap-mandatory overflow-x-auto px-5 md:mx-0 md:snap-none md:overflow-visible md:px-0">
         <div ref={track} className="flex w-max gap-0 pr-10">
           {processSteps.map((step) => (
           <article
             key={step.index}
-            className="relative flex h-[24rem] w-[82vw] max-w-[34rem] flex-col justify-between border-l border-white/10 p-7 md:w-[34rem] md:p-9"
+            className="relative flex h-[24rem] w-[82vw] max-w-[34rem] snap-center flex-col justify-between border-l border-white/10 p-7 md:w-[34rem] md:snap-align-none md:p-9"
           >
             <div className="absolute left-0 top-24 h-px w-full bg-white/10" />
             <div className="relative z-10 flex items-center gap-5">

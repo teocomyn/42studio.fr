@@ -1,9 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { AnimatePresence, m } from "framer-motion";
+import { useLayoutEffect, useState } from "react";
 import { easeOut, prefersReducedMotion } from "@/lib/motion";
 import { isMobileViewport } from "@/lib/media";
+import { MotionProvider } from "@/components/MotionProvider";
 
 const VISITED_KEY = "42studio:visited";
 
@@ -11,21 +12,29 @@ export function Preloader() {
   const [count, setCount] = useState(0);
   const [done, setDone] = useState(true);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const skip =
-      prefersReducedMotion() ||
-      isMobileViewport() ||
-      sessionStorage.getItem(VISITED_KEY) === "1";
-
-    sessionStorage.setItem(VISITED_KEY, "1");
+  // useLayoutEffect : bascule AVANT le premier paint → pas de frame de flash
+  // du site sous l'overlay, et pas de mismatch d'hydratation (SSR = done).
+  useLayoutEffect(() => {
+    let skip = true;
+    try {
+      skip =
+        prefersReducedMotion() ||
+        isMobileViewport() ||
+        sessionStorage.getItem(VISITED_KEY) === "1";
+      sessionStorage.setItem(VISITED_KEY, "1");
+    } catch {
+      skip = true;
+    }
     if (skip) return;
+
+    // The layout effect must reveal this overlay before paint, after checking sessionStorage.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDone(false);
 
     const duration = 480;
     let frame = 0;
     let timeout = 0;
-    let startedAt = 0;
+    const startedAt = performance.now();
 
     const tick = () => {
       const progress = Math.min(1, (performance.now() - startedAt) / duration);
@@ -38,11 +47,7 @@ export function Preloader() {
       }
     };
 
-    frame = requestAnimationFrame(() => {
-      setDone(false);
-      startedAt = performance.now();
-      frame = requestAnimationFrame(tick);
-    });
+    frame = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(frame);
@@ -51,9 +56,12 @@ export function Preloader() {
   }, []);
 
   return (
-    <AnimatePresence>
-      {!done && (
-        <motion.div
+    // Le Preloader est monté hors de SiteChrome : il lui faut son propre MotionProvider
+    // pour que les composants `m.*` disposent des features LazyMotion.
+    <MotionProvider>
+      <AnimatePresence>
+        {!done && (
+        <m.div
           role="status"
           aria-live="polite"
           aria-label="Chargement du site"
@@ -71,10 +79,11 @@ export function Preloader() {
             <span className="text-5xl font-black tracking-[-0.08em] text-white md:text-7xl">42</span>
           </div>
           <div className="h-px w-full overflow-hidden bg-white/10">
-            <motion.div className="h-full bg-[var(--ink)]" style={{ width: `${(count / 42) * 100}%` }} />
+            <m.div className="h-full bg-[var(--ink)]" style={{ width: `${(count / 42) * 100}%` }} />
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </m.div>
+        )}
+      </AnimatePresence>
+    </MotionProvider>
   );
 }

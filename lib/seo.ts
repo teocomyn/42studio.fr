@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site";
+import { testimonials } from "@/data/testimonials";
 import type { Metadata } from "next";
 
 export const siteUrl = "https://42studio.fr";
@@ -84,6 +85,16 @@ const entityAddress = {
   addressCountry: "FR"
 } as const;
 
+export const founderJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#founder`,
+  name: "Teo Comyn",
+  jobTitle: "Fondateur · Direction créative & technique",
+  worksFor: { "@id": `${siteUrl}/#organization` },
+  knowsAbout: ["Shopify", "branding", "design system", "front-end", "CRO", "SEO technique"]
+};
+
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
@@ -96,6 +107,8 @@ export const organizationJsonLd = {
   image: absoluteUrl(defaultOgImage),
   email: siteConfig.email,
   slogan: "Brand, Web, Produit. Du symbole au code.",
+  foundingDate: "2018",
+  founder: { "@id": `${siteUrl}/#founder` },
   priceRange: "€€€",
   knowsAbout: [
     "branding",
@@ -122,6 +135,14 @@ export const organizationJsonLd = {
   ],
   // ⚠️ Vérifie que ces profils existent et appartiennent bien au studio (sinon retire-les).
   sameAs: [siteConfig.socials.instagram, siteConfig.socials.linkedin],
+  // Témoignages réels (data/testimonials.ts) exposés en schema — sans note
+  // fabriquée : pas d'AggregateRating tant qu'aucun système de notation n'existe.
+  review: testimonials.map((item) => ({
+    "@type": "Review",
+    reviewBody: item.quote,
+    author: { "@type": "Person", name: item.author },
+    publisher: { "@type": "Organization", name: item.company }
+  }))
 };
 
 export const websiteJsonLd = {

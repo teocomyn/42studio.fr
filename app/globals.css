@@ -193,6 +193,36 @@ select:focus-visible,
   display: block;
 }
 
+/* Animations d'entrée du hero en CSS pur : le LCP ne dépend plus de l'hydratation JS.
+   Neutralisées automatiquement par le bloc prefers-reduced-motion global. */
+.hero-slide-up {
+  animation: heroSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroSlideUp {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  animation: heroRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .magnetic {
   transform: translate3d(var(--mx, 0), var(--my, 0), 0);
   transition: transform 180ms ease-out, color 220ms ease-out, background 220ms ease-out;

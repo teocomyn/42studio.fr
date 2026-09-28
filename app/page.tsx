@@ -20,6 +20,10 @@ const Manifesto = dynamic(() =>
 
 const Services = dynamic(() => import("@/components/Services").then((mod) => ({ default: mod.Services })));
 
+const StudioSystem = dynamic(() =>
+  import("@/components/StudioSystem").then((mod) => ({ default: mod.StudioSystem }))
+);
+
 const Testimonials = dynamic(() =>
   import("@/components/Testimonials").then((mod) => ({ default: mod.Testimonials }))
 );
@@ -43,6 +47,7 @@ export default function Home() {
         <Marquee />
         <Manifesto />
         <Services />
+        <StudioSystem />
         <Testimonials />
         <ProcessTimeline />
         <SeoIntentsSection compact />

@@ -3,16 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { featuredProjects, projects, type ProjectKind } from "@/data/projects";
 import { easeOut } from "@/lib/motion";
+import { trackCtaClick } from "@/lib/gtag-analytics";
 import { SectionHead } from "@/components/SectionHead";
 
 const stats = [
-  ["+60", "marques accompagnees"],
-  [String(projects.length), "realisations selectionnees"],
+  ["+60", "marques accompagnées"],
+  [String(projects.length), "réalisations sélectionnées"],
   [String(projects.filter((project) => project.category === "E-commerce Shopify").length), "projets Shopify"],
-  [String(featuredProjects.length), "case studies detaillees"]
+  [String(featuredProjects.length), "case studies détaillées"]
 ] as const;
 
 type Filter = "all" | ProjectKind | "featured" | "brand";
@@ -66,18 +67,17 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
       </div>
 
       {showFilters ? (
-        <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filtrer les projets">
+        <div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrer les projets">
           {filters.map((item) => (
             <button
               key={item.id}
               type="button"
-              role="tab"
-              aria-selected={filter === item.id}
+              aria-pressed={filter === item.id}
               onClick={() => setFilter(item.id)}
               className={
                 filter === item.id
-                  ? "border border-white bg-white px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-black"
-                  : "border border-white/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60 transition hover:border-white/35 hover:text-white"
+                  ? "inline-flex min-h-11 items-center border border-white bg-white px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-black"
+                  : "inline-flex min-h-11 items-center border border-white/15 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-white/60 transition hover:border-white/35 hover:text-white"
               }
             >
               {item.label}
@@ -86,9 +86,22 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
         </div>
       ) : null}
 
+      {filteredProjects.length === 0 ? (
+        <div className="border border-white/10 bg-white/[0.02] p-10 text-center">
+          <p className="text-lg text-white/70">Aucun projet dans ce filtre pour le moment.</p>
+          <button
+            type="button"
+            onClick={() => setFilter("all")}
+            className="mt-6 inline-flex min-h-11 items-center border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+          >
+            Voir tous les projets
+          </button>
+        </div>
+      ) : null}
+
       <div className="grid gap-5 md:grid-cols-12">
         {filteredProjects.map((project, index) => (
-          <motion.div
+          <m.div
             key={project.slug}
             className={(project.span ?? (index % 2 === 0 ? 7 : 5)) === 7 ? "md:col-span-7" : "md:col-span-5"}
             initial={reduce ? false : { opacity: 0, y: 40 }}
@@ -105,7 +118,11 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
                   src={project.image}
                   alt={project.imageAlt ?? `Capture du site ${project.title}`}
                   fill
-                  sizes="(min-width: 768px) 58vw, 100vw"
+                  sizes={
+                    (project.span ?? (index % 2 === 0 ? 7 : 5)) === 7
+                      ? "(min-width: 768px) 58vw, 100vw"
+                      : "(min-width: 768px) 42vw, 100vw"
+                  }
                   className="object-cover opacity-70 transition duration-700 group-hover:scale-105 group-hover:opacity-95"
                 />
               ) : (
@@ -143,7 +160,7 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
@@ -158,27 +175,26 @@ export function WorkGallery({ headingAs = "h2", limit, showFilters = false }: Wo
         </div>
       ) : null}
 
-      {showFilters ? (
-        <div className="mt-14 flex flex-col items-start justify-between gap-6 border border-white/10 bg-white/[0.02] p-7 md:flex-row md:items-center md:p-10">
-          <p className="max-w-xl text-lg font-light tracking-[-0.03em] text-white/85">
-            Un projet Shopify, branding ou site sur mesure en tête&nbsp;? Parlons-en.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 items-center gap-3 bg-white px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-black transition hover:bg-white/90"
-            >
-              Lancer un projet <span aria-hidden>↗</span>
-            </Link>
-            <Link
-              href="/agence-shopify-france"
-              className="inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
-            >
-              Agence Shopify <span aria-hidden>↗</span>
-            </Link>
-          </div>
+      <div className="mt-14 flex flex-col items-start justify-between gap-6 border border-white/10 bg-white/[0.02] p-7 md:flex-row md:items-center md:p-10">
+        <p className="max-w-xl text-lg font-light tracking-[-0.03em] text-white/85">
+          Un projet Shopify, branding ou site sur mesure en tête&nbsp;? Parlons-en.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/contact"
+            onClick={() => trackCtaClick("lancer_projet", "work_gallery")}
+            className="inline-flex h-12 items-center gap-3 bg-white px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-black transition hover:bg-white/90"
+          >
+            Lancer un projet <span aria-hidden>↗</span>
+          </Link>
+          <Link
+            href="/agence-shopify-france"
+            className="inline-flex h-12 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
+          >
+            Agence Shopify <span aria-hidden>↗</span>
+          </Link>
         </div>
-      ) : null}
+      </div>
     </section>
   );
 }

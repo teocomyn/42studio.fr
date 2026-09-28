@@ -12,12 +12,13 @@ import { services } from "@/data/services";
 import { team } from "@/data/team";
 import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
 
+// Requête "studio créatif Arras" réservée à /studio-creatif-arras (évite la cannibalisation).
 export const metadata: Metadata = createMetadata({
-  title: "Studio créatif à Arras",
+  title: "Le studio · Méthode, capacités & fondateur",
   description:
     "Découvrez la méthode 42studio : stratégie, identité, système, build et déploiement pour marques, sites web et produits digitaux.",
   path: "/studio",
-  keywords: ["studio créatif Arras", "studio design France", "branding web produit", "direction artistique digitale"]
+  keywords: ["méthode 42studio", "studio design France", "branding web produit", "direction artistique digitale"]
 });
 
 export default function StudioPage() {

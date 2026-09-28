@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { services } from "@/data/services";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";
 
-const MotionLink = motion.create(Link);
+const MotionLink = m.create(Link);
 
 export function Services() {
   const reduce = useReducedMotion();

@@ -4,7 +4,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
-import { createMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { createMetadata, founderJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { getGtagConsentInitScript } from "@/lib/gtag-consent-script";
 import "./globals.css";
 
@@ -45,7 +45,10 @@ export const metadata: Metadata = {
     template: "%s - 42studio"
   },
   applicationName: "42studio",
-  authors: [{ name: "42studio", url: "https://42studio.fr" }],
+  authors: [
+    { name: "Teo Comyn", url: "https://42studio.fr/studio" },
+    { name: "42studio", url: "https://42studio.fr" }
+  ],
   creator: "42studio",
   publisher: "42studio",
   category: "Design studio",
@@ -86,6 +89,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${mono.variable}`}>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
+        <JsonLd data={founderJsonLd} />
         <GoogleAnalytics />
         {children}
         <CookieConsent />

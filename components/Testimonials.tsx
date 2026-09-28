@@ -1,6 +1,6 @@
 "use client";
 
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { testimonials } from "@/data/testimonials";
 import { easeOut } from "@/lib/motion";
 import { SectionHead } from "@/components/SectionHead";
@@ -17,7 +17,7 @@ export function Testimonials() {
       />
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {testimonials.map((item, index) => (
-          <motion.blockquote
+          <m.blockquote
             key={`${item.author}-${item.company}`}
             className="flex min-h-80 flex-col justify-between border border-white/10 p-6 transition hover:border-white/25"
             initial={reduce ? false : { opacity: 0, y: 28 }}
@@ -37,7 +37,7 @@ export function Testimonials() {
                 </span>
               </cite>
             </footer>
-          </motion.blockquote>
+          </m.blockquote>
         ))}
       </div>
     </section>

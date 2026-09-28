@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { easeOut } from "@/lib/motion";
 
@@ -55,7 +55,7 @@ export function Header() {
 
   return (
     <>
-      <motion.header
+      <m.header
         className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-5 py-5 mix-blend-difference md:px-10 md:py-7"
         initial={reduce ? false : { y: -28, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -88,11 +88,11 @@ export function Header() {
           <span className="block h-px w-7 bg-current" />
           <span className="block h-px w-7 bg-current" />
         </button>
-      </motion.header>
+      </m.header>
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             ref={menuRef}
             id="mobile-menu"
             role="dialog"
@@ -139,7 +139,7 @@ export function Header() {
             >
               Lancer un projet <span aria-hidden>↗</span>
             </Link>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

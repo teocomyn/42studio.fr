@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 import { isDesktopFinePointer } from "@/lib/media";
 
@@ -10,37 +10,53 @@ type BackgroundVideoProps = {
 };
 
 /**
- * Vidéo décorative : jamais montée sur mobile (évite ~3 Mo en réseau),
- * chargée après idle sur desktop pour ne pas impacter le LCP.
+ * Vidéo décorative : jamais montée sur mobile (économie réseau),
+ * chargée après idle ET seulement quand la zone approche du viewport
+ * (évite de télécharger une vidéo de pied de page jamais atteinte).
  */
 export function BackgroundVideo({ src, className }: BackgroundVideoProps) {
+  const placeholder = useRef<HTMLDivElement | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (prefersReducedMotion() || !isDesktopFinePointer()) return;
+    if (!placeholder.current) return;
 
     let cancelled = false;
     let idleId: number | undefined;
     let timeoutId: number | undefined;
 
     const mount = () => {
-      if (!cancelled) setReady(true);
+      if (cancelled) return;
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(() => !cancelled && setReady(true), { timeout: 2500 });
+      } else {
+        timeoutId = window.setTimeout(() => !cancelled && setReady(true), 800);
+      }
     };
 
-    if (typeof window.requestIdleCallback === "function") {
-      idleId = window.requestIdleCallback(mount, { timeout: 2500 });
-    } else {
-      timeoutId = window.setTimeout(mount, 1200);
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          mount();
+        }
+      },
+      { rootMargin: "150% 0px" }
+    );
+    observer.observe(placeholder.current);
 
     return () => {
       cancelled = true;
+      observer.disconnect();
       if (idleId !== undefined) window.cancelIdleCallback(idleId);
       if (timeoutId !== undefined) window.clearTimeout(timeoutId);
     };
   }, []);
 
-  if (!ready) return null;
+  if (!ready) {
+    return <div ref={placeholder} aria-hidden className="pointer-events-none absolute inset-0" />;
+  }
 
   return (
     <video

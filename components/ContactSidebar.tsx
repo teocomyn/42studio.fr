@@ -50,14 +50,14 @@ export function ContactSidebar() {
             <Link
               key={page.slug}
               href={`/${page.slug}`}
-              className="border-b border-white/10 pb-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/55 transition hover:text-white"
+              className="border-b border-white/10 py-2.5 font-mono text-[11px] uppercase tracking-[0.1em] text-white/60 transition hover:text-white"
             >
               {page.keyword} <span aria-hidden>↗</span>
             </Link>
           ))}
           <Link
             href="/work"
-            className="pt-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/55 transition hover:text-white"
+            className="py-2.5 font-mono text-[11px] uppercase tracking-[0.1em] text-white/60 transition hover:text-white"
           >
             Voir les réalisations <span aria-hidden>↗</span>
           </Link>
@@ -67,9 +67,9 @@ export function ContactSidebar() {
       <div className="border border-white/10 bg-white/[0.02] p-6 md:p-8">
         <span className="mono-label">Questions fréquentes</span>
         <div className="mt-5 space-y-5">
-          {contactFaqs.slice(0, 3).map((faq) => (
+          {contactFaqs.slice(0, 4).map((faq) => (
             <article key={faq.question}>
-              <h2 className="text-sm font-light tracking-[-0.02em] text-white">{faq.question}</h2>
+              <h3 className="text-sm font-light tracking-[-0.02em] text-white">{faq.question}</h3>
               <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{faq.answer}</p>
             </article>
           ))}

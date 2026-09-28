@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { easeOut } from "@/lib/motion";
 
 const principles = [
@@ -50,7 +50,7 @@ export function Manifesto() {
       />
 
       <div className="relative mx-auto max-w-[88rem]">
-        <motion.div
+        <m.div
           className="mb-12 flex flex-col gap-5 md:mb-16 md:grid md:grid-cols-[minmax(12rem,20rem)_1fr] md:items-end"
           initial={reduce ? false : { opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export function Manifesto() {
         >
           <div className="flex items-center gap-4">
             <span className="mono-label">Manifeste</span>
-            <motion.span
+            <m.span
               aria-hidden
               className="h-px flex-1 max-w-16 bg-white/15"
               initial={reduce ? false : { scaleX: 0 }}
@@ -76,10 +76,10 @@ export function Manifesto() {
             Une marque n&apos;est pas un logo. C&apos;est un{" "}
             <span className="chrome-text font-black">système vivant</span>.
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-          <motion.div
+          <m.div
             className="relative min-h-[30rem] overflow-hidden border border-white/10 bg-white/[0.025] p-7 md:p-10"
             initial={reduce ? false : { opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,11 +119,11 @@ export function Manifesto() {
                 Voir la méthode
               </Link>
             </div>
-          </motion.div>
+          </m.div>
 
           <div className="grid gap-5">
             {principles.map((principle, index) => (
-              <motion.article
+              <m.article
                 key={principle.index}
                 className="group grid gap-6 border border-white/10 bg-black/20 p-6 transition hover:border-white/25 hover:bg-white/[0.04] md:grid-cols-[4rem_1fr]"
                 initial={reduce ? false : { opacity: 0, x: 24 }}
@@ -140,7 +140,7 @@ export function Manifesto() {
                   </h3>
                   <p className="mt-3 max-w-md text-sm leading-7 text-[var(--muted)]">{principle.text}</p>
                 </div>
-              </motion.article>
+              </m.article>
             ))}
           </div>
         </div>

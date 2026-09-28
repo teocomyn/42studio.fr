@@ -1,5 +1,10 @@
 export const contactFaqs = [
   {
+    question: "Quel budget prévoir pour un projet avec 42studio ?",
+    answer:
+      "Les créations de boutiques Shopify et sites sur mesure démarrent généralement entre 5 000 et 20 000 € HT selon le périmètre ; les interventions ponctuelles (audit, optimisation, accompagnement) sont facturées 550 € HT/jour. Le champ budget du formulaire nous aide à proposer le bon format dès la première réponse."
+  },
+  {
     question: "Quel délai pour obtenir une réponse de 42studio ?",
     answer:
       "Nous répondons sous 24 h ouvrées après réception du brief. Le premier échange sert à clarifier le périmètre, le timing et la faisabilité, sans engagement."
