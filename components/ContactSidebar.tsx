@@ -27,7 +27,7 @@ export function ContactSidebar() {
         <ul className="mt-5 space-y-3 text-sm leading-7 text-white/72">
           <li>+60 marques accompagnées depuis 2018</li>
           <li>Interlocuteur senior, sans couche agence</li>
-          <li>Brand, web et Shopify dans le même studio</li>
+          <li>Marque, site, motion, 3D et vidéo dans le même studio</li>
           <li>Basé à Arras, projets France et international</li>
         </ul>
         <BookingLink

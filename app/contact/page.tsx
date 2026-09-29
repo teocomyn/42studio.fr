@@ -8,17 +8,17 @@ import { contactFaqs } from "@/data/contact-faq";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
-  title: "Contact · Brief projet branding, web ou Shopify",
+  title: "Contact · Brief projet marque, site ou vidéo",
   description:
-    "Contactez 42studio à Arras pour un projet de marque, site web sur mesure, e-commerce Shopify ou produit digital. Réponse sous 24 h.",
+    "Un projet de marque, de graphisme, de site, de direction artistique, de motion design, de 3D ou de vidéo ? Contactez 42studio à Arras. Réponse sous 24 h.",
   path: "/contact",
   keywords: [
     "contact studio branding",
     "brief site web",
-    "projet Shopify",
+    "brief motion design",
     "studio créatif Arras",
     "agence web Arras contact",
-    "devis Shopify France"
+    "devis vidéo de marque"
   ]
 });
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
             Lancer le signal.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-8 text-white/80">
-            Projet Shopify, identité de marque, site vitrine ou refonte e-commerce : décrivez votre ambition.
+            Identité de marque, site web, campagne, motion design, 3D ou vidéo : décrivez votre ambition.
             Si le brief appelle une vraie direction artistique et une exécution solide, on revient vers vous sous
             24&nbsp;h.
           </p>
