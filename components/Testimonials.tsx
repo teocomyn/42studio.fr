@@ -13,7 +13,7 @@ export function Testimonials() {
       <SectionHead
         eyebrow="Recommandations"
         title="Des clients et partenaires qui parlent du résultat."
-        body="Shopify, CRO, SEO technique, migration, identité : des retours directs sur la qualité d'exécution et l'impact business."
+        body="Des retours directs sur la qualité d'exécution, la réactivité et le niveau d'exigence."
       />
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {testimonials.map((item, index) => (

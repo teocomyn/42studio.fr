@@ -13,7 +13,7 @@ export function Services() {
 
   return (
     <section id="services" className="section-pad relative z-10 bg-[var(--bg)]">
-      <SectionHead eyebrow="01 / Ce qu'on fait" title="Trois disciplines. Une logique." />
+      <SectionHead eyebrow="01 / Ce qu'on fait" title="Quatre piliers. Une seule direction." />
       <div className="border-t border-white/10">
         {services.map((service, index) => (
           <MotionLink

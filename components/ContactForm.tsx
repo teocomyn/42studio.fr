@@ -16,10 +16,14 @@ const labelClass = "font-mono text-[11px] uppercase tracking-[0.1em] text-[var(-
 
 // Préremplissage via ?type=… (lu côté client : la page reste 100% statique).
 const projectTypeFromQuery: Record<string, string> = {
-  audit: "Audit express",
-  shopify: "Shopify",
   brand: "Brand",
+  graphisme: "Graphisme",
   web: "Web",
+  "direction-artistique": "Direction artistique",
+  "motion-design": "Motion design",
+  "3d": "3D",
+  video: "Vidéo",
+  shopify: "E-commerce",
   produit: "Produit"
 };
 
@@ -160,10 +164,14 @@ export function ContactForm() {
             className={fieldClass}
           >
             <option value="">Sélectionner…</option>
-            <option value="Shopify">Shopify / E-commerce</option>
-            <option value="Audit express">Audit express Shopify / CRO</option>
-            <option value="Brand">Brand / Identité</option>
+            <option value="Brand">Branding / Identité visuelle</option>
+            <option value="Graphisme">Graphisme / Supports</option>
             <option value="Web">Site web</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Direction artistique">Direction artistique / Campagne</option>
+            <option value="Motion design">Motion design</option>
+            <option value="3D">3D / CGI</option>
+            <option value="Vidéo">Réalisation vidéo</option>
             <option value="Produit">Produit / UX UI</option>
             <option value="Autre">Autre</option>
           </select>

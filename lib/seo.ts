@@ -1,10 +1,15 @@
+import { creativeServices } from "@/data/creative-services";
 import { siteConfig } from "@/lib/site";
-import { testimonials } from "@/data/testimonials";
 import type { Metadata } from "next";
 
 export const siteUrl = "https://42studio.fr";
 export const siteName = "42studio";
-export const defaultOgImage = "/opengraph-image";
+// Image de partage par défaut (1200×630), générée depuis le kit créatif 42STUDIO.
+export const defaultOgImage = "/og/42studio.jpg";
+
+// Description d'entité unique, reprise par le JSON-LD, le manifest et llms.txt.
+export const entityDescription =
+  "42studio est un studio créatif indépendant basé à Arras : branding et identité visuelle, graphisme, création de sites web, direction artistique, motion design, 3D et réalisation vidéo pour des marques ambitieuses.";
 
 export type PageSeo = {
   title: string;
@@ -21,6 +26,18 @@ export function absoluteUrl(path = "/") {
   return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+// Coupe une description trop longue pour la SERP (≈155 caractères) à la dernière
+// phrase complète, sinon au dernier mot, sans casser le sens.
+export function clampDescription(text: string, max = 155) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const slice = clean.slice(0, max);
+  const lastSentence = Math.max(slice.lastIndexOf(". "), slice.lastIndexOf(" ; "));
+  if (lastSentence >= 90) return slice.slice(0, lastSentence + 1).trim();
+  const lastSpace = slice.slice(0, max - 1).lastIndexOf(" ");
+  return `${slice.slice(0, lastSpace).replace(/[,;:·]$/, "")}…`;
+}
+
 export function createMetadata({
   title,
   description,
@@ -32,6 +49,7 @@ export function createMetadata({
 }: PageSeo): Metadata {
   const url = absoluteUrl(path);
   const imageUrl = ogImage.startsWith("http") ? ogImage : absoluteUrl(ogImage);
+  const metaDescription = clampDescription(description);
 
   // Si le title contient déjà la marque, on neutralise le template du layout
   // (sinon rendu "… | 42studio - 42studio", tronqué en SERP).
@@ -40,7 +58,7 @@ export function createMetadata({
 
   return {
     title: hasBrand ? { absolute: title } : title,
-    description,
+    description: metaDescription,
     keywords,
     ...(noIndex ? { robots: { index: false, follow: true } } : {}),
     alternates: {
@@ -52,7 +70,7 @@ export function createMetadata({
     },
     openGraph: {
       title: socialTitle,
-      description,
+      description: metaDescription,
       url,
       siteName,
       locale: "fr_FR",
@@ -69,7 +87,7 @@ export function createMetadata({
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
-      description,
+      description: metaDescription,
       images: [imageUrl]
     }
   };
@@ -85,14 +103,47 @@ const entityAddress = {
   addressCountry: "FR"
 } as const;
 
+const entityAreaServed = [
+  { "@type": "City", name: "Arras" },
+  { "@type": "City", name: "Lille" },
+  { "@type": "AdministrativeArea", name: "Hauts-de-France" },
+  { "@type": "Country", name: "France" }
+];
+
+// Thématiques d'expertise déclarées pour l'entité (moteurs de recherche et moteurs IA).
+const entityKnowsAbout = [
+  "branding",
+  "identité visuelle",
+  "stratégie de marque",
+  "naming",
+  "graphisme",
+  "design graphique",
+  "création de site web",
+  "webdesign",
+  "design system",
+  "direction artistique",
+  "motion design",
+  "animation de logo",
+  "3D",
+  "packshot 3D",
+  "CGI",
+  "réalisation vidéo",
+  "film de marque"
+];
+
+// Homonymes connus (ex. un studio web lituanien « 42studio ») : l'@id, l'adresse et
+// la description servent à désambiguïser l'entité.
+const entityAlternateNames = ["42STUDIO", "42 Studio", "42studio Arras"];
+
 export const founderJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${siteUrl}/#founder`,
   name: "Teo Comyn",
-  jobTitle: "Fondateur · Direction créative & technique",
+  jobTitle: "Fondateur et directeur créatif",
+  url: absoluteUrl("/studio"),
   worksFor: { "@id": `${siteUrl}/#organization` },
-  knowsAbout: ["Shopify", "branding", "design system", "front-end", "CRO", "SEO technique"]
+  knowsAbout: ["direction créative", "branding", "identité visuelle", "design system", "création de site web", "direction artistique"]
 };
 
 export const organizationJsonLd = {
@@ -100,31 +151,33 @@ export const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   name: siteName,
+  alternateName: entityAlternateNames,
   legalName: siteConfig.legal.companyName,
+  description: entityDescription,
   url: siteUrl,
   // ≥112×112 exigé par Google pour le logo (l'icône 32px ne suffit pas).
   logo: absoluteUrl("/apple-icon"),
   image: absoluteUrl(defaultOgImage),
   email: siteConfig.email,
-  slogan: "Brand, Web, Produit. Du symbole au code.",
-  foundingDate: "2018",
+  slogan: "Creative studio for ambitious brands.",
   founder: { "@id": `${siteUrl}/#founder` },
   priceRange: "€€€",
-  knowsAbout: [
-    "branding",
-    "identité de marque",
-    "design system",
-    "développement web Next.js",
-    "e-commerce Shopify",
-    "design produit",
-    "UX/UI"
-  ],
+  knowsAbout: entityKnowsAbout,
   address: entityAddress,
-  areaServed: [
-    { "@type": "City", name: "Arras" },
-    { "@type": "AdministrativeArea", name: "Hauts-de-France" },
-    { "@type": "Country", name: "France" }
-  ],
+  areaServed: entityAreaServed,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Services créatifs 42studio",
+    itemListElement: creativeServices.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        "@id": `${absoluteUrl(`/${service.slug}`)}#service`,
+        name: service.name,
+        url: absoluteUrl(`/${service.slug}`)
+      }
+    }))
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -133,16 +186,8 @@ export const organizationJsonLd = {
       availableLanguage: ["fr", "en"]
     }
   ],
-  // ⚠️ Vérifie que ces profils existent et appartiennent bien au studio (sinon retire-les).
-  sameAs: [siteConfig.socials.instagram, siteConfig.socials.linkedin],
-  // Témoignages réels (data/testimonials.ts) exposés en schema — sans note
-  // fabriquée : pas d'AggregateRating tant qu'aucun système de notation n'existe.
-  review: testimonials.map((item) => ({
-    "@type": "Review",
-    reviewBody: item.quote,
-    author: { "@type": "Person", name: item.author },
-    publisher: { "@type": "Organization", name: item.company }
-  }))
+  // ⚠️ Ne garder que des profils qui appartiennent au studio (voir docs/SEO-GEO-STUDIO-CREATIF.md).
+  sameAs: [siteConfig.socials.instagram, siteConfig.socials.linkedin]
 };
 
 export const websiteJsonLd = {
@@ -150,6 +195,8 @@ export const websiteJsonLd = {
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
   name: siteName,
+  alternateName: entityAlternateNames,
+  description: entityDescription,
   url: siteUrl,
   inLanguage: "fr-FR",
   publisher: {
@@ -187,11 +234,17 @@ export function serviceJsonLd({
   name,
   description,
   path,
-  areaServed = "France"
+  serviceType,
+  category,
+  keywords,
+  areaServed
 }: {
   name: string;
   description: string;
   path: string;
+  serviceType?: string;
+  category?: string;
+  keywords?: string[];
   areaServed?: string;
 }) {
   return {
@@ -201,7 +254,11 @@ export function serviceJsonLd({
     name,
     description,
     url: absoluteUrl(path),
-    areaServed,
+    ...(serviceType ? { serviceType } : {}),
+    ...(category ? { category } : {}),
+    ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
+    areaServed: areaServed ?? entityAreaServed,
+    availableLanguage: ["fr", "en"],
     provider: {
       "@id": `${siteUrl}/#organization`
     }
@@ -220,6 +277,44 @@ export function faqJsonLd(items: Array<{ question: string; answer: string }>) {
         text: item.answer
       }
     }))
+  };
+}
+
+export function articleJsonLd({
+  title,
+  description,
+  path,
+  datePublished,
+  dateModified,
+  image,
+  keywords,
+  about
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  keywords?: string[];
+  about?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${absoluteUrl(path)}#article`,
+    headline: title,
+    description,
+    url: absoluteUrl(path),
+    mainEntityOfPage: absoluteUrl(path),
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    inLanguage: "fr-FR",
+    image: absoluteUrl(image ?? defaultOgImage),
+    ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
+    ...(about?.length ? { about: about.map((name) => ({ "@type": "Thing", name })) } : {}),
+    author: { "@id": `${siteUrl}/#founder` },
+    publisher: { "@id": `${siteUrl}/#organization` }
   };
 }
 
@@ -267,18 +362,13 @@ export function localBusinessJsonLd() {
     "@type": ["Organization", "ProfessionalService"],
     "@id": `${siteUrl}/#organization`,
     name: siteName,
-    description:
-      "Studio créatif à Arras : branding, identité de marque, sites web et e-commerce Shopify pour marques ambitieuses.",
+    description: entityDescription,
     url: siteUrl,
     email,
     image: absoluteUrl(defaultOgImage),
     priceRange: "€€€",
     address: entityAddress,
-    areaServed: [
-      { "@type": "City", name: "Arras" },
-      { "@type": "AdministrativeArea", name: "Hauts-de-France" },
-      { "@type": "Country", name: "France" }
-    ],
+    areaServed: entityAreaServed,
     sameAs: [socials.instagram, socials.linkedin]
   };
 }

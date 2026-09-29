@@ -96,7 +96,7 @@ export function Manifesto() {
             />
             <div className="relative flex h-full min-h-[26rem] flex-col justify-between">
               <div className="flex flex-wrap gap-2">
-                {["Brand", "Web", "Produit", "Shopify", "CRO"].map((item) => (
+                {["Brand", "Digital", "Direction artistique", "Motion", "3D", "Vidéo"].map((item) => (
                   <span
                     key={item}
                     className="border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-white/60"

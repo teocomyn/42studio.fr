@@ -16,11 +16,15 @@ const footerVideoSrc =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4";
 
 const internalLinks = [
-  ["Brand", "/brand"],
-  ["Web", "/web"],
-  ["Shopify", "/shopify"],
-  ["Produit", "/produit"],
-  ["Studio", "/studio"]
+  ["Branding", "/brand"],
+  ["Graphisme", "/graphisme"],
+  ["Site web", "/web"],
+  ["Direction artistique", "/direction-artistique"],
+  ["Motion design", "/motion-design"],
+  ["3D", "/3d"],
+  ["Vidéo", "/realisation-video"],
+  ["Studio", "/studio"],
+  ["Journal", "/journal"]
 ] as const;
 
 const legalLinks = [
@@ -130,8 +134,8 @@ export function ContactCta() {
             {label}
           </Link>
         ))}
-        <Link href="/agence-shopify-branding-web" className="py-2 transition hover:text-white">
-          Expertises
+        <Link href="/services" className="py-2 transition hover:text-white">
+          Tous les services
         </Link>
         <button type="button" onClick={openCookiePreferences} className="py-2 transition hover:text-white">
           Cookies

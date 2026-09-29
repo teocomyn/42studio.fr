@@ -38,7 +38,7 @@ export const seoKeywordPages: SeoKeywordPage[] = [
     keyword: "agence Shopify France",
     title: "Agence Shopify France | 42studio, boutique premium",
     description:
-      "42studio, agence Shopify France basée à Arras. Boutiques sur mesure, thèmes 2.0, CRO et branding intégré pour marques D2C exigeantes. +60 marques accompagnées.",
+      "42studio, agence Shopify France basée à Arras. Boutiques sur mesure, thèmes 2.0, CRO et branding intégré pour marques D2C. +60 marques accompagnées.",
     h1: "Agence Shopify France pour marques qui refusent le générique.",
     intro:
       "42studio conçoit des boutiques Shopify premium pour des marques françaises qui veulent un canal e-commerce à la hauteur de leur produit. Direction artistique, UX conversion, sections Liquid sur mesure et SEO technique dans le même studio, depuis Arras, partout en France.",
@@ -208,9 +208,9 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "refonte-shopify",
     keyword: "refonte Shopify",
-    title: "Refonte Shopify | Moderniser sans perdre trafic ni ADN",
+    title: "Refonte Shopify sans perdre trafic ni ADN",
     description:
-      "Refonte Shopify par 42studio : audit UX, préservation SEO, thème sur mesure et CRO. Modernisez votre boutique sans repartir de zéro. Studio Boucle Paris, Nutripure.",
+      "Refonte Shopify par 42studio : audit UX, préservation du référencement, thème sur mesure et CRO. Moderniser la boutique sans repartir de zéro.",
     h1: "Refonte Shopify : moderniser votre boutique sans tout casser.",
     intro:
       "Une refonte Shopify réussie préserve votre trafic organique, clarifie le parcours d'achat et modernise l'image de marque sans repartir de zéro. 42studio audite, priorise et reconstruit section par section pour un impact visible dès les premières semaines.",
@@ -550,9 +550,9 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "expert-shopify-freelance",
     keyword: "expert Shopify freelance",
-    title: "Expert Shopify freelance | Liquid, CRO & exécution rapide",
+    title: "Expert Shopify freelance, Liquid et exécution",
     description:
-      "Expert Shopify freelance senior chez 42studio. Liquid custom, CRO, refontes urgentes et sections sur mesure. Interlocuteur unique, réponse sous 24 h, sans couche agence.",
+      "Expert Shopify freelance senior chez 42studio : Liquid sur mesure, refontes urgentes et sections custom. Interlocuteur unique, réponse sous 24 h.",
     h1: "Expert Shopify freelance : senior, direct, opérationnel.",
     intro:
       "Pas de junior caché derrière un compte agence. Chez 42studio, vous travaillez avec un expert Shopify freelance senior qui maîtrise Liquid, UX e-commerce, SEO technique et CRO. Idéal pour les refontes urgentes, les sections sur mesure et les projets où la réactivité compte.",
@@ -722,7 +722,7 @@ export const seoKeywordPages: SeoKeywordPage[] = [
     keyword: "agence web Arras",
     title: "Agence web Arras | Sites sur mesure · 42studio",
     description:
-      "Agence web à Arras : sites vitrines premium, SaaS, e-commerce et branding. 42studio, studio créatif basé à Arras, +60 marques. Next.js, Shopify, SEO technique.",
+      "Agence web à Arras : sites vitrines, sites de marque, SaaS et e-commerce sur mesure. 42studio, studio créatif basé à Arras, du design au développement.",
     h1: "Agence web Arras avec une exigence internationale.",
     intro:
       "Basée à Arras, 42studio accompagne les entreprises des Hauts-de-France et de toute la France avec des sites web sur mesure, pas des templates recyclés. Vitrines premium, sites SaaS, e-commerce Shopify : un seul studio pour brand, web et produit.",
@@ -892,7 +892,7 @@ export const seoKeywordPages: SeoKeywordPage[] = [
     keyword: "création site internet sur mesure",
     title: "Création site internet sur mesure | 42studio",
     description:
-      "Création site internet sur mesure par 42studio. Next.js, design premium, SEO technique et CMS. Pas de template : un site unique, rapide et pensé pour convertir.",
+      "Création de site internet sur mesure par 42studio : design premium, développement, back-office et bases techniques propres. Un site unique, sans template.",
     h1: "Création site internet sur mesure, pas un template.",
     intro:
       "Un site sur mesure ne se contente pas d'être beau. Il installe la confiance, clarifie votre valeur et transforme votre identité en expérience mémorable. 42studio conçoit des sites internet uniques, rapides, administrables et pensés pour évoluer sans refonte tous les 18 mois.",
@@ -1060,7 +1060,7 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "refonte-site-vitrine",
     keyword: "refonte site vitrine",
-    title: "Refonte site vitrine | Moderniser message, design & SEO",
+    title: "Refonte de site vitrine : message et design",
     description:
       "Refonte site vitrine par 42studio. Repositionnement, design premium, SEO préservé et performance Next.js. Profitys, Hôtel Angleterre Versailles.",
     h1: "Refonte site vitrine : message, design et technique alignés.",
@@ -1400,9 +1400,9 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "agence-branding-france",
     keyword: "agence branding France",
-    title: "Agence branding France | Stratégie, identité & déploiement",
+    title: "Agence branding France : stratégie et identité",
     description:
-      "Agence branding France : stratégie de marque, identité visuelle, charte et déploiement digital. 42studio, studio créatif basé à Arras, +60 marques accompagnées.",
+      "Agence branding France : stratégie de marque, identité visuelle, charte et déploiement. 42studio, studio créatif basé à Arras, pour marques ambitieuses.",
     h1: "Agence branding France : stratégie, identité et déploiement.",
     intro:
       "42studio est une agence branding France qui traite la marque comme un système, pas comme un logo isolé. Stratégie, direction artistique, charte graphique, kit digital et déploiement web ou Shopify dans le même flux créatif, depuis Arras, pour des marques partout en France.",
@@ -1912,12 +1912,12 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "studio-creatif-arras",
     keyword: "studio créatif Arras",
-    title: "Studio créatif Arras | Brand, Web & Shopify · 42studio",
+    title: "Studio créatif à Arras : brand, web, motion et 3D",
     description:
-      "Studio créatif à Arras : branding, sites web sur mesure et boutiques Shopify. 42studio, +60 marques, exigence internationale. Brand, web, produit.",
-    h1: "Studio créatif Arras : brand, web et Shopify.",
+      "Studio créatif à Arras : branding, graphisme, sites web, direction artistique, motion design, 3D et vidéo, pour les marques d'ici et d'ailleurs.",
+    h1: "Studio créatif à Arras, de la marque à l'image animée.",
     intro:
-      "42studio est un studio créatif basé à Arras qui réunit branding, web et e-commerce Shopify sous un même toit. Pas de silos entre identité, site et boutique. Un interlocuteur senior, une exigence internationale, une proximité locale quand vous en avez besoin.",
+      "42studio est un studio créatif indépendant basé à Arras. Identité, site web, direction artistique, motion design, 3D et vidéo : une seule direction créative pour tout ce que la marque montre, et la bonne équipe pour chaque projet. Des rendez-vous sur place quand le projet le demande.",
     eyebrow: "Studio · Arras",
     cluster: "local",
     keywords: [
@@ -1925,64 +1925,66 @@ export const seoKeywordPages: SeoKeywordPage[] = [
       "agence créative Arras",
       "studio design Arras",
       "studio branding Arras",
-      "agence digitale Arras",
-      "studio web Arras"
+      "motion design Arras",
+      "vidéo Arras",
+      "agence de communication Arras"
     ],
-    serviceName: "Studio créatif Arras",
-    proofPoints: ["Arras", "Brand · Web · Shopify", "+60 marques", "Senior direct"],
+    serviceName: "Studio créatif à Arras",
+    proofPoints: ["Arras", "Brand · Digital", "Motion · 3D · Vidéo", "Direction unique"],
     stats: [
       ["Arras", "Studio principal"],
-      ["3", "Expertises intégrées"],
-      ["+60", "Marques"],
-      ["France", "Rayonnement national"]
+      ["4", "Piliers créatifs"],
+      ["7", "Expertises"],
+      ["24 h", "Réponse au brief"]
     ],
     sections: [
       {
         id: "studio",
         kicker: "Le studio",
-        title: "Un studio créatif Arras qui pense au-delà du local",
+        title: "Un studio créatif à Arras pour les marques ambitieuses",
         paragraphs: [
-          "Arras est notre ancrage, pas notre limite. 42studio est un studio créatif qui accompagne des marques des Hauts-de-France comme à Paris, Lyon ou à l'international. La proximité arrésienne est un avantage pour les clients locaux, pas une contrainte créative.",
-          "Trois expertises intégrées : Brand (stratégie, identité, charte), Web (sites sur mesure, SaaS, vitrines) et Shopify (boutiques e-commerce premium). Un seul studio pour tout le parcours digital de votre marque.",
-          "Arras Patrimoine, Profitys, des entrepreneurs locaux et des marques nationales partagent la même exigence : un travail créatif et technique à la hauteur de leurs ambitions."
+          "Arras est notre ancrage, pas notre limite. 42studio accompagne des marques des Hauts-de-France comme de Paris ou de l'étranger, avec la même exigence. Pour les marques de la région, c'est simplement plus facile de se voir.",
+          "Le studio couvre quatre piliers : Brand (stratégie, identité, graphisme), Digital (sites web et e-commerce), Creative Direction (campagnes, lancements, direction photo et vidéo) et Visual Production (motion design, 3D, vidéo). Une marque peut en prendre un seul ou les enchaîner.",
+          "42studio n'est pas une agence 360°. C'est un studio : une direction créative qui décide, et une équipe composée pour chaque projet avec des designers, développeurs, motion designers, artistes 3D et réalisateurs sélectionnés."
         ],
         bullets: [
           "Branding et identité visuelle",
-          "Sites web Next.js sur mesure",
-          "Boutiques Shopify premium",
-          "Design produit et interfaces SaaS"
+          "Graphisme print et digital",
+          "Sites web sur mesure et e-commerce",
+          "Direction artistique de campagnes",
+          "Motion design, 3D et réalisation vidéo"
         ],
         highlight:
-          "Studio créatif Arras ne veut pas dire petit studio local. 42studio livre des projets premium avec une culture design comparable aux meilleures agences parisiennes."
+          "One vision. Every touchpoint. Une marque ne doit pas se fragmenter entre ceux qui la dessinent, ceux qui la construisent et ceux qui la filment."
       },
       {
         id: "proximite",
         kicker: "Proximité",
         title: "L'avantage d'un studio créatif de proximité",
         paragraphs: [
-          "Travailler avec un studio créatif Arras, c'est pouvoir se voir en présentiel pour un kick-off, un atelier branding ou une recette finale. C'est aussi bénéficier d'une réactivité et d'une connaissance du tissu économique local.",
-          "Les Hauts-de-France abritent des entrepreneurs ambitieux qui méritent un accompagnement créatif de niveau, sans obligation de passer par Paris. 42studio comble ce gap.",
-          "Pour les clients hors région, le studio fonctionne en remote avec la même exigence. La proximité est un plus, pas une condition."
+          "Travailler avec un studio basé à Arras, c'est pouvoir se voir pour lancer le projet, animer un atelier de marque, valider des maquettes ou préparer un tournage. Le reste du travail avance à distance, avec des points réguliers.",
+          "Les tournages et les shootings peuvent se faire à Arras, dans la région ou ailleurs, avec une équipe composée pour le projet.",
+          "Pour les marques hors région, le studio travaille à distance avec la même méthode. La proximité est un plus, pas une condition."
         ]
       },
       {
         id: "projets",
         kicker: "Projets",
-        title: "Brand, web, Shopify : des projets complets ou ciblés",
+        title: "Des projets complets ou ciblés",
         paragraphs: [
-          "Lancement D2C complet (identité + boutique Shopify) pour une marque cosmétique. Refonte site vitrine B2B pour un éditeur de logiciel. Identité et site pour un acteur du patrimoine local. Le studio créatif Arras 42studio s'adapte à chaque contexte.",
-          "Kyrent (SaaS), Hôtel Angleterre Versailles (hospitality), Nutripure (D2C), Arras Patrimoine (institutionnel) : la diversité des projets nourrit notre créativité et notre rigueur.",
-          "Chaque projet est piloté par un profil senior qui comprend le branding, le code et les enjeux business."
+          "Une identité pour une marque qui se lance, un site pour une offre qui a changé, un film pour un savoir-faire à montrer, des visuels 3D pour un produit pas encore fabriqué : le périmètre suit le besoin, la direction reste la même.",
+          "Sites, identités et e-commerce figurent déjà au portfolio, d'Arras Patrimoine à Profitys ou Apoticari. Motion design, 3D et vidéo sont produits avec les talents adaptés à chaque projet, sous la même direction créative.",
+          "Chaque projet commence par un échange pour comprendre ce qui doit changer, et se termine par des fichiers et des règles que vos équipes peuvent utiliser."
         ]
       },
       {
         id: "culture",
         kicker: "Culture",
-        title: "Une culture design exigeante, ancrée dans l'usage réel",
+        title: "Montrer le travail avant d'en parler",
         paragraphs: [
-          "42studio refuse le design décoratif. Chaque choix créatif sert un objectif : mémorisation, conversion, crédibilité, clarté. La beauté est une conséquence de la pertinence, pas une fin en soi.",
-          "Notre studio créatif Arras combine sensibilité esthétique et rigueur technique. Les sites sont rapides, les identités activables, les boutiques convertissent.",
-          "Plus de 60 marques nous font confiance. La recommandation et la fidélisation sont notre meilleure preuve."
+          "Le studio refuse le design décoratif. Chaque choix sert une idée : être reconnu, être compris, être retenu.",
+          "La méthode est simple : immersion, direction, production, livraison. Pas de couches d'intermédiaires, pas de livrables qui dorment dans un dossier.",
+          "Ideas, visuals, impact : c'est l'ordre dans lequel le studio travaille."
         ]
       }
     ],
@@ -1990,88 +1992,404 @@ export const seoKeywordPages: SeoKeywordPage[] = [
       {
         step: "01",
         title: "Premier échange",
-        text: "Découverte de votre projet, objectifs, contraintes et calendrier. Réponse sous 24 h."
+        text: "Votre projet, vos objectifs, vos contraintes et votre calendrier. Réponse sous 24 h."
       },
       {
         step: "02",
         title: "Proposition",
-        text: "Périmètre, méthode, planning et devis adapté à votre besoin (brand, web, Shopify ou combiné)."
+        text: "Périmètre, méthode, planning et devis détaillé par étape."
       },
       {
         step: "03",
-        title: "Production",
-        text: "Livraisons itératives avec points réguliers en visio ou en présentiel à Arras."
+        title: "Direction",
+        text: "Pistes créatives, validation, puis composition de l'équipe adaptée au projet."
       },
       {
         step: "04",
-        title: "Livraison",
-        text: "Remise des livrables, formation, documentation et go-live."
+        title: "Production",
+        text: "Design, développement, tournage, animation ou 3D, avec des points réguliers à distance ou à Arras."
       },
       {
         step: "05",
-        title: "Suivi",
-        text: "Accompagnement post-lancement, évolutions et optimisations continues."
+        title: "Livraison",
+        text: "Fichiers, formation, documentation, et une suite possible au mois."
       }
     ],
     deliverables: [
-      "Accompagnement brand, web ou Shopify selon projet",
-      "Interlocuteur senior unique",
-      "Livraisons itératives documentées",
-      "Design system et composants réutilisables",
-      "SEO technique intégré",
-      "Formation et documentation",
-      "Support post-lancement",
-      "Disponibilité présentiel Arras sur demande"
+      "Stratégie et plateforme de marque",
+      "Identité visuelle et guidelines",
+      "Supports graphiques print et digitaux",
+      "Site web sur mesure",
+      "Concepts et direction artistique",
+      "Motion design, 3D et vidéos",
+      "Déclinaisons pour les réseaux",
+      "Rendez-vous à Arras sur demande"
     ],
     whyUs: [
-      "Studio créatif basé à Arras avec portfolio national et international.",
-      "Brand, web et Shopify intégrés : un seul interlocuteur pour tout le digital.",
-      "+60 marques accompagnées, recommandation et fidélisation.",
-      "Exigence internationale, proximité locale."
+      "Un studio basé à Arras qui travaille aussi pour Paris et l'étranger.",
+      "Une direction créative unique, du brief à la livraison.",
+      "Une équipe composée pour chaque projet, pas un organigramme à occuper.",
+      "Réponse sous 24 h à chaque brief."
     ],
     faqs: [
       {
-        question: "42studio est-elle un studio créatif Arras ou une agence nationale ?",
+        question: "Où se trouve 42studio ?",
         answer:
-          "Les deux. 42studio est basé à Arras et rayonne sur toute la France et à l'international. Les clients locaux bénéficient de la proximité, les clients nationaux de la même exigence créative et technique."
+          "Le studio est basé à Arras, dans le Pas-de-Calais. Il travaille avec des marques de la région, de toute la France et de l'étranger, sur place ou à distance."
       },
       {
-        question: "Quelles expertises couvre le studio créatif Arras 42studio ?",
+        question: "Quelles expertises couvre le studio ?",
         answer:
-          "Trois piliers : Brand (stratégie, identité, charte), Web (sites sur mesure Next.js, SaaS, vitrines) et Shopify (boutiques e-commerce premium). Vous pouvez prendre une, deux ou les trois expertises selon votre projet."
+          "Quatre piliers : Brand (stratégie, identité, graphisme), Digital (sites web et e-commerce), Creative Direction (campagnes, lancements, direction photo et vidéo) et Visual Production (motion design, 3D, réalisation vidéo)."
       },
       {
-        question: "Peut-on travailler en présentiel avec le studio créatif Arras ?",
+        question: "Peut-on se rencontrer à Arras ?",
         answer:
-          "Oui. Rendez-vous à Arras pour kick-off, ateliers branding ou recettes finales. La majorité du travail se fait en remote avec des livraisons itératives, mais la porte est ouverte."
+          "Oui, pour lancer le projet, animer un atelier, valider une étape ou préparer un tournage. Le reste du travail avance à distance avec des points réguliers."
       },
       {
-        question: "Le studio créatif Arras travaille-t-il avec des startups ou des grands comptes ?",
+        question: "Avec quels types de clients travaillez-vous ?",
         answer:
-          "Principalement PME, startups D2C et ETI en croissance. Nous adaptons la méthode et le budget, pas l'exigence créative. Chaque projet reçoit la même attention senior."
+          "Des marques, des startups et des projets culturels qui ont une ambition de marque : lancement, repositionnement, levée de fonds, ouverture, nouvelle collection."
       },
       {
-        question: "Comment démarrer un projet avec 42studio à Arras ?",
+        question: "Comment démarrer un projet ?",
         answer:
-          "Envoyez un message via le formulaire contact avec votre brief, même incomplet. Nous répondons sous 24 h avec des questions de cadrage et proposons un échange visio ou en présentiel."
+          "Envoyez votre brief via le formulaire, même incomplet. Réponse sous 24 h avec quelques questions, puis un premier échange pour cadrer le projet."
       },
       {
-        question: "Le studio créatif Arras propose-t-il des forfaits ou de la régie ?",
+        question: "Proposez-vous un accompagnement au mois ?",
         answer:
-          "Les projets sont en forfait après cadrage. Pour les besoins récurrents (CRO, maintenance, évolutions), nous proposons des forfaits mensuels ou de la régie selon les besoins."
+          "Oui. Creative Partner est un accompagnement mensuel pour les marques qui publient, lancent et produisent souvent. Les projets ponctuels sont chiffrés au forfait après cadrage."
       }
     ],
     related: [
+      { label: "Graphiste à Arras", href: "/graphiste-arras" },
       { label: "Branding Arras", href: "/branding-arras" },
       { label: "Agence web Arras", href: "/agence-web-arras" },
-      { label: "Expertise Brand", href: "/brand" },
-      { label: "Pilier Shopify, branding & web", href: "/agence-shopify-branding-web" },
-      { label: "Réalisations", href: "/work" },
-      { label: "Contact", href: "/contact" }
+      { label: "Studio créatif Lille", href: "/studio-creatif-lille" },
+      { label: "Motion design", href: "/motion-design" },
+      { label: "Studio 3D", href: "/3d" },
+      { label: "Réalisation vidéo", href: "/realisation-video" },
+      { label: "Tous les services", href: "/services" }
     ],
-    caseSlugs: ["arras-patrimoine", "profitys", "nutripure"],
+    caseSlugs: ["arras-patrimoine", "profitys", "apoticari"],
     primaryCta: { label: "Rencontrer le studio", href: "/contact" },
-    ctaBand: "Un studio créatif à Arras, une exigence qui dépasse les frontières. Parlons de votre projet."
+    ctaBand: "Un studio créatif à Arras, une exigence sans frontières. Parlons de votre projet.",
+    showLocalBusiness: true
+  },
+  {
+    slug: "studio-creatif-lille",
+    keyword: "studio créatif Lille",
+    title: "Studio créatif Lille : branding, web, motion, 3D",
+    description:
+      "42studio accompagne les marques de Lille et de la métropole : branding, sites web, direction artistique, motion design, 3D et vidéo, depuis Arras.",
+    h1: "Un studio créatif pour les marques de Lille et de la métropole.",
+    intro:
+      "42studio est un studio créatif indépendant basé à Arras qui accompagne des marques ambitieuses de toute la métropole lilloise : identité, site web, direction artistique, motion design, 3D et vidéo. Une direction créative unique, la bonne équipe pour chaque projet, et des rendez-vous à Lille pour les étapes clés.",
+    eyebrow: "Local · Lille & métropole",
+    cluster: "local",
+    keywords: [
+      "studio créatif Lille",
+      "agence créative Lille",
+      "studio de création Lille",
+      "agence branding Lille",
+      "motion design Lille",
+      "studio 3D Lille",
+      "création site internet Lille",
+      "agence vidéo Lille"
+    ],
+    serviceName: "Studio créatif pour la métropole lilloise",
+    proofPoints: ["Lille & métropole", "Brand · Digital", "Motion · 3D · Vidéo", "Direction unique"],
+    stats: [
+      ["4", "Piliers créatifs"],
+      ["7", "Expertises"],
+      ["1", "Direction créative"],
+      ["24 h", "Réponse au brief"]
+    ],
+    sections: [
+      {
+        id: "lille",
+        kicker: "Lille",
+        title: "Un studio pour la métropole lilloise, sans les couches d'agence",
+        paragraphs: [
+          "La métropole lilloise compte beaucoup d'agences et de studios. 42studio y propose un modèle précis : un studio indépendant, une direction créative qui tient le projet du brief à la livraison, et une équipe composée selon le besoin.",
+          "Le studio travaille avec des marques, des startups et des projets culturels qui veulent une image à la hauteur de leur ambition : une identité qui se reconnaît, un site qui marque, des images qui racontent.",
+          "Basé à Arras, le studio se déplace à Lille pour les étapes qui comptent : lancement du projet, ateliers, validations, tournages. Le reste avance à distance, avec des points réguliers."
+        ],
+        bullets: [
+          "Branding et identité visuelle",
+          "Graphisme et supports",
+          "Sites web sur mesure et e-commerce",
+          "Direction artistique de campagnes",
+          "Motion design, 3D et réalisation vidéo"
+        ],
+        highlight:
+          "Un studio, pas une agence 360° : une seule direction créative, et les bons talents pour chaque projet."
+      },
+      {
+        id: "expertises",
+        kicker: "Expertises",
+        title: "De la marque à l'image animée",
+        paragraphs: [
+          "Brand : stratégie, naming, logo, identité visuelle, guidelines et graphisme. Digital : sites de marque, portfolios, sites de campagne et e-commerce premium.",
+          "Creative Direction : concepts de campagne, lancements, identité social, direction photo et vidéo. Visual Production : motion design, packshots et animations 3D, films de marque et contenus pour les réseaux.",
+          "Chaque pilier peut être pris seul. Enchaînés, ils évitent que la marque se fragmente entre plusieurs prestataires."
+        ]
+      },
+      {
+        id: "deroule",
+        kicker: "Déroulé",
+        title: "Comment se passe un projet avec un studio basé à Arras",
+        paragraphs: [
+          "Un premier échange en visio ou à Lille pour comprendre le projet, puis une proposition détaillée par étape.",
+          "Les ateliers de marque et les validations importantes peuvent se faire à Lille. Les tournages et shootings se préparent sur place, avec une équipe composée pour le projet.",
+          "Entre deux rendez-vous, le travail avance à distance, avec des points réguliers et des livrables partagés."
+        ]
+      },
+      {
+        id: "pour-qui",
+        kicker: "Pour qui",
+        title: "Marques, startups et projets culturels",
+        paragraphs: [
+          "Une marque qui se lance ou se repositionne. Une startup qui vient de lever et doit changer de dimension. Un lieu, un festival ou un label qui veut une image à la hauteur de sa programmation.",
+          "Le point commun : une ambition de marque et l'envie de travailler avec un studio exigeant, plutôt qu'avec une chaîne de prestataires."
+        ]
+      }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Premier échange",
+        text: "En visio ou à Lille : votre projet, vos objectifs, votre calendrier. Réponse sous 24 h au brief."
+      },
+      {
+        step: "02",
+        title: "Proposition",
+        text: "Périmètre, méthode, planning et devis détaillé par étape."
+      },
+      {
+        step: "03",
+        title: "Direction créative",
+        text: "Pistes, validation, puis composition de l'équipe adaptée."
+      },
+      {
+        step: "04",
+        title: "Production",
+        text: "Design, développement, tournage, animation ou 3D, avec des points réguliers."
+      },
+      {
+        step: "05",
+        title: "Livraison et suite",
+        text: "Fichiers, formation, et un accompagnement mensuel possible."
+      }
+    ],
+    deliverables: [
+      "Stratégie et plateforme de marque",
+      "Identité visuelle et guidelines",
+      "Site web sur mesure",
+      "Concepts et direction artistique",
+      "Vidéos, motion design et images 3D",
+      "Déclinaisons pour les réseaux et le print"
+    ],
+    whyUs: [
+      "Un studio basé à Arras, dans les Hauts-de-France.",
+      "Des rendez-vous possibles à Lille pour les étapes clés.",
+      "Une direction créative unique, la bonne équipe pour chaque projet.",
+      "Réponse sous 24 h à chaque brief."
+    ],
+    faqs: [
+      {
+        question: "42studio est-il basé à Lille ?",
+        answer:
+          "Non. Le studio est basé à Arras, dans les Hauts-de-France. Il travaille avec des marques de Lille et de la métropole, avec des rendez-vous sur place pour les étapes clés et un suivi à distance le reste du temps."
+      },
+      {
+        question: "Quelles expertises proposez-vous aux marques lilloises ?",
+        answer:
+          "Branding et identité visuelle, graphisme, sites web sur mesure et e-commerce, direction artistique, motion design, 3D et réalisation vidéo."
+      },
+      {
+        question: "Pouvez-vous tourner une vidéo ou organiser un shooting à Lille ?",
+        answer:
+          "Oui. Les tournages et shootings peuvent se faire à Lille ou dans la région, avec une équipe composée pour le projet."
+      },
+      {
+        question: "Travaillez-vous avec des startups ?",
+        answer:
+          "Oui, notamment après une levée de fonds ou avant un lancement, quand la marque doit changer de dimension."
+      },
+      {
+        question: "Comment démarrer un projet ?",
+        answer:
+          "Décrivez votre projet via le formulaire, même incomplet. Réponse sous 24 h, puis un premier échange pour cadrer le périmètre."
+      }
+    ],
+    related: [
+      { label: "Studio créatif Arras", href: "/studio-creatif-arras" },
+      { label: "Branding et identité", href: "/brand" },
+      { label: "Site web sur mesure", href: "/web" },
+      { label: "Motion design", href: "/motion-design" },
+      { label: "Studio 3D", href: "/3d" },
+      { label: "Réalisation vidéo", href: "/realisation-video" }
+    ],
+    caseSlugs: ["apoticari", "profitys", "second-step"],
+    primaryCta: { label: "Parler de votre projet", href: "/contact" },
+    ctaBand: "Une marque à lancer ou à faire évoluer dans la métropole lilloise ? Parlons-en.",
+    showLocalBusiness: true
+  },
+  {
+    slug: "graphiste-arras",
+    keyword: "graphiste Arras",
+    title: "Graphiste à Arras : logo, identité et print",
+    description:
+      "Studio de graphisme à Arras : création de logo, identité visuelle, affiches, brochures, packaging et supports digitaux pour les marques de la région.",
+    h1: "Graphiste à Arras : un studio pour votre logo, votre identité et vos supports.",
+    intro:
+      "Vous cherchez un graphiste à Arras ? 42studio est un studio créatif basé à Arras qui conçoit logos, identités visuelles et supports graphiques pour les entreprises, commerces, associations, lieux culturels et marques de la région. Un interlocuteur unique, une exigence de studio, des rendez-vous sur place.",
+    eyebrow: "Local · Arras / Graphisme",
+    cluster: "local",
+    keywords: [
+      "graphiste Arras",
+      "graphisme Arras",
+      "création logo Arras",
+      "identité visuelle Arras",
+      "studio graphique Arras",
+      "graphiste Pas-de-Calais"
+    ],
+    serviceName: "Graphisme à Arras",
+    proofPoints: ["Arras", "Logo & identité", "Print & digital", "Rendez-vous sur place"],
+    stats: [
+      ["Arras", "Studio"],
+      ["Logo", "Identité · Print"],
+      ["24 h", "Réponse au brief"],
+      ["1", "Interlocuteur"]
+    ],
+    sections: [
+      {
+        id: "studio",
+        kicker: "Le studio",
+        title: "Un studio de graphisme à Arras",
+        paragraphs: [
+          "42studio est basé à Arras. Pour un logo, une identité ou une série de supports, on peut se voir, regarder les épreuves ensemble et avancer vite.",
+          "La différence avec un graphiste freelance : une direction créative qui tient l'ensemble de la marque, et la possibilité de mobiliser d'autres talents quand le projet le demande, illustrateur, photographe ou motion designer.",
+          "La même exigence s'applique à une affiche qu'à une identité complète : lisibilité, cohérence, fichiers propres."
+        ]
+      },
+      {
+        id: "identite",
+        kicker: "Logo et identité",
+        title: "Logo, identité visuelle et charte graphique",
+        paragraphs: [
+          "Création ou refonte de logo, avec ses variantes et une version réduite pour les réseaux et le site. Palette, typographies et règles d'usage réunies dans une charte simple à appliquer.",
+          "Pour une marque qui évolue, une refonte peut garder ce qui fait la reconnaissance et corriger le reste."
+        ],
+        bullets: ["Création et refonte de logo", "Palette et typographies", "Charte graphique", "Guidelines pour vos équipes"]
+      },
+      {
+        id: "supports",
+        kicker: "Supports",
+        title: "Supports print et digitaux",
+        paragraphs: [
+          "Affiches, flyers, brochures, catalogues, cartes de visite, packaging, signalétique, visuels pour les réseaux et présentations : chaque support applique l'identité avec précision.",
+          "Les fichiers sont préparés pour l'imprimeur de votre choix, à Arras ou ailleurs, et le studio peut suivre le bon à tirer."
+        ],
+        bullets: ["Affiches et flyers", "Brochures et catalogues", "Packaging et étiquettes", "Visuels pour les réseaux"]
+      },
+      {
+        id: "pour-qui",
+        kicker: "Pour qui",
+        title: "Entreprises, commerces, associations et lieux culturels",
+        paragraphs: [
+          "Des entreprises qui veulent une image plus nette, des commerces qui ouvrent ou se renouvellent, des associations et des lieux culturels qui ont besoin de supports réguliers.",
+          "Le périmètre s'adapte : un logo seul, une identité complète, ou un accompagnement au mois pour les supports récurrents."
+        ]
+      }
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Rendez-vous",
+        text: "À Arras ou en visio : votre activité, vos besoins, vos délais."
+      },
+      {
+        step: "02",
+        title: "Proposition",
+        text: "Périmètre, planning et devis détaillé par élément."
+      },
+      {
+        step: "03",
+        title: "Création",
+        text: "Pistes graphiques, choix, puis mise au point."
+      },
+      {
+        step: "04",
+        title: "Déclinaisons",
+        text: "Supports print et digitaux à partir de l'identité validée."
+      },
+      {
+        step: "05",
+        title: "Fichiers et impression",
+        text: "Fichiers prêts à imprimer, sources et suivi du bon à tirer si besoin."
+      }
+    ],
+    deliverables: [
+      "Logo et variantes",
+      "Charte graphique",
+      "Cartes de visite et papeterie",
+      "Affiches et flyers",
+      "Brochures et catalogues",
+      "Visuels pour les réseaux"
+    ],
+    whyUs: [
+      "Un studio basé à Arras, disponible pour se voir.",
+      "La même exigence pour une affiche que pour une identité complète.",
+      "Des fichiers prêts pour l'imprimeur, sans surprise au bon à tirer.",
+      "Réponse sous 24 h à chaque demande."
+    ],
+    faqs: [
+      {
+        question: "Où se trouve le studio ?",
+        answer:
+          "42studio est basé à Arras, dans le Pas-de-Calais. Les rendez-vous peuvent se faire sur place ou en visio."
+      },
+      {
+        question: "Créez-vous des logos pour les commerces et les petites entreprises ?",
+        answer:
+          "Oui. Le périmètre s'adapte : un logo et ses variantes, ou une identité complète avec charte et supports."
+      },
+      {
+        question: "Pouvez-vous refaire uniquement nos supports ?",
+        answer:
+          "Oui, si votre identité existe et fonctionne. Le studio part de vos fichiers et de vos règles, ou fixe quelques règles de base si elles manquent."
+      },
+      {
+        question: "Travaillez-vous avec les imprimeurs d'Arras ?",
+        answer:
+          "Les fichiers sont préparés selon les exigences de l'imprimeur de votre choix, à Arras ou ailleurs, et le studio peut suivre le bon à tirer."
+      },
+      {
+        question: "Combien coûte un logo ?",
+        answer:
+          "Le prix dépend du périmètre : un logo seul, un logo avec charte, ou une identité complète avec supports. Le devis détaille chaque élément après un premier échange."
+      },
+      {
+        question: "Faites-vous aussi des sites web ?",
+        answer:
+          "Oui. Le studio conçoit aussi des sites web sur mesure et peut prolonger votre identité en ligne."
+      }
+    ],
+    related: [
+      { label: "Studio créatif Arras", href: "/studio-creatif-arras" },
+      { label: "Branding Arras", href: "/branding-arras" },
+      { label: "Graphisme et design graphique", href: "/graphisme" },
+      { label: "Branding et identité visuelle", href: "/brand" },
+      { label: "Agence web Arras", href: "/agence-web-arras" }
+    ],
+    caseSlugs: ["apoticari", "studio-boucle-paris", "second-step"],
+    primaryCta: { label: "Parler de votre projet", href: "/contact?type=graphisme" },
+    ctaBand: "Un logo, une identité ou des supports à créer à Arras ? Parlons-en.",
+    showLocalBusiness: true
   },
   {
     slug: "branding-arras",
@@ -2247,7 +2565,7 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "site-vitrine-saas",
     keyword: "site vitrine SaaS",
-    title: "Site vitrine SaaS | Expliquer, convaincre, convertir",
+    title: "Site vitrine SaaS : expliquer et convaincre",
     description:
       "Site vitrine SaaS par 42studio. Pages produit structurées, parcours vers la démo, SEO technique et design premium. Kyrent, Digit Solution.",
     h1: "Site vitrine SaaS : expliquer, convaincre, convertir.",
@@ -2419,9 +2737,9 @@ export const seoKeywordPages: SeoKeywordPage[] = [
   {
     slug: "refonte-identite-visuelle",
     keyword: "refonte identité visuelle",
-    title: "Refonte identité visuelle | Moderniser sans perdre l'ADN",
+    title: "Refonte d'identité visuelle sans perdre l'ADN",
     description:
-      "Refonte identité visuelle par 42studio. Repositionnement, nouveau logo, charte modernisée et déploiement digital. Évoluer sans effacer ce qui construit la reconnaissance.",
+      "Refonte d'identité visuelle par 42studio : repositionnement, logo, charte modernisée et déploiement. Évoluer sans effacer ce qui fait la reconnaissance.",
     h1: "Refonte identité visuelle : moderniser sans perdre l'ADN.",
     intro:
       "Votre identité visuelle ne vous ressemble plus, ou ne suit plus votre ambition ? La refonte identité visuelle est l'occasion de moderniser votre image, clarifier votre positionnement et déployer une marque cohérente sur tous vos points de contact. 42studio accompagne l'évolution, pas la révolution aveugle.",

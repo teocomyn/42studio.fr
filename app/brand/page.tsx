@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { SeoServicePage } from "@/components/SeoServicePage";
-import { getSeoServicePage } from "@/data/seo-pages";
+import { CreativeServicePage } from "@/components/CreativeServicePage";
+import { getCreativeService } from "@/data/creative-services";
 import { createMetadata } from "@/lib/seo";
 
-const page = getSeoServicePage("brand")!;
+const service = getCreativeService("brand")!;
 
 export const metadata: Metadata = createMetadata({
-  title: page.title,
-  description: page.description,
-  path: "/brand",
-  keywords: page.keywords
+  title: service.title,
+  description: service.description,
+  path: `/${service.slug}`,
+  keywords: service.keywords,
+  ogImage: service.ogImage
 });
 
 export default function BrandPage() {
-  return <SeoServicePage page={page} />;
+  return <CreativeServicePage service={service} />;
 }

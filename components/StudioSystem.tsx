@@ -16,25 +16,25 @@ const capabilities = [
   },
   {
     index: "02",
-    title: "Web",
-    detail: "Raconter · Convertir",
+    title: "Digital",
+    detail: "Raconter · Marquer",
     href: "/web",
     position: "left-[80%] top-[16%]",
     path: "M 390 238 H 476 Q 494 238 494 220 V 120 Q 494 100 514 100 H 584"
   },
   {
     index: "03",
-    title: "Shopify",
-    detail: "Vendre · Optimiser",
-    href: "/shopify",
+    title: "Direction",
+    detail: "Imaginer · Diriger",
+    href: "/direction-artistique",
     position: "left-[20%] top-[84%]",
     path: "M 330 282 H 244 Q 226 282 226 300 V 400 Q 226 420 206 420 H 138"
   },
   {
     index: "04",
-    title: "Produit",
-    detail: "Simplifier · Faire adopter",
-    href: "/produit",
+    title: "Production",
+    detail: "Animer · Filmer",
+    href: "/services#visual-production",
     position: "left-[80%] top-[84%]",
     path: "M 390 282 H 476 Q 494 282 494 300 V 400 Q 494 420 514 420 H 584"
   }
@@ -64,7 +64,7 @@ export function StudioSystem() {
         <SectionHead
           eyebrow="02 / Système intégré"
           title="Tout se répond. Rien ne se perd."
-          body="La stratégie donne la direction. Le design crée le langage. Le web, Shopify et le produit le mettent à l’épreuve du réel. Une seule équipe garde le fil jusqu’au lancement."
+          body="La stratégie donne la direction. L’identité crée le langage. Le site, la campagne, le motion, la 3D et la vidéo le font vivre. Une seule direction créative garde le fil jusqu’au lancement."
         />
 
         <div className="grid border border-white/10 bg-black/30 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(36rem,1.28fr)]">

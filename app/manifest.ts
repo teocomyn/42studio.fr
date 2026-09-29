@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "42studio",
     short_name: "42studio",
-    description: "Studio créatif Brand, Web et Produit basé à Arras.",
+    description: "Studio créatif à Arras : branding, graphisme, sites web, direction artistique, motion design, 3D et vidéo.",
     start_url: "/",
     display: "standalone",
     background_color: "#070708",

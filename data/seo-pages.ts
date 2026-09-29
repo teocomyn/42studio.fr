@@ -24,104 +24,6 @@ export type SeoServicePage = {
 
 export const seoServicePages: SeoServicePage[] = [
   {
-    slug: "brand",
-    title: "Expertise branding · Identité de marque & design system",
-    eyebrow: "Brand / Identité",
-    h1: "Une marque pensée comme un système.",
-    description:
-      "42studio conçoit des identités de marque complètes : stratégie, naming, logo, direction artistique, charte graphique et design system.",
-    intro:
-      "Le branding n'est pas une couche décorative. C'est l'architecture qui permet à une entreprise d'être reconnue, comprise et mémorisée sur tous ses points de contact.",
-    keywords: ["expertise branding", "identité visuelle", "charte graphique", "design system marque", "direction artistique"],
-    serviceName: "Branding et identité visuelle",
-    proofPoints: ["Plateforme de marque", "Logo et système visuel", "Charte activable", "Kit digital"],
-    sections: [
-      {
-        title: "Stratégie avant esthétique",
-        text:
-          "On commence par clarifier le positionnement, les audiences, la promesse et la tension créative. Le logo arrive ensuite comme conséquence d'un territoire solide."
-      },
-      {
-        title: "Identité faite pour l'écran",
-        text:
-          "Chaque signe, grille, typographie et règle de composition est pensé pour vivre en site web, social, présentation, produit et campagne."
-      },
-      {
-        title: "Un système exploitable",
-        text:
-          "La livraison ne s'arrête pas à de beaux fichiers. Vous repartez avec des règles, composants et usages qui permettent à la marque de rester cohérente."
-      }
-    ],
-    faqs: [
-      {
-        question: "42studio crée-t-il uniquement des logos ?",
-        answer:
-          "Non. Le logo est une pièce du système. 42studio travaille aussi la stratégie, la direction artistique, la charte, les déclinaisons et les usages digitaux."
-      },
-      {
-        question: "Le studio travaille-t-il avec des clients hors Arras ?",
-        answer:
-          "Oui. 42studio est basé à Arras et accompagne des projets partout en France et à l'international."
-      }
-    ],
-    related: [
-      { label: "Création d'identité de marque", href: "/creation-identite-de-marque" },
-      { label: "Agence branding France", href: "/agence-branding-france" },
-      { label: "Branding e-commerce", href: "/branding-e-commerce" },
-      { label: "Refonte d'identité visuelle", href: "/refonte-identite-visuelle" },
-      { label: "Parler d'un projet", href: "/contact" }
-    ]
-  },
-  {
-    slug: "web",
-    title: "Expertise web · Sites sur mesure Next.js & vitrines",
-    eyebrow: "Web / Sites sur mesure",
-    h1: "Des sites rapides, désirables et administrables.",
-    description:
-      "42studio crée des sites web sur mesure avec Next.js, animation, SEO technique, design system et intégration CMS ou Shopify.",
-    intro:
-      "Un site vitrine premium doit faire plus que présenter une offre. Il doit installer la confiance, clarifier la valeur et transformer l'identité en expérience.",
-    keywords: ["expertise web", "site Next.js", "site vitrine premium", "SEO technique", "design system web"],
-    serviceName: "Création de site web sur mesure",
-    proofPoints: ["Architecture UX", "Interface responsive", "SEO technique", "Front-end animé"],
-    sections: [
-      {
-        title: "Design et front-end ensemble",
-        text:
-          "Les maquettes sont pensées avec le code en tête : animations, contraintes responsive, accessibilité, performance et maintien du système dans le temps."
-      },
-      {
-        title: "SEO intégré dès la structure",
-        text:
-          "On travaille les titles, descriptions, canonicals, sitemap, données structurées, hiérarchie de contenu et maillage interne dès la conception."
-      },
-      {
-        title: "Performance sans site générique",
-        text:
-          "Le site peut être immersif sans devenir lourd : lazy-loading, composants client ciblés, images optimisées et fallback propre pour les animations."
-      }
-    ],
-    faqs: [
-      {
-        question: "42studio peut-il créer un site vitrine complet ?",
-        answer:
-          "Oui. Le studio prend en charge l'architecture, la direction artistique, l'interface, le développement, le SEO technique et le déploiement."
-      },
-      {
-        question: "Le site peut-il être connecté à un CMS ?",
-        answer:
-          "Oui. Selon le besoin, le site peut être connecté à Shopify, un CMS headless ou une solution plus légère."
-      }
-    ],
-    related: [
-      { label: "Agence web à Arras", href: "/agence-web-arras" },
-      { label: "Création de site sur mesure", href: "/creation-site-internet-sur-mesure" },
-      { label: "Refonte de site vitrine", href: "/refonte-site-vitrine" },
-      { label: "Site vitrine SaaS", href: "/site-vitrine-saas" },
-      { label: "Nous contacter", href: "/contact" }
-    ]
-  },
-  {
     slug: "produit",
     title: "Design produit digital",
     eyebrow: "Produit / UX UI",
@@ -170,7 +72,7 @@ export const seoServicePages: SeoServicePage[] = [
   },
   {
     slug: "shopify",
-    title: "Expertise Shopify · Thèmes sur mesure, headless & CRO",
+    title: "E-commerce Shopify premium et sur mesure",
     eyebrow: "Shopify / E-commerce",
     h1: "Un e-commerce premium sans perdre la conversion.",
     description:
@@ -223,7 +125,7 @@ export const seoServicePages: SeoServicePage[] = [
     eyebrow: "Local / Arras",
     h1: "Un studio créatif à Arras avec une ambition internationale.",
     description:
-      "42studio accompagne les entreprises d'Arras, des Hauts-de-France et d'ailleurs en branding, site web, Shopify et produit digital.",
+      "42studio accompagne les marques d'Arras, des Hauts-de-France et d'ailleurs en branding, identité visuelle, graphisme, site web et direction artistique.",
     intro:
       "Être basé à Arras ne veut pas dire penser petit. 42studio accompagne les marques locales, nationales et internationales avec le même niveau d'exigence.",
     keywords: ["branding Arras", "agence communication Arras", "agence web Arras", "studio créatif Arras", "création logo Arras"],
@@ -259,8 +161,10 @@ export const seoServicePages: SeoServicePage[] = [
       }
     ],
     related: [
-      { label: "Branding", href: "/brand" },
-      { label: "Agence web Arras", href: "/web" },
+      { label: "Branding et identité visuelle", href: "/brand" },
+      { label: "Graphiste à Arras", href: "/graphiste-arras" },
+      { label: "Studio créatif à Arras", href: "/studio-creatif-arras" },
+      { label: "Agence web Arras", href: "/agence-web-arras" },
       { label: "Contact", href: "/contact" }
     ]
   }

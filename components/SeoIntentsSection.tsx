@@ -26,10 +26,10 @@ export function SeoIntentsSection({ compact = false }: SeoIntentsSectionProps) {
               </h2>
             </div>
             <Link
-              href="/agence-shopify-branding-web"
+              href="/services"
               className="inline-flex h-12 shrink-0 items-center gap-3 border border-white/20 px-5 font-mono text-[11px] uppercase tracking-[0.12em] transition hover:bg-white hover:text-black"
             >
-              Toutes les expertises <span aria-hidden>↗</span>
+              Tous les services <span aria-hidden>↗</span>
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-2">
@@ -53,17 +53,17 @@ export function SeoIntentsSection({ compact = false }: SeoIntentsSectionProps) {
       <Reveal>
         <span className="mono-label">Nos accompagnements</span>
         <h2 className="mt-4 max-w-3xl text-[clamp(1.8rem,4vw,3rem)] font-light tracking-[-0.04em]">
-          Créer, refondre ou faire évoluer votre présence digitale
+          Créer, refondre ou faire évoluer votre marque
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--muted)]">
-          Lancer une boutique Shopify, repenser votre identité ou moderniser votre site :
-          découvrez le déroulement, les livrables et les réalisations liés à votre projet.
+          Lancer une marque, repenser votre identité, refaire votre site ou ouvrir une boutique :
+          le déroulement, les livrables et les réalisations liés à chaque type de projet.
         </p>
         <Link
           href="/agence-shopify-branding-web"
           className="mt-8 inline-flex h-12 items-center gap-3 bg-white px-5 font-mono text-[11px] uppercase tracking-[0.12em] text-black transition hover:bg-white/90"
         >
-          Découvrir les accompagnements <span aria-hidden>↗</span>
+          Branding, web et e-commerce : le guide <span aria-hidden>↗</span>
         </Link>
       </Reveal>
 

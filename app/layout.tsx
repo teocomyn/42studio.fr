@@ -8,6 +8,8 @@ import { createMetadata, founderJsonLd, organizationJsonLd, websiteJsonLd } from
 import { getGtagConsentInitScript } from "@/lib/gtag-consent-script";
 import "./globals.css";
 
+const homeTitle = "42studio · Studio créatif : branding, web, motion, 3D, vidéo";
+
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
@@ -26,22 +28,25 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   ...createMetadata({
-    title: "Brand, Web, Produit",
+    title: homeTitle,
     description:
-      "42studio est un studio créatif basé à Arras qui a accompagné plus de 60 marques en branding, sites web, e-commerce Shopify et produits digitaux.",
+      "Studio créatif à Arras : branding, graphisme, sites web, direction artistique, motion design, 3D et vidéo pour des marques ambitieuses.",
     path: "/",
     keywords: [
-      "studio branding Arras",
-      "agence web Arras",
-      "studio design France",
-      "création site Shopify",
-      "design system marque",
-      "studio produit digital"
+      "studio créatif",
+      "studio créatif Arras",
+      "agence branding",
+      "identité visuelle",
+      "création site web sur mesure",
+      "direction artistique",
+      "motion design",
+      "studio 3D",
+      "réalisation vidéo"
     ]
   }),
   metadataBase: new URL("https://42studio.fr"),
   title: {
-    default: "42studio · Studio créatif Brand, Web & Produit à Arras",
+    default: homeTitle,
     template: "%s - 42studio"
   },
   applicationName: "42studio",
@@ -51,7 +56,7 @@ export const metadata: Metadata = {
   ],
   creator: "42studio",
   publisher: "42studio",
-  category: "Design studio",
+  category: "Creative studio",
   icons: {
     icon: [{ url: "/icon", sizes: "32x32", type: "image/png" }],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }]

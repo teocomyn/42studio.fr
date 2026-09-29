@@ -117,9 +117,9 @@ export default function StudioPage() {
       <section className="section-pad border-b border-white/10">
         <SectionHead
           eyebrow="Capacités"
-          title="Trois disciplines. Un seul standard d'exécution."
+          title="Quatre piliers. Un seul standard d'exécution."
         />
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {services.map((service) => (
             <Reveal key={service.id}>
               <article

@@ -17,8 +17,7 @@ const titleLines = [
 
 const stats = [
   { value: "+60", label: "Marques accompagnées" },
-  // Compté depuis data/projects.ts (category === "E-commerce Shopify").
-  { value: "36", label: "Boutiques Shopify" },
+  { value: "7", label: "Expertises créatives" },
   { value: "ARRAS", label: "Studio · Worldwide" }
 ] as const;
 
@@ -71,7 +70,7 @@ export function Hero() {
                 Studio créatif
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/55">
-                Brand · Web · Produit
+                Brand · Digital · Motion · 3D · Vidéo
               </span>
             </div>
 
@@ -83,6 +82,7 @@ export function Hero() {
                     style={{ animationDelay: `${0.05 + index * 0.1}s` }}
                   >
                     {renderAccent(line.text, line.accent)}
+                    {index < titleLines.length - 1 ? " " : null}
                   </span>
                 </span>
               ))}
@@ -128,8 +128,8 @@ export function Hero() {
             style={{ animationDelay: "0.24s" }}
           >
             <h2 className="max-w-md text-[15px] font-normal leading-7 text-white/70 md:text-base">
-              Studio créatif à Arras&nbsp;: sites Shopify, branding et sites web sur mesure qui
-              transforment l&apos;identité en conversion — de la stratégie au déploiement.
+              Studio créatif à Arras&nbsp;: branding, graphisme, sites web, direction artistique, motion
+              design, 3D et réalisation vidéo, pensés comme un seul système.
             </h2>
 
             <dl className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">

@@ -1,6 +1,6 @@
 export function Marquee() {
   const content =
-    "Branding / Identité visuelle / Design system / Sites web / Shopify / E-commerce / Apps & produit / Direction artistique / Naming /";
+    "Branding / Identité visuelle / Graphisme / Sites web / Direction artistique / Motion design / 3D / Réalisation vidéo / Naming /";
 
   return (
     <div aria-hidden className="relative z-10 overflow-hidden border-y border-white/10 bg-[var(--bg)] py-5">

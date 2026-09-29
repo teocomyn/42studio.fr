@@ -2,7 +2,7 @@ export const contactFaqs = [
   {
     question: "Quel budget prévoir pour un projet avec 42studio ?",
     answer:
-      "Les créations de boutiques Shopify et sites sur mesure démarrent généralement entre 5 000 et 20 000 € HT selon le périmètre ; les interventions ponctuelles (audit, optimisation, accompagnement) sont facturées 550 € HT/jour. Le champ budget du formulaire nous aide à proposer le bon format dès la première réponse."
+      "Les sites et boutiques sur mesure démarrent généralement entre 5 000 et 20 000 € HT selon le périmètre ; les interventions ponctuelles sont facturées 550 € HT par jour. Identité, direction artistique, motion design, 3D et vidéo sont chiffrés sur devis après le premier échange."
   },
   {
     question: "Quel délai pour obtenir une réponse de 42studio ?",
@@ -17,12 +17,12 @@ export const contactFaqs = [
   {
     question: "Quels types de projets acceptez-vous ?",
     answer:
-      "Branding et identité de marque, sites vitrines sur mesure, boutiques Shopify, refontes e-commerce, sites SaaS et design produit digital."
+      "Branding et identité visuelle, graphisme, sites web sur mesure et e-commerce, direction artistique de campagnes, motion design, 3D et réalisation vidéo."
   },
   {
-    question: "Proposez-vous des refontes Shopify ou des créations from scratch ?",
+    question: "Créez-vous de zéro ou faites-vous évoluer l'existant ?",
     answer:
-      "Les deux. Refonte Shopify, création boutique, optimisation conversion et branding e-commerce font partie de nos expertises principales."
+      "Les deux. Une identité, un site ou une campagne peuvent être créés de zéro ou repris à partir de l'existant, en gardant ce qui fonctionne déjà."
   },
   {
     question: "Comment se déroule un projet avec 42studio ?",
@@ -45,7 +45,7 @@ export const contactProcessSteps = [
   {
     step: "03",
     title: "Production",
-    text: "Design, intégration, Shopify ou développement Next.js. Itérations courtes et réactives."
+    text: "Design, développement, tournage, animation ou 3D selon le projet. Itérations courtes et réactives."
   },
   {
     step: "04",
@@ -55,6 +55,6 @@ export const contactProcessSteps = [
   {
     step: "05",
     title: "Suivi",
-    text: "Optimisation CRO, SEO ou évolutions selon vos priorités business."
+    text: "Évolutions, déclinaisons et accompagnement mensuel selon vos priorités."
   }
 ] as const;
