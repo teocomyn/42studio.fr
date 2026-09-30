@@ -73,12 +73,24 @@ export function GET() {
       section.paragraphs?.forEach((paragraph) => lines.push(paragraph));
       section.bullets?.forEach((bullet) => lines.push(`- ${bullet}`));
       section.steps?.forEach((step, index) => lines.push(`${index + 1}. ${step.title} : ${step.text}`));
+      if (section.example) lines.push(`${section.example.title} : ${section.example.text}`);
+      if (section.diagram) {
+        lines.push(section.diagram.caption);
+        section.diagram.stages.forEach((stage) => lines.push(`- ${stage.title} : ${stage.text}`));
+      }
+      section.links?.forEach((link) => lines.push(`À lire : ${link.label} — ${siteUrl}${link.href}. ${link.description}`));
       if (section.table) {
         lines.push(`| ${section.table.head.join(" | ")} |`, `| ${section.table.head.map(() => "---").join(" | ")} |`);
         section.table.rows.forEach((row) => lines.push(`| ${row.join(" | ")} |`));
       }
       lines.push("");
     }
+    if (article.tool) {
+      lines.push(`### Outil : ${article.tool.title}`, article.tool.intro);
+      article.tool.items.forEach((item) => lines.push(`- ${item.label} : ${item.detail}`));
+    }
+    if (article.cta) lines.push(`Projet : ${article.cta.title} ${article.cta.text} ${siteUrl}${article.cta.href}`);
+    article.sources?.forEach((source) => lines.push(`Référence : ${source.title} (${source.href}). ${source.note}`));
     if (article.faqs.length) {
       lines.push("### Questions fréquentes", ...article.faqs.flatMap((faq) => [`Q : ${faq.question}`, `R : ${faq.answer}`, ""]));
     }

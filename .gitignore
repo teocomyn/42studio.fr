@@ -23,3 +23,7 @@ pnpm-debug.log*
 # system
 .DS_Store
 .vercel
+
+# Python verification scripts
+__pycache__/
+*.pyc

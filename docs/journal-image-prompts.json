@@ -1,0 +1,46 @@
+{
+  "tool": "image_gen built-in",
+  "style": "Monochrome editorial still life, matte black, off-white and silver, tactile paper, restrained studio light. Landscape 3:2. No text, brand logos or people. Fictional illustrative concepts.",
+  "images": [
+    {
+      "asset": "/journal/images/identite-budget.webp",
+      "subject": "An overhead editorial still life of off-white identity stationery, black embossed paper, a geometric black emblem, carefully fanned neutral paper swatches, a metal ruler. A visual metaphor for scope and craft, no currency."
+    },
+    {
+      "asset": "/journal/images/studio-agence-freelance.webp",
+      "subject": "Three different sculptural workstations on a charcoal tabletop: one solitary cube, three aligned cubes, a larger interconnected modular structure. Editorial physical maquette representing three ways to organize creative work."
+    },
+    {
+      "asset": "/journal/images/refonte-web.webp",
+      "subject": "Architectural paper wireframe website layouts and an elegant blank black laptop arranged in orderly layers on dark desk, soft side lighting, blank geometric interface shapes, no readable words."
+    },
+    {
+      "asset": "/journal/images/rebranding.webp",
+      "subject": "Two related sculptural geometric emblems, one original circle with cutout, one carefully evolved circle with same cutout, connected by a folded white paper ribbon. Recognizability and evolution."
+    },
+    {
+      "asset": "/journal/images/brand-digital.webp",
+      "subject": "An abstract printed identity poster and a laptop with same geometric black and white motif, side by side, immaculate design studio still life, continuity between paper and screen."
+    },
+    {
+      "asset": "/journal/images/startup-branding.webp",
+      "subject": "An orderly launch kit on black table: folded off-white poster, a single business card, minimal pitch booklet and small blank website screen, one distinctive geometric symbol recurring without text."
+    },
+    {
+      "asset": "/journal/images/campagne-direction-artistique.webp",
+      "subject": "One striking monochrome geometric sculpture repeated through a portrait poster, a landscape layout and a square art print, arranged as a sophisticated campaign art direction set, unmistakably same visual concept."
+    },
+    {
+      "asset": "/journal/images/demo-saas.webp",
+      "subject": "Three floating matte black product interface frames with precise white modular panels and one fine white connecting ribbon showing a task unfolding. Elegant conceptual software storyboard, not a real application."
+    },
+    {
+      "asset": "/journal/images/rendu-3d.webp",
+      "subject": "A high end black cosmetic bottle with silver cap shown half as precise white wireframe and half as photoreal product render, neutral seamless charcoal studio, dramatic but restrained lighting."
+    },
+    {
+      "asset": "/journal/images/creative-partner.webp",
+      "subject": "A top down art studio desk with a neat repeating sequence of white paper folios, one black binder, metal pencil, contact sheets of geometric art. A continuous rhythm of creative production."
+    }
+  ]
+}

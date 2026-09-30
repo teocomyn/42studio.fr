@@ -2,6 +2,8 @@
 // que se posent les marques (et être cités par les moteurs de réponse IA).
 // Règles : aucun chiffre de résultat, aucun prix non arbitré, voix 42STUDIO.
 
+import { newJournalArticles } from "@/data/journal-expansion";
+
 export type JournalSection = {
   id: string;
   title: string;
@@ -9,6 +11,16 @@ export type JournalSection = {
   bullets?: string[];
   steps?: Array<{ title: string; text: string }>;
   table?: { caption: string; head: string[]; rows: string[][] };
+  links?: Array<{ href: string; label: string; description: string }>;
+  example?: { title: string; text: string };
+  diagram?: { caption: string; stages: Array<{ title: string; text: string }> };
+};
+
+export type JournalTool = {
+  mode: "checklist" | "scope" | "comparison" | "storyboard";
+  title: string;
+  intro: string;
+  items: Array<{ id: string; label: string; detail: string }>;
 };
 
 export type JournalArticle = {
@@ -27,9 +39,15 @@ export type JournalArticle = {
   faqs: Array<{ question: string; answer: string }>;
   relatedServices: string[];
   ogImage: string;
+  cover?: { src: string; alt: string; caption: string };
+  tool?: JournalTool;
+  cta?: { title: string; text: string; label: string; href: string };
+  relatedArticles?: string[];
+  sources?: Array<{ title: string; href: string; note: string }>;
 };
 
 export const journalArticles: JournalArticle[] = [
+  ...newJournalArticles,
   {
     slug: "motion-design-3d-ou-tournage-video",
     title: "Motion design, 3D ou tournage : quel format pour votre marque ?",
@@ -163,7 +181,8 @@ export const journalArticles: JournalArticle[] = [
       }
     ],
     relatedServices: ["motion-design", "3d", "realisation-video", "direction-artistique"],
-    ogImage: "/og/journal-motion-3d-video.jpg"
+    ogImage: "/og/journal-motion-3d-video.jpg",
+    relatedArticles: ["demo-saas-scenario", "rendu-3d-fichiers-validations", "direction-artistique-campagne-coherence"]
   },
   {
     slug: "brief-creatif-modele",
@@ -284,7 +303,8 @@ export const journalArticles: JournalArticle[] = [
       }
     ],
     relatedServices: ["brand", "web", "direction-artistique", "realisation-video"],
-    ogImage: "/og/journal-brief-creatif.jpg"
+    ogImage: "/og/journal-brief-creatif.jpg",
+    relatedArticles: ["studio-agence-freelance", "preparer-refonte-site-web", "prix-identite-visuelle"]
   },
   {
     slug: "identite-visuelle-contenu",
@@ -409,7 +429,8 @@ export const journalArticles: JournalArticle[] = [
       }
     ],
     relatedServices: ["brand", "graphisme", "direction-artistique"],
-    ogImage: "/og/journal-identite-visuelle.jpg"
+    ogImage: "/og/journal-identite-visuelle.jpg",
+    relatedArticles: ["prix-identite-visuelle", "rebranding-preserver-reconnaissance", "identite-marque-site-web-ordre"]
   }
 ];
 

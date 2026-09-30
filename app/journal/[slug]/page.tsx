@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JournalArticlePage } from "@/components/JournalArticlePage";
 import { getJournalArticle, journalArticles } from "@/data/journal";
-import { createMetadata } from "@/lib/seo";
+import { absoluteUrl, createMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     authors: [{ name: "Teo Comyn", url: "https://42studio.fr/studio" }],
     openGraph: {
       ...base.openGraph,
+      ...(article.cover ? { images: [{ url: absoluteUrl(article.cover.src), width: 1536, height: 1024, alt: article.cover.alt }] } : {}),
       type: "article",
       publishedTime: article.datePublished,
       modifiedTime: article.dateModified,

@@ -13,6 +13,7 @@ import {
   type CreativeService
 } from "@/data/creative-services";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
+import { journalArticles } from "@/data/journal";
 
 type CreativeServicePageProps = {
   service: CreativeService;
@@ -33,6 +34,7 @@ export function CreativeServicePage({ service }: CreativeServicePageProps) {
     { name: service.navLabel, path }
   ];
   const contactHref = `/contact?type=${service.contactType}`;
+  const guides = journalArticles.filter((article) => article.relatedServices.includes(service.slug)).slice(0, 3);
 
   return (
     <SiteChrome>
@@ -286,6 +288,7 @@ export function CreativeServicePage({ service }: CreativeServicePageProps) {
         </Reveal>
       </section>
 
+      {guides.length > 0 && <section className="section-pad border-b border-white/10" aria-labelledby="service-guides-title"><p className="mono-label">Préparer votre projet</p><h2 id="service-guides-title" className="mt-4 text-3xl font-light tracking-[-0.03em]">Les guides du studio.</h2><div className="mt-8 grid gap-7 md:grid-cols-3">{guides.map((article) => <Link key={article.slug} href={`/journal/${article.slug}`} className="border-t border-white/20 pt-5"><h3 className="text-xl font-light leading-7 hover:underline underline-offset-4">{article.title}</h3><p className="mt-3 text-sm leading-7 text-white/70">{article.excerpt}</p><span className="mt-5 block font-mono text-[11px] uppercase text-white/75">Lire le guide ↗</span></Link>)}</div></section>}
       <ContactCta />
     </SiteChrome>
   );

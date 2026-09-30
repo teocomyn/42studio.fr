@@ -16,6 +16,8 @@ Ne jamais ajouter de dates, avis, données d'entreprise ou résultats clients no
 
 Sources de contenu : `data/creative-services.ts` (services), `data/journal.ts` (Journal), `data/seo-keywords/index.ts` (pages locales et historiques). Images de partage générées par `~/Business/42/42 BUSINESS/42STUDIO-CREATIVES/src/og.mjs` vers `public/og/`.
 
+Le Journal inclut dix nouveaux guides depuis `data/journal-expansion.ts`, importés dans la liste unique `data/journal.ts`. Les outils utilisent `components/JournalTool.tsx`, sans persistance ni transmission des réponses. Couvertures WebP dans `public/journal/images/`, prompts dans `docs/journal-image-prompts.json`. Vérification spécifique : `python3 scripts/check_journal.py BASE_URL`. Détail : `docs/JOURNAL-2026-09-30.md`.
+
 ## Préparation commerciale du 30 septembre 2026
 
 Les offres sont centralisées dans `data/offers.ts`, présentées sur `/accompagnements` et reprises sur l'accueil et les services. Le formulaire accepte `?offer=<slug>` ; les champs de qualification alimentent l'email, sans données personnelles dans les événements GA4. Les montants du catalogue privé restent à arbitrer, les offres de ce parcours sont sur devis. Détail et état de livraison : `docs/ACQUISITION-2026-09-30.md` et AI_HANDOFF.md. Les fiches prospects et supports privés ne doivent pas entrer dans le dépôt public.
