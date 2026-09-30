@@ -9,6 +9,7 @@ Le site présentait les expertises mais ne donnait pas un accès clair aux forma
 - Boutons par offre vers `/contact?offer=…`. Le formulaire propose l'offre et le type de projet correspondants.
 - Champs facultatifs délai de démarrage et site de la marque, inclus dans l'email du brief. Offre et délai validés par liste, URL limitée à HTTP/HTTPS, contenus échappés dans l'email HTML.
 - Conservation du brief après erreur métier de la server action, puis focus sur le premier champ à corriger.
+- Après envoi réussi, focus et défilement sur la confirmation : le remplacement du formulaire ne laisse pas le visiteur en bas de page sans retour visible.
 - Événements `cta_click`, `form_start`, `generate_lead` avec identifiant d'offre canonique ; pas de texte libre, email ou URL de prospect dans les événements GA4. Le consentement analytique existant s'applique.
 - FAQ contact alignée sur les devis par projet. Le volume non documenté de marques dans cette page est remplacé par le lien vers les réalisations.
 - Sitemap et documents llms mis à jour ; aucune promesse d'indexation ou de visibilité IA.

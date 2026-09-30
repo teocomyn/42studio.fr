@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { track } from "@vercel/analytics";
 import { trackCtaClick, trackGenerateLead } from "@/lib/gtag-analytics";
 import { siteConfig } from "@/lib/site";
@@ -12,13 +12,20 @@ type ContactSuccessProps = {
 };
 
 export function ContactSuccess({ message, offer }: ContactSuccessProps) {
+  const statusRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    // Le formulaire disparaît après envoi : montrer sa confirmation même
+    // lorsque le visiteur est descendu jusqu'au bouton de soumission.
+    statusRef.current?.focus({ preventScroll: true });
+    statusRef.current?.scrollIntoView({ block: "center", behavior: "auto" });
     track("contact_form_submit");
     trackGenerateLead("contact_form", "contact_page", offer);
   }, [offer]);
 
   return (
     <div
+      ref={statusRef}
+      tabIndex={-1}
       role="status"
       aria-live="polite"
       className="border border-white/15 bg-white/[0.03] p-8"

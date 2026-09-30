@@ -33,3 +33,9 @@ Vérifications : lint et build passent ; contrôle du HTML serveur de 82 pages (
 GitHub : `gh api user` confirme `teocomyn`. Vercel, lu depuis le checkout historique lié au projet : CONTACT_FROM, CONTACT_TO et RESEND_API_KEY présents en production (valeurs non lues). Ce worktree n'est pas lié au projet Vercel ; la publication du site reste celle de main.
 
 À poursuivre après le push autorisé : read-back public et test de réception depuis l'adresse fournie par Teo. Le compte rendu de production et d'email est dans le vault privé, sans coordonnées dans le dépôt public. Aucun message de prospection envoyé. Grille de prix et attribution des preuves à confirmer avec Teo.
+
+### Contrôle en production
+
+`22e5594` publié sur main, déploiement Vercel `dpl_BWiAkKAz4pS4H2GydM25BYzCUhCG` READY et affecté à `42studio.fr`. Contrôle SEO public : 82 pages, zéro défaut. Un brief technique autorisé a été soumis via le navigateur ; succès affiché et confirmation reçue dans la boîte de réception Gmail de Teo. Notification studio acceptée par le service d'envoi ; réception dans la boîte studio à confirmer séparément.
+
+Le test réel a montré que la confirmation pouvait rester hors écran après remplacement du formulaire. Correctif : focus et défilement sur `ContactSuccess`. Lint et build passent après ce correctif ; vérifier son affichage sur le prochain test réel. Les preuves détaillées et l'état final sont dans le kit privé.
