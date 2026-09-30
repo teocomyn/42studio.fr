@@ -34,6 +34,7 @@ export function GET() {
     "## Services",
     ...creativeServices.map((service) => `- [${service.name}](${siteUrl}/${service.slug}): ${service.definition}`),
     `- [Tous les services](${siteUrl}/services)`,
+    `- [Accompagnements et formats de projet](${siteUrl}/accompagnements): identité, site, marque et digital, campagne ou accompagnement mensuel. Périmètre et prix sur devis.`,
     "",
     "## Piliers",
     ...creativePillars.map((pillar) => `- ${pillar.index} ${pillar.title} (${pillar.output}) : ${pillar.text}`),

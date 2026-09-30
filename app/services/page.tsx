@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContactCta } from "@/components/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
+import { OffersSection } from "@/components/OffersSection";
 import { Reveal } from "@/components/Reveal";
 import { SeoIntentsSection } from "@/components/SeoIntentsSection";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -126,6 +127,7 @@ export default function ServicesPage() {
         </Reveal>
       </section>
 
+      <OffersSection compact location="services_offers" />
       <SeoIntentsSection />
 
       <section className="section-pad">

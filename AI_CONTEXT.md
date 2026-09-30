@@ -14,3 +14,6 @@ Ne jamais ajouter de dates, avis, données d'entreprise ou résultats clients no
 
 Sources de contenu : `data/creative-services.ts` (services), `data/journal.ts` (Journal), `data/seo-keywords/index.ts` (pages locales et historiques). Images de partage générées par `~/Business/42/42 BUSINESS/42STUDIO-CREATIVES/src/og.mjs` vers `public/og/`.
 
+## Préparation commerciale du 30 septembre 2026
+
+Les offres sont centralisées dans `data/offers.ts`, présentées sur `/accompagnements` et reprises sur l'accueil et les services. Le formulaire accepte `?offer=<slug>` ; les champs de qualification alimentent l'email, sans données personnelles dans les événements GA4. Les montants du catalogue privé restent à arbitrer, les offres de ce parcours sont sur devis. Détail et état de livraison : `docs/ACQUISITION-2026-09-30.md` et AI_HANDOFF.md. Les fiches prospects et supports privés ne doivent pas entrer dans le dépôt public.

@@ -1,5 +1,6 @@
 import { creativePillars, creativeServices, studioModel } from "@/data/creative-services";
 import { journalArticles } from "@/data/journal";
+import { offers } from "@/data/offers";
 import { entityDescription, siteUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -16,6 +17,10 @@ export function GET() {
     studioModel,
     "",
     `Contact : ${siteConfig.email} · ${siteUrl}/contact · Réponse sous 24 h à chaque brief.`,
+    "",
+    "## Accompagnements",
+    `URL : ${siteUrl}/accompagnements. Chaque projet est chiffré sur devis. Les délais sont indicatifs, selon le périmètre et les validations.`,
+    ...offers.map((offer) => `- ${offer.name} (${offer.duration}) : ${offer.description} Livrables : ${offer.deliverables.join(" ; ")}.`),
     "",
     "## Les quatre piliers",
     ...creativePillars.map((pillar) => `- ${pillar.title} : ${pillar.output}. ${pillar.text}`),

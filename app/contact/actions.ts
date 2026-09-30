@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getOffer, projectTimelines } from "@/data/offers";
 import {
   buildBriefHtml,
   buildBriefSubject,
@@ -61,6 +62,10 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
   const email = String(formData.get("email") ?? "").trim().slice(0, EMAIL_MAX);
   const projectType = String(formData.get("projectType") ?? "").trim().slice(0, 60);
   const budget = String(formData.get("budget") ?? "").trim().slice(0, 60);
+  const offer = getOffer(String(formData.get("offer") ?? ""))?.name ?? "";
+  const submittedTimeline = String(formData.get("timeline") ?? "");
+  const timeline = projectTimelines.find((value) => value === submittedTimeline) ?? "";
+  const projectWebsite = String(formData.get("projectWebsite") ?? "").trim().slice(0, 300);
   const message = String(formData.get("message") ?? "").trim().slice(0, MESSAGE_MAX);
   const consent = formData.get("consent") === "on";
 
@@ -69,6 +74,14 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
   if (!EMAIL_RE.test(email)) fieldErrors.email = "Adresse email invalide.";
   if (message.length < 10) fieldErrors.message = "Ajoute un peu de contexte (10 caractères minimum).";
   if (!consent) fieldErrors.consent = "Merci d'accepter la politique de confidentialité.";
+  if (projectWebsite) {
+    try {
+      const url = new URL(projectWebsite);
+      if (!["https:", "http:"].includes(url.protocol)) throw new Error("Invalid protocol");
+    } catch {
+      fieldErrors.projectWebsite = "Indique une adresse complète, commençant par https://.";
+    }
+  }
 
   if (Object.keys(fieldErrors).length > 0) {
     return { status: "error", message: "Quelques champs sont à corriger.", fieldErrors };
@@ -91,7 +104,7 @@ export async function submitBrief(_prev: ContactState, formData: FormData): Prom
     };
   }
 
-  const payload = { name, email, projectType, budget, message };
+  const payload = { name, email, projectType, budget, message, offer, timeline, projectWebsite };
   const from = getContactFrom();
   const to = getContactTo();
 

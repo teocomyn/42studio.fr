@@ -25,7 +25,7 @@ export function ContactSidebar() {
       <div className="border border-white/10 bg-white/[0.02] p-6 md:p-8">
         <span className="mono-label">Réassurance</span>
         <ul className="mt-5 space-y-3 text-sm leading-7 text-white/72">
-          <li>+60 marques accompagnées depuis 2018</li>
+          <li><Link href="/work" className="underline underline-offset-4 hover:text-white">Les réalisations à découvrir dans le portfolio</Link></li>
           <li>Interlocuteur senior, sans couche agence</li>
           <li>Marque, site, motion, 3D et vidéo dans le même studio</li>
           <li>Basé à Arras, projets France et international</li>

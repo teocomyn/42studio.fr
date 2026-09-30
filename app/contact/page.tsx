@@ -34,7 +34,7 @@ export default function ContactPage() {
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={faqJsonLd([...contactFaqs])} />
 
-      <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+      <Reveal className="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div>
           <span className="mono-label">Contact / Brief</span>
           <h1 className="mt-8 max-w-3xl text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-[0.95] tracking-[-0.05em]">

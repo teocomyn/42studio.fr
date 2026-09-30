@@ -21,3 +21,15 @@ Worktree de travail : `~/Business/42/42 BUSINESS/42studio.fr-seo-geo`.
 - Arbitrer la grille de prix avant d'afficher des montants.
 - Relire les trois guides du Journal, signés Teo Comyn.
 - Réponse des emails de contact non testée depuis cette livraison : faire un envoi de test depuis le site en ligne.
+
+## Lot acquisition, 30 septembre 2026
+
+Branche de travail : `codex/acquisition-42studio`, à partir de `13f00ff` (main vérifié sur GitHub). Ce lot est préparé localement et n'est pas encore poussé sur main. Le checkout historique reste intact.
+
+Réalisé : offres et page d'accompagnements, liens globaux, préremplissage et qualification du brief, conservation après erreur, tracking par offre sous consentement, FAQ contact, sitemap et llms. Les supports et fiches prospects restent dans le vault privé.
+
+Vérifications : lint et build passent ; contrôle du HTML serveur de 82 pages (80 dans le sitemap), zéro défaut ; revue 21st, zéro défaut. La server action rejette un message trop court via appel HTTP local, avant tout envoi. Préremplissage et rendu contrôlés ; conservation après erreur implémentée mais contrôle navigateur complet restant à faire : l'outil ne déclenche pas correctement la soumission. Vérifier manuellement cette conservation et la réception réelle avant lancement commercial. La recherche d'inspiration 21st nécessite une authentification (401), aucun composant externe installé.
+
+GitHub : `gh api user` confirme `teocomyn`. Vercel, lu depuis le checkout historique lié au projet : CONTACT_FROM, CONTACT_TO et RESEND_API_KEY présents en production (valeurs non lues). Ce worktree n'est pas lié au projet Vercel ; la publication du site reste celle de main.
+
+À poursuivre : accord explicite pour publication, read-back public, test de réception depuis une adresse de Teo. Aucun message de prospection envoyé. Grille de prix et attribution des preuves à confirmer avec Teo.

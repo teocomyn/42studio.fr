@@ -5,6 +5,7 @@ import { useActionState, useEffect, useRef, useState, useSyncExternalStore } fro
 import { useFormStatus } from "react-dom";
 import { submitBrief, type ContactState } from "@/app/contact/actions";
 import { ContactSuccess } from "@/components/ContactSuccess";
+import { getOffer, offers, projectTimelines } from "@/data/offers";
 import { trackCtaClick, trackGaEvent } from "@/lib/gtag-analytics";
 import { siteConfig } from "@/lib/site";
 
@@ -32,9 +33,8 @@ function subscribeToLocation(onChange: () => void) {
   return () => window.removeEventListener("popstate", onChange);
 }
 
-function getProjectTypeFromLocation() {
-  const type = new URLSearchParams(window.location.search).get("type");
-  return type ? projectTypeFromQuery[type.toLowerCase()] ?? "" : "";
+function getQueryFromLocation() {
+  return window.location.search;
 }
 
 function getServerProjectType() {
@@ -56,14 +56,22 @@ function SubmitButton() {
 }
 
 export function ContactForm() {
+  const submittedValues = useRef<FormData | null>(null);
   const [state, formAction] = useActionState(submitBrief, initialState);
-  const suggestedType = useSyncExternalStore(
+  const query = useSyncExternalStore(
     subscribeToLocation,
-    getProjectTypeFromLocation,
+    getQueryFromLocation,
     getServerProjectType
   );
+  const params = new URLSearchParams(query);
+  const suggestedOffer = getOffer(params.get("offer") ?? "")?.slug ?? "";
+  const [selectedOffer, setSelectedOffer] = useState<string | null>(null);
+  const offerSlug = selectedOffer ?? suggestedOffer;
+  const offer = getOffer(offerSlug);
+  const typeFromQuery = params.get("type") ?? "";
+  const suggestedType = projectTypeFromQuery[typeFromQuery.toLowerCase()] ?? "";
   const [selectedType, setProjectType] = useState<string | null>(null);
-  const projectType = selectedType ?? suggestedType;
+  const projectType = selectedType ?? offer?.projectType ?? suggestedType;
   const formRef = useRef<HTMLFormElement | null>(null);
   const startedRef = useRef(false);
   const errors = state.fieldErrors ?? {};
@@ -72,12 +80,24 @@ export function ContactForm() {
   const handleFirstFocus = () => {
     if (startedRef.current) return;
     startedRef.current = true;
-    trackGaEvent("form_start", { form_location: "contact_page" });
+    trackGaEvent("form_start", { form_location: "contact_page", offer: offerSlug || undefined });
   };
 
   // Au retour d'erreurs serveur, focus + scroll sur le premier champ fautif.
   useEffect(() => {
     if (state.status !== "error" || !formRef.current) return;
+    // React remet les champs à zéro après une action résolue, même en cas
+    // d'erreur métier. Restaurer le brief avant de placer le focus sur l'erreur.
+    if (submittedValues.current) {
+      for (const [key, value] of submittedValues.current.entries()) {
+        const field = formRef.current.elements.namedItem(key);
+        if (field instanceof HTMLInputElement && field.type === "checkbox") {
+          field.checked = true;
+        } else if (field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement) {
+          field.value = String(value);
+        }
+      }
+    }
     if (state.fieldErrors && Object.keys(state.fieldErrors).length > 0) {
       trackGaEvent("form_error", {
         form_location: "contact_page",
@@ -92,16 +112,45 @@ export function ContactForm() {
   }, [state]);
 
   if (state.status === "success") {
-    return <ContactSuccess message={state.message} />;
+    return <ContactSuccess message={state.message} offer={offerSlug} />;
   }
 
   return (
-    <form ref={formRef} action={formAction} onFocus={handleFirstFocus} className="relative grid gap-6">
+    <form
+      ref={formRef}
+      action={formAction}
+      onFocus={handleFirstFocus}
+      onSubmit={(event) => { submittedValues.current = new FormData(event.currentTarget); }}
+      className="relative grid gap-6"
+    >
       <div className="absolute h-0 w-0 overflow-hidden" aria-hidden>
         <label>
           Ne pas remplir
           <input type="text" name="website_field" tabIndex={-1} autoComplete="off" />
         </label>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <div>
+          <label htmlFor="offer" className={labelClass}>Accompagnement envisagé</label>
+          <select id="offer" name="offer" value={offerSlug} onChange={(event) => { setSelectedOffer(event.target.value); setProjectType(null); }} className={fieldClass}>
+            <option value="">À définir ensemble</option>
+            {offers.map((item) => <option value={item.slug} key={item.slug}>{item.name}</option>)}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="timeline" className={labelClass}>Quand souhaitez-vous commencer ?</label>
+          <select id="timeline" name="timeline" defaultValue="" className={fieldClass}>
+            <option value="">Sélectionner…</option>
+            {projectTimelines.map((item) => <option value={item} key={item}>{item}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="projectWebsite" className={labelClass}>Site de votre marque (facultatif)</label>
+        <input id="projectWebsite" name="projectWebsite" type="url" maxLength={300} placeholder="https://votre-marque.fr" autoComplete="url" aria-invalid={Boolean(errors.projectWebsite)} aria-describedby={errors.projectWebsite ? "projectWebsite-error" : undefined} className={fieldClass} />
+        {errors.projectWebsite && <p id="projectWebsite-error" className="mt-2 font-mono text-[11px] text-red-300">{errors.projectWebsite}</p>}
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -165,6 +214,7 @@ export function ContactForm() {
           >
             <option value="">Sélectionner…</option>
             <option value="Brand">Branding / Identité visuelle</option>
+            <option value="Brand × Digital">Identité + site web</option>
             <option value="Graphisme">Graphisme / Supports</option>
             <option value="Web">Site web</option>
             <option value="E-commerce">E-commerce</option>

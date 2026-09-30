@@ -8,13 +8,14 @@ import { siteConfig } from "@/lib/site";
 
 type ContactSuccessProps = {
   message?: string;
+  offer?: string;
 };
 
-export function ContactSuccess({ message }: ContactSuccessProps) {
+export function ContactSuccess({ message, offer }: ContactSuccessProps) {
   useEffect(() => {
     track("contact_form_submit");
-    trackGenerateLead("contact_form", "contact_page");
-  }, []);
+    trackGenerateLead("contact_form", "contact_page", offer);
+  }, [offer]);
 
   return (
     <div

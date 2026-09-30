@@ -9,6 +9,7 @@ const links = [
   ["Travail", "/work"],
   ["Studio", "/studio"],
   ["Services", "/services"],
+  ["Accompagnements", "/accompagnements"],
   ["Journal", "/journal"],
   ["Contact", "/contact"]
 ] as const;
@@ -70,7 +71,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav aria-label="Navigation principale" className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70 md:flex">
+        <nav aria-label="Navigation principale" className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70 lg:flex">
           {links.map(([label, href]) => (
             <Link key={href} href={href} className="transition hover:text-white">
               {label}
@@ -84,7 +85,7 @@ export function Header() {
           aria-label="Ouvrir le menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="flex flex-col gap-1.5 p-2 text-white md:hidden"
+          className="flex flex-col gap-1.5 p-2 text-white lg:hidden"
         >
           <span className="block h-px w-7 bg-current" />
           <span className="block h-px w-7 bg-current" />
@@ -99,7 +100,7 @@ export function Header() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg)] px-5 pb-10 pt-5 md:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-[var(--bg)] px-5 pb-10 pt-5 lg:hidden"
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: "-4%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: "-4%" }}

@@ -4,6 +4,9 @@ type BriefPayload = {
   projectType: string;
   budget: string;
   message: string;
+  offer?: string;
+  timeline?: string;
+  projectWebsite?: string;
 };
 
 function escapeHtml(value: string) {
@@ -24,6 +27,9 @@ export function buildBriefText(payload: BriefPayload) {
     `Email : ${payload.email}`,
     `Type de projet : ${payload.projectType || "Non renseigné"}`,
     `Budget : ${payload.budget || "Non renseigné"}`,
+    `Accompagnement : ${payload.offer || "À définir ensemble"}`,
+    `Démarrage souhaité : ${payload.timeline || "Non renseigné"}`,
+    `Site de la marque : ${payload.projectWebsite || "Non renseigné"}`,
     "Consentement RGPD : oui",
     "",
     payload.message
@@ -54,7 +60,10 @@ export function buildBriefHtml(payload: BriefPayload) {
               <td style="padding:0 28px 24px;font-size:14px;line-height:1.7;color:#bdbdbd;">
                 <p style="margin:0 0 8px;"><strong style="color:#fff;font-weight:600;">Email :</strong> ${escapeHtml(email)}</p>
                 <p style="margin:0 0 8px;"><strong style="color:#fff;font-weight:600;">Type :</strong> ${escapeHtml(projectType || "Non renseigné")}</p>
-                <p style="margin:0;"><strong style="color:#fff;font-weight:600;">Budget :</strong> ${escapeHtml(budget || "Non renseigné")}</p>
+                <p style="margin:0 0 8px;"><strong style="color:#fff;font-weight:600;">Budget :</strong> ${escapeHtml(budget || "Non renseigné")}</p>
+                <p style="margin:0 0 8px;"><strong style="color:#fff;font-weight:600;">Accompagnement :</strong> ${escapeHtml(payload.offer || "À définir ensemble")}</p>
+                <p style="margin:0 0 8px;"><strong style="color:#fff;font-weight:600;">Démarrage :</strong> ${escapeHtml(payload.timeline || "Non renseigné")}</p>
+                <p style="margin:0;"><strong style="color:#fff;font-weight:600;">Site :</strong> ${escapeHtml(payload.projectWebsite || "Non renseigné")}</p>
               </td>
             </tr>
             <tr>

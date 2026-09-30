@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "project": {
+    "name": "42studio-fr",
+    "productType": "creative-studio",
+    "stack": [
+      "nextjs",
+      "react",
+      "tailwind-v3"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "app/globals.css"
+    ],
+    "components": [],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {
+      "--muted": {
+        "value": "#7a7a82",
+        "source": "app/globals.css"
+      }
+    },
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": ["SiteChrome", "TrackedLink", "Breadcrumbs"],
+    "patterns": []
+  },
+  "constraints": {
+    "must": ["Preserve black, off-white, grotesk and monospace identity", "Render commercial copy on the server", "Use existing focus and motion conventions"],
+    "avoid": ["Unapproved prices, metrics or client claims", "Decorative card gradients", "New UI dependencies"]
+  },
+  "decisions": [],
+  "evidence": [
+    {
+      "fact": "design.colorMode:dark",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v3",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-09-30T16:31:07.389Z"
+}

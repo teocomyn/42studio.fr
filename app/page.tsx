@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { ClientStrip } from "@/components/ClientStrip";
 import { Hero } from "@/components/Hero";
+import { OffersSection } from "@/components/OffersSection";
 import { SeoIntentsSection } from "@/components/SeoIntentsSection";
 import { SiteChrome } from "@/components/SiteChrome";
 
@@ -47,6 +48,7 @@ export default function Home() {
         <Marquee />
         <Manifesto />
         <Services />
+        <OffersSection compact location="home_offers" />
         <StudioSystem />
         <Testimonials />
         <ProcessTimeline />

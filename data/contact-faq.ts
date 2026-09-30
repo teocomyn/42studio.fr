@@ -2,7 +2,7 @@ export const contactFaqs = [
   {
     question: "Quel budget prévoir pour un projet avec 42studio ?",
     answer:
-      "Les sites et boutiques sur mesure démarrent généralement entre 5 000 et 20 000 € HT selon le périmètre ; les interventions ponctuelles sont facturées 550 € HT par jour. Identité, direction artistique, motion design, 3D et vidéo sont chiffrés sur devis après le premier échange."
+      "Chaque projet est chiffré sur devis après un premier échange. Le montant dépend du périmètre, des livrables, de la production et du calendrier. Vous pouvez indiquer votre budget envisagé dans le brief pour que nous proposions un accompagnement adapté."
   },
   {
     question: "Quel délai pour obtenir une réponse de 42studio ?",

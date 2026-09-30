@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }> = [
     { path: "", priority: 1, changeFrequency: "weekly", lastModified: creativeUpdate },
     { path: "/services", priority: 0.9, changeFrequency: "monthly", lastModified: creativeUpdate },
+    { path: "/accompagnements", priority: 0.85, changeFrequency: "monthly", lastModified: new Date("2026-09-30") },
     ...creativeServices.map((service) => ({
       path: `/${service.slug}`,
       priority: 0.9,

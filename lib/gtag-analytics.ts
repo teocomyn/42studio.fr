@@ -20,9 +20,10 @@ export function trackCtaClick(itemId: string, location: string) {
   });
 }
 
-export function trackGenerateLead(method: string, location: string) {
+export function trackGenerateLead(method: string, location: string, offer?: string) {
   trackGaEvent("generate_lead", {
     method,
-    form_location: location
+    form_location: location,
+    offer: offer || undefined
   });
 }
