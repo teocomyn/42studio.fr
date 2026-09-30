@@ -24,12 +24,12 @@ Worktree de travail : `~/Business/42/42 BUSINESS/42studio.fr-seo-geo`.
 
 ## Lot acquisition, 30 septembre 2026
 
-Branche de travail : `codex/acquisition-42studio`, à partir de `13f00ff` (main vérifié sur GitHub). Ce lot est préparé localement et n'est pas encore poussé sur main. Le checkout historique reste intact.
+Branche de travail : `codex/acquisition-42studio`, à partir de `13f00ff` (main vérifié sur GitHub). État avant publication : lot local `757e6d5`, puis vérification finale documentée. Publication autorisée par Teo le 30 septembre en réponse à la demande de mise en ligne. Le checkout historique reste intact.
 
 Réalisé : offres et page d'accompagnements, liens globaux, préremplissage et qualification du brief, conservation après erreur, tracking par offre sous consentement, FAQ contact, sitemap et llms. Les supports et fiches prospects restent dans le vault privé.
 
-Vérifications : lint et build passent ; contrôle du HTML serveur de 82 pages (80 dans le sitemap), zéro défaut ; revue 21st, zéro défaut. La server action rejette un message trop court via appel HTTP local, avant tout envoi. Préremplissage et rendu contrôlés ; conservation après erreur implémentée mais contrôle navigateur complet restant à faire : l'outil ne déclenche pas correctement la soumission. Vérifier manuellement cette conservation et la réception réelle avant lancement commercial. La recherche d'inspiration 21st nécessite une authentification (401), aucun composant externe installé.
+Vérifications : lint et build passent ; contrôle du HTML serveur de 82 pages (80 dans le sitemap), zéro défaut ; revue 21st, zéro défaut. La server action rejette un message trop court via appel HTTP local, avant tout envoi. Le contrôle navigateur repris passe : erreur visible, champs conservés (nom, offre, délai, message, consentement), focus sur le message. La recherche d'inspiration 21st nécessite une authentification (401), aucun composant externe installé.
 
 GitHub : `gh api user` confirme `teocomyn`. Vercel, lu depuis le checkout historique lié au projet : CONTACT_FROM, CONTACT_TO et RESEND_API_KEY présents en production (valeurs non lues). Ce worktree n'est pas lié au projet Vercel ; la publication du site reste celle de main.
 
-À poursuivre : accord explicite pour publication, read-back public, test de réception depuis une adresse de Teo. Aucun message de prospection envoyé. Grille de prix et attribution des preuves à confirmer avec Teo.
+À poursuivre après le push autorisé : read-back public et test de réception depuis l'adresse fournie par Teo. Le compte rendu de production et d'email est dans le vault privé, sans coordonnées dans le dépôt public. Aucun message de prospection envoyé. Grille de prix et attribution des preuves à confirmer avec Teo.

@@ -17,7 +17,9 @@ Le site présentait les expertises mais ne donnait pas un accès clair aux forma
 
 `npm run lint` et `npm run build` passent. Le contrôle du HTML serveur couvre 82 pages, dont 80 du sitemap, sans défaut. Rendus desktop/mobile et préremplissage de l'offre contrôlés. Un appel HTTP local de la server action rejette un message trop court avant tout envoi. Construction de l'email testée hors réseau, y compris l'échappement HTML.
 
-Limite du contrôle navigateur : les actions de soumission de l'outil n'activent pas le formulaire de manière fiable. La restauration des champs après erreur est implémentée mais sa vérification complète dans le navigateur reste à faire manuellement. Aucun email n'a été envoyé. La réception réelle et la confirmation au demandeur restent à tester avec une adresse de Teo avant le lancement commercial.
+Contrôle navigateur repris et réussi le 30 septembre : après un message trop court, l'erreur serveur s'affiche, le nom, l'offre, le délai, le message et le consentement restent conservés. Le focus est sur le message à corriger. Aucun email envoyé par ce test local. La réception réelle et la confirmation au demandeur sont à tester après publication avec l'adresse fournie par Teo.
+
+Publication de ce lot autorisée par Teo le 30 septembre, en réponse à la demande explicite de mise en ligne. Le résultat de production et le test email sont consignés séparément dans le vault privé, sans adresse personnelle dans ce dépôt.
 
 La recherche d'inspiration 21st a renvoyé HTTP 401 ; les composants existants ont été utilisés. Le contexte de design local est explicité dans `.21st/`. La revue 21st des composants n'a pas signalé de défaut.
 
