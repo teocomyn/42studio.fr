@@ -38,4 +38,8 @@ GitHub : `gh api user` confirme `teocomyn`. Vercel, lu depuis le checkout histor
 
 `22e5594` publié sur main, déploiement Vercel `dpl_BWiAkKAz4pS4H2GydM25BYzCUhCG` READY et affecté à `42studio.fr`. Contrôle SEO public : 82 pages, zéro défaut. Un brief technique autorisé a été soumis via le navigateur ; succès affiché et confirmation reçue dans la boîte de réception Gmail de Teo. Notification studio acceptée par le service d'envoi ; réception dans la boîte studio à confirmer séparément.
 
-Le test réel a montré que la confirmation pouvait rester hors écran après remplacement du formulaire. Correctif : focus et défilement sur `ContactSuccess`. Lint et build passent après ce correctif ; vérifier son affichage sur le prochain test réel. Les preuves détaillées et l'état final sont dans le kit privé.
+Le test réel a montré que la confirmation pouvait rester hors écran après remplacement du formulaire. Correctif `8fb385d` publié sur main, Vercel `dpl_4gGEy8HGvgYeESKqwShEpd9WbeZF` READY. Lint et build passent. Le second test en production confirme que le conteneur de succès est focalisé et entièrement visible. Deux confirmations reçues dans la boîte de réception Gmail de Teo. Réception des notifications dans la boîte studio à confirmer séparément. Les preuves détaillées sont dans le kit privé.
+
+### Consigne permanente GitHub
+
+Teo demande de pousser toutes les modifications du site sur `https://github.com/teocomyn/42studio.fr` à chaque intervention. Consigne enregistrée dans `AGENTS.md` et `AI_CONTEXT.md`. Pousser les lots vérifiés sur main sans nouvelle demande systématique ; conserver les frontières du dépôt public et le travail du checkout historique.

@@ -2,6 +2,8 @@
 
 Site public Next.js App Router déployé sur Vercel depuis `main` du dépôt `teocomyn/42studio.fr`.
 
+Consigne de Teo du 30 septembre 2026 : après chaque intervention terminée et vérifiée, committer et pousser les modifications du site vers `origin/main` sur `https://github.com/teocomyn/42studio.fr`. Ce push déclenche le déploiement Vercel existant ; ne pas redemander systématiquement l'autorisation. Voir `AGENTS.md` pour le périmètre public et la préservation des autres travaux.
+
 Le lot SEO/GEO du 14 septembre 2026 est documenté dans `docs/SEO-GEO-RELEASE.md`. Le contenu doit rester présent dans le HTML serveur, même lorsque les animations et le défilement enrichi ne sont pas chargés.
 
 Vérifications avant livraison : `npm run build`, `npm run lint`, puis `python3 scripts/check_seo.py BASE_URL`. Les vérifications locales et l'état READY du déploiement ne prouvent pas la réception des emails ni l'indexation Google.
