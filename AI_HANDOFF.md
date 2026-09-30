@@ -43,3 +43,11 @@ Le test réel a montré que la confirmation pouvait rester hors écran après re
 ### Consigne permanente GitHub
 
 Teo demande de pousser toutes les modifications du site sur `https://github.com/teocomyn/42studio.fr` à chaque intervention. Consigne enregistrée dans `AGENTS.md` et `AI_CONTEXT.md`. Pousser les lots vérifiés sur main sans nouvelle demande systématique ; conserver les frontières du dépôt public et le travail du checkout historique.
+
+## Journal créatif : dix articles publiés le 30 septembre 2026
+
+Livraison autorisée explicitement sur main : `759224b`, Vercel `dpl_9sr7UYMnDpcuVDJwZH144XVwQMkM`, READY et alias public confirmés. Dix guides complets, dix couvertures originales IA monochromes, dix outils de cadrage et exports sans inscription, 50 FAQ, CTA adaptés, liens contextuels et retour depuis les services et les anciens guides. Contenu dans `data/journal-expansion.ts`, source unique exportée par `data/journal.ts`. Détail, frontière éditoriale et tests : `docs/JOURNAL-2026-09-30.md`.
+
+Lint, build et revue UI passent. Read-back local et public : 92 pages contrôlées, 90 URL de sitemap, zéro défaut ; `scripts/check_journal.py` valide images, FAQ, fragments et présence dans llms. Navigateur : les quatre modes d’outil, téléchargements réellement enregistrés et contenu des fichiers, FAQ native, contact prérempli et mobile 390/320 pixels vérifiés. Test public du périmètre d’identité et CTA Brand Identity passe, aucune soumission de formulaire ni prospection.
+
+À suivre : indexation et requêtes réelles dans Search Console, demandes qualifiées provenant des guides, mise à jour de la matière avec de futurs exemples clients autorisés. Aucun prix, résultat client ou volume de recherche inventé. Le checkout historique reste préservé.
